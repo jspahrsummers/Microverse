@@ -12,7 +12,7 @@ macOS 11 (Big Sur) is unsupported.
 
 ## Running Linux
 
-[`VZLinuxBootLoader`](https://developer.apple.com/documentation/virtualization/vzlinuxbootloader) is quite picky about its inputs. I had the best luck with [Ubuntu cloud images](https://cloud-images.ubuntu.com/), based on [this helpful comment by @droidix](https://github.com/evansm7/vftool/issues/2#issuecomment-735455161).
+[`VZLinuxBootLoader`](https://developer.apple.com/documentation/virtualization/vzlinuxbootloader) is quite picky about its inputs. I had the best luck with [Ubuntu cloud images](https://cloud-images.ubuntu.com/), based on [this helpful comment by @droidix on `evansm7/vftool`](https://github.com/evansm7/vftool/issues/2#issuecomment-735455161).
 
 The following examples assume arm64, but x86_64 should work similarly (presuming you get the correct downloads).
 
