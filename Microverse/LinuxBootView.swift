@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LinuxBootViewModel {
     var kernelPath = ""
-    var commandLine = "console=hvc0"
+    var commandLine = "console=hvc0 root=/dev/vda1"
     var initialRamdiskPath = ""
 }
 

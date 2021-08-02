@@ -14,8 +14,8 @@ struct VirtualMachineConfiguration: Codable {
     static let minimumMemoryMB = max(VZVirtualMachineConfiguration.minimumAllowedMemorySize / 1024 / 1024, 256)
     static let maximumMemoryMB = VZVirtualMachineConfiguration.maximumAllowedMemorySize / 1024 / 1024
     
-    public var CPUCount = minimumCPUCount
-    public var memoryMB = minimumMemoryMB
+    public var CPUCount = min(max(2, minimumCPUCount), maximumCPUCount)
+    public var memoryMB = min(max(4096, minimumMemoryMB), maximumMemoryMB)
 }
 
 extension VZVirtualMachineConfiguration {
