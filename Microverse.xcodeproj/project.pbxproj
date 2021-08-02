@@ -19,6 +19,8 @@
 		35CF8D8026B8704200E83536 /* DiskCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF8D7F26B8704200E83536 /* DiskCreationView.swift */; };
 		35CF8D8226B87D8600E83536 /* LinuxBootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF8D8126B87D8600E83536 /* LinuxBootView.swift */; };
 		35CF8D8726B8837500E83536 /* AttachedDisksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF8D8626B8837500E83536 /* AttachedDisksView.swift */; };
+		35CF8D8A26B8986700E83536 /* SwiftTerm in Frameworks */ = {isa = PBXBuildFile; productRef = 35CF8D8926B8986700E83536 /* SwiftTerm */; };
+		35CF8D8C26B8992800E83536 /* ConsoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF8D8B26B8992800E83536 /* ConsoleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,7 @@
 		35CF8D8126B87D8600E83536 /* LinuxBootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinuxBootView.swift; sourceTree = "<group>"; };
 		35CF8D8326B8829500E83536 /* Microverse.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Microverse.entitlements; sourceTree = "<group>"; };
 		35CF8D8626B8837500E83536 /* AttachedDisksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachedDisksView.swift; sourceTree = "<group>"; };
+		35CF8D8B26B8992800E83536 /* ConsoleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35CF8D8A26B8986700E83536 /* SwiftTerm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +87,7 @@
 				35CF8D7B26B8431300E83536 /* VirtualMachineConfigurationView.swift */,
 				35CF8D8126B87D8600E83536 /* LinuxBootView.swift */,
 				35CF8D8626B8837500E83536 /* AttachedDisksView.swift */,
+				35CF8D8B26B8992800E83536 /* ConsoleView.swift */,
 			);
 			path = Microverse;
 			sourceTree = "<group>";
@@ -111,6 +116,9 @@
 			dependencies = (
 			);
 			name = Microverse;
+			packageProductDependencies = (
+				35CF8D8926B8986700E83536 /* SwiftTerm */,
+			);
 			productName = Microverse;
 			productReference = 35CF8D5D26B8300F00E83536 /* Microverse.app */;
 			productType = "com.apple.product-type.application";
@@ -139,6 +147,9 @@
 				Base,
 			);
 			mainGroup = 35CF8D5426B8300F00E83536;
+			packageReferences = (
+				35CF8D8826B8986700E83536 /* XCRemoteSwiftPackageReference "SwiftTerm" */,
+			);
 			productRefGroup = 35CF8D5E26B8300F00E83536 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -173,6 +184,7 @@
 				35CF8D8026B8704200E83536 /* DiskCreationView.swift in Sources */,
 				35CF8D6326B8300F00E83536 /* MicroverseDocument.swift in Sources */,
 				35CF8D8726B8837500E83536 /* AttachedDisksView.swift in Sources */,
+				35CF8D8C26B8992800E83536 /* ConsoleView.swift in Sources */,
 				35CF8D7E26B855E200E83536 /* VirtualMachineConfiguration.swift in Sources */,
 				35CF8D6526B8300F00E83536 /* ContentView.swift in Sources */,
 			);
@@ -374,6 +386,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		35CF8D8826B8986700E83536 /* XCRemoteSwiftPackageReference "SwiftTerm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/migueldeicaza/SwiftTerm";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		35CF8D8926B8986700E83536 /* SwiftTerm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 35CF8D8826B8986700E83536 /* XCRemoteSwiftPackageReference "SwiftTerm" */;
+			productName = SwiftTerm;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 35CF8D5526B8300F00E83536 /* Project object */;
 }
