@@ -11,7 +11,7 @@ struct ContentView: View {
     @Binding var document: MicroverseDocument
 
     var body: some View {
-        TextEditor(text: $document.text)
+        VStack {}
     }
 }
 
