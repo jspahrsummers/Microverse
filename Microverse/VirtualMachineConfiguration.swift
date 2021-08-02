@@ -26,10 +26,6 @@ extension VZVirtualMachineConfiguration {
         self.memoryBalloonDevices = [VZVirtioTraditionalMemoryBalloonDeviceConfiguration()]
         self.entropyDevices = [VZVirtioEntropyDeviceConfiguration()]
         
-        let serialOut = VZVirtioConsoleDeviceSerialPortConfiguration()
-        serialOut.attachment = VZFileHandleSerialPortAttachment(fileHandleForReading: nil, fileHandleForWriting: FileHandle.standardError)
-        self.serialPorts = [serialOut]
-        
         let network = VZVirtioNetworkDeviceConfiguration()
         network.attachment = VZNATNetworkDeviceAttachment()
         self.networkDevices = [network]

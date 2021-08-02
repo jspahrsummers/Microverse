@@ -14,10 +14,13 @@ struct ContentView: View {
     @State var attachedDisks = AttachedDisksViewModel()
     @State var configuration = VirtualMachineConfiguration()
     @State var machine: VZVirtualMachine?
+    
+    let pipeForReadingFromVM = Pipe()
+    let pipeForWritingToVM = Pipe()
 
     var body: some View {
         if let machine = machine {
-            VirtualMachineView(virtualMachine: machine)
+            ConsoleView(fileHandleToReadFrom: pipeForReadingFromVM.fileHandleForReading, fileHandleToWriteTo: pipeForWritingToVM.fileHandleForWriting)
         } else {
             VStack {
                 VirtualMachineConfigurationView(configuration: $configuration)
@@ -30,6 +33,10 @@ struct ContentView: View {
                     
                     let config = VZVirtualMachineConfiguration(configuration)
                     config.storageDevices = storageDevices
+                    
+                    let serialOut = VZVirtioConsoleDeviceSerialPortConfiguration()
+                    serialOut.attachment = VZFileHandleSerialPortAttachment(fileHandleForReading: pipeForWritingToVM.fileHandleForReading, fileHandleForWriting: pipeForReadingFromVM.fileHandleForWriting)
+                    config.serialPorts = [serialOut]
                     
                     let bootLoader = VZLinuxBootLoader(kernelURL: URL(fileURLWithPath: linuxBoot.kernelPath))
                     bootLoader.commandLine = linuxBoot.commandLine
