@@ -12,6 +12,8 @@
 		35CF8D6526B8300F00E83536 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF8D6426B8300F00E83536 /* ContentView.swift */; };
 		35CF8D6726B8301000E83536 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35CF8D6626B8301000E83536 /* Assets.xcassets */; };
 		35CF8D6A26B8301000E83536 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35CF8D6926B8301000E83536 /* Preview Assets.xcassets */; };
+		35CF8D7426B8368C00E83536 /* VirtualMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF8D7326B8368C00E83536 /* VirtualMachine.swift */; };
+		35CF8D7626B836A900E83536 /* LinuxVirtualMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF8D7526B836A900E83536 /* LinuxVirtualMachine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		35CF8D6626B8301000E83536 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		35CF8D6926B8301000E83536 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		35CF8D6B26B8301000E83536 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		35CF8D7326B8368C00E83536 /* VirtualMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualMachine.swift; sourceTree = "<group>"; };
+		35CF8D7526B836A900E83536 /* LinuxVirtualMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinuxVirtualMachine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 				35CF8D6626B8301000E83536 /* Assets.xcassets */,
 				35CF8D6B26B8301000E83536 /* Info.plist */,
 				35CF8D6826B8301000E83536 /* Preview Content */,
+				35CF8D7326B8368C00E83536 /* VirtualMachine.swift */,
+				35CF8D7526B836A900E83536 /* LinuxVirtualMachine.swift */,
 			);
 			path = Microverse;
 			sourceTree = "<group>";
@@ -142,9 +148,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35CF8D7626B836A900E83536 /* LinuxVirtualMachine.swift in Sources */,
 				35CF8D6126B8300F00E83536 /* MicroverseApp.swift in Sources */,
 				35CF8D6326B8300F00E83536 /* MicroverseDocument.swift in Sources */,
 				35CF8D6526B8300F00E83536 /* ContentView.swift in Sources */,
+				35CF8D7426B8368C00E83536 /* VirtualMachine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

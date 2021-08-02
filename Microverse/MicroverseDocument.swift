@@ -9,31 +9,38 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 extension UTType {
-    static var exampleText: UTType {
-        UTType(importedAs: "com.example.plain-text")
-    }
+    static let VM = UTType(exportedAs: "com.metacognitive.vm", conformingTo: UTType.package)
+    static let linuxVM = UTType(exportedAs: "com.metacognitive.vm.linux", conformingTo: UTType.VM)
 }
 
 struct MicroverseDocument: FileDocument {
-    var text: String
-
-    init(text: String = "Hello, world!") {
-        self.text = text
+    static var readableContentTypes: [UTType] { [.linuxVM] }
+    
+    enum PackageItem: String {
+        case Metadata = "metadata.json"
     }
 
-    static var readableContentTypes: [UTType] { [.exampleText] }
+    var virtualMachine: VirtualMachine
+
+    init(_ vmType: VirtualMachine.Type) {
+        virtualMachine = vmType.init()
+    }
 
     init(configuration: ReadConfiguration) throws {
-        guard let data = configuration.file.regularFileContents,
-              let string = String(data: data, encoding: .utf8)
-        else {
+        guard configuration.contentType == UTType.linuxVM, let metadata = configuration.file.fileWrappers?[PackageItem.Metadata.rawValue]?.regularFileContents else {
             throw CocoaError(.fileReadCorruptFile)
         }
-        text = string
+        
+        virtualMachine = try JSONDecoder().decode(LinuxVirtualMachine.self, from: metadata)
     }
     
     func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
-        let data = text.data(using: .utf8)!
-        return .init(regularFileWithContents: data)
+        let metadata = try JSONEncoder().encode(virtualMachine)
+        let metadataWrapper = FileWrapper(regularFileWithContents: metadata)
+        metadataWrapper.preferredFilename = PackageItem.Metadata.rawValue
+        
+        return FileWrapper(directoryWithFileWrappers: [
+            PackageItem.Metadata.rawValue: metadataWrapper
+        ])
     }
 }
