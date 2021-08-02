@@ -6,34 +6,38 @@
 //
 
 import SwiftUI
-import Virtualization
+
 
 struct VirtualMachineConfigurationView: View {
-    static let minimumCPUCount = VZVirtualMachineConfiguration.minimumAllowedCPUCount
-    static let maximumCPUCount = VZVirtualMachineConfiguration.maximumAllowedCPUCount
-    static let minimumMemoryMB = max(VZVirtualMachineConfiguration.minimumAllowedMemorySize / 1024 / 1024, 256)
-    static let maximumMemoryMB = VZVirtualMachineConfiguration.maximumAllowedMemorySize / 1024 / 1024
+    @State private var CPUCount: Double
+    @State private var memoryMB: Double
     
-    @State private var CPUCount = Double(minimumCPUCount)
-    @State private var memoryMB = Double(minimumMemoryMB)
+    init(_ configuration: VirtualMachineConfiguration = VirtualMachineConfiguration()) {
+        CPUCount = Double(configuration.CPUCount)
+        memoryMB = Double(configuration.memoryMB)
+    }
+    
+    public var configuration: VirtualMachineConfiguration {
+        return VirtualMachineConfiguration(CPUCount: Int(CPUCount), memoryMB: UInt64(memoryMB))
+    }
     
     var body: some View {
         Form {
             Section {
-                Slider(value: $CPUCount, in: Double(VirtualMachineConfigurationView.minimumCPUCount)...Double(VirtualMachineConfigurationView.maximumCPUCount), step: 1) {
+                Slider(value: $CPUCount, in: Double(VirtualMachineConfiguration.minimumCPUCount)...Double(VirtualMachineConfiguration.maximumCPUCount), step: 1) {
                 } minimumValueLabel: {
-                    Text("\(VirtualMachineConfigurationView.minimumCPUCount)")
+                    Text("\(VirtualMachineConfiguration.minimumCPUCount)")
                 } maximumValueLabel: {
-                    Text("\(VirtualMachineConfigurationView.maximumCPUCount)")
+                    Text("\(VirtualMachineConfiguration.maximumCPUCount)")
                 }
                 Text(CPUCount > 1 ? "\(Int(CPUCount)) CPUs" : "1 CPU").foregroundColor(Color.blue)
             }
             Section {
-                Slider(value: $memoryMB, in: Double(VirtualMachineConfigurationView.minimumMemoryMB)...Double(VirtualMachineConfigurationView.maximumMemoryMB), step: 256) {
+                Slider(value: $memoryMB, in: Double(VirtualMachineConfiguration.minimumMemoryMB)...Double(VirtualMachineConfiguration.maximumMemoryMB), step: 256) {
                 } minimumValueLabel: {
-                    Text("\(VirtualMachineConfigurationView.minimumMemoryMB) MB")
+                    Text("\(VirtualMachineConfiguration.minimumMemoryMB) MB")
                 } maximumValueLabel: {
-                    Text("\(VirtualMachineConfigurationView.maximumMemoryMB) MB")
+                    Text("\(VirtualMachineConfiguration.maximumMemoryMB) MB")
                 }
                 Text("\(Int(memoryMB)) MB").foregroundColor(Color.blue)
             }
