@@ -9,9 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     @Binding var document: MicroverseDocument
+    @State var configuration = VirtualMachineConfiguration()
 
     var body: some View {
-        VStack {}
+        VirtualMachineConfigurationView(configuration: $configuration)
     }
 }
 
