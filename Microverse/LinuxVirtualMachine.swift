@@ -7,6 +7,14 @@
 
 import Foundation
 
-struct LinuxVirtualMachine: VirtualMachine {
+struct LinuxVirtualMachine: Codable {
+    let uniqueIdentifier: UUID
     
+    init() {
+        self.init(uniqueIdentifier: UUID())
+    }
+    
+    init(uniqueIdentifier: UUID) {
+        self.uniqueIdentifier = uniqueIdentifier
+    }
 }
