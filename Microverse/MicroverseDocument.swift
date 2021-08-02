@@ -25,7 +25,6 @@ struct MicroverseDocument: FileDocument {
 
     init() {
         virtualMachine = LinuxVirtualMachine()
-        name = "
     }
 
     init(configuration: ReadConfiguration) throws {

@@ -18,7 +18,7 @@ struct LinuxBootView: View {
     
     var body: some View {
         Form {
-            TextField("Path to Kernel", text: $viewModel.kernelPath)
+            TextField("Path to kernel", text: $viewModel.kernelPath)
             TextField("Path to initial RAM disk", text: $viewModel.initialRamdiskPath)
             TextField("Command line arguments", text: $viewModel.commandLine)
         }
