@@ -2,10 +2,6 @@
 
 Copyright (c) 2021 Justin Spahr-Summers
 
-Portions inspired by:
-* [KhaosT/MacVM](https://github.com/KhaosT/MacVM), released under the [Apache License 2.0](https://github.com/KhaosT/MacVM/blob/1c351e2e54c2988698d8540abadc0c5c80ada403/LICENSE).
-* [KhaosT/SimpleVM](https://github.com/KhaosT/SimpleVM), released under the [Apache License 2.0](https://github.com/KhaosT/SimpleVM/blob/9c04d4719f4ccb387ea34cf493ddf08aedbf1ab8/LICENSE).
-
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -32,3 +28,9 @@ Copyright (c) 2019-2021 Miguel de Icaza (https://github.com/migueldeicaza)<br />
 Copyright (c) 2017-2019, The xterm.js authors (https://github.com/xtermjs/xterm.js)<br />
 Copyright (c) 2014-2016, SourceLair Private Company (https://www.sourcelair.com)<br />
 Copyright (c) 2012-2013, Christopher Jeffrey (https://github.com/chjj/)
+
+## @KhaosT
+
+Portions of this project were inspired by:
+* [KhaosT/MacVM](https://github.com/KhaosT/MacVM), released under the [Apache License 2.0](https://github.com/KhaosT/MacVM/blob/1c351e2e54c2988698d8540abadc0c5c80ada403/LICENSE).
+* [KhaosT/SimpleVM](https://github.com/KhaosT/SimpleVM), released under the [Apache License 2.0](https://github.com/KhaosT/SimpleVM/blob/9c04d4719f4ccb387ea34cf493ddf08aedbf1ab8/LICENSE).
