@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		359B9B0626B8AAC100AA3989 /* MicroverseDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359B9B0526B8AAC100AA3989 /* MicroverseDocument.swift */; };
 		35CF8D6126B8300F00E83536 /* MicroverseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF8D6026B8300F00E83536 /* MicroverseApp.swift */; };
-		35CF8D6326B8300F00E83536 /* MicroverseDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF8D6226B8300F00E83536 /* MicroverseDocument.swift */; };
 		35CF8D6526B8300F00E83536 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF8D6426B8300F00E83536 /* ContentView.swift */; };
 		35CF8D6726B8301000E83536 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35CF8D6626B8301000E83536 /* Assets.xcassets */; };
 		35CF8D6A26B8301000E83536 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35CF8D6926B8301000E83536 /* Preview Assets.xcassets */; };
@@ -25,9 +25,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		359B9B0526B8AAC100AA3989 /* MicroverseDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MicroverseDocument.swift; sourceTree = "<group>"; };
 		35CF8D5D26B8300F00E83536 /* Microverse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Microverse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35CF8D6026B8300F00E83536 /* MicroverseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroverseApp.swift; sourceTree = "<group>"; };
-		35CF8D6226B8300F00E83536 /* MicroverseDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroverseDocument.swift; sourceTree = "<group>"; };
 		35CF8D6426B8300F00E83536 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		35CF8D6626B8301000E83536 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		35CF8D6926B8301000E83536 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -75,11 +75,11 @@
 		35CF8D5F26B8300F00E83536 /* Microverse */ = {
 			isa = PBXGroup;
 			children = (
+				359B9B0526B8AAC100AA3989 /* MicroverseDocument.swift */,
 				35CF8D8326B8829500E83536 /* Microverse.entitlements */,
 				35CF8D7F26B8704200E83536 /* DiskCreationView.swift */,
 				35CF8D7D26B855E200E83536 /* VirtualMachineConfiguration.swift */,
 				35CF8D6026B8300F00E83536 /* MicroverseApp.swift */,
-				35CF8D6226B8300F00E83536 /* MicroverseDocument.swift */,
 				35CF8D6426B8300F00E83536 /* ContentView.swift */,
 				35CF8D6626B8301000E83536 /* Assets.xcassets */,
 				35CF8D6B26B8301000E83536 /* Info.plist */,
@@ -181,12 +181,12 @@
 			files = (
 				35CF8D7626B836A900E83536 /* LinuxVirtualMachine.swift in Sources */,
 				35CF8D7C26B8431300E83536 /* VirtualMachineConfigurationView.swift in Sources */,
+				359B9B0626B8AAC100AA3989 /* MicroverseDocument.swift in Sources */,
 				35CF8D6126B8300F00E83536 /* MicroverseApp.swift in Sources */,
 				35CF8D8226B87D8600E83536 /* LinuxBootView.swift in Sources */,
 				35CF8D8E26B89E9B00E83536 /* NSWindowExtensions.swift in Sources */,
 				35CF8D7A26B8421B00E83536 /* VirtualMachineView.swift in Sources */,
 				35CF8D8026B8704200E83536 /* DiskCreationView.swift in Sources */,
-				35CF8D6326B8300F00E83536 /* MicroverseDocument.swift in Sources */,
 				35CF8D8726B8837500E83536 /* AttachedDisksView.swift in Sources */,
 				35CF8D8C26B8992800E83536 /* ConsoleView.swift in Sources */,
 				35CF8D7E26B855E200E83536 /* VirtualMachineConfiguration.swift in Sources */,

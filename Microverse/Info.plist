@@ -18,6 +18,20 @@
 				<string>com.metacognitive.vm.linux</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<integer>1</integer>
+			<key>CFBundleTypeName</key>
+			<string>Mac VM</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.metacognitive.vm.mac</string>
+			</array>
+		</dict>
 	</array>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.developer-tools</string>
@@ -64,6 +78,28 @@
 				<key>public.filename-extension</key>
 				<array>
 					<string>linuxvm</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>com.metacognitive.vm</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>macOS virtual machine</string>
+			<key>UTTypeIcons</key>
+			<dict>
+				<key>UTTypeIconText</key>
+				<string>Mac VM</string>
+			</dict>
+			<key>UTTypeIdentifier</key>
+			<string>com.metacognitive.vm.macos</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>macvm</string>
 				</array>
 			</dict>
 		</dict>

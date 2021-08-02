@@ -11,6 +11,7 @@ import UniformTypeIdentifiers
 extension UTType {
     static let VM = UTType(exportedAs: "com.metacognitive.vm", conformingTo: UTType.package)
     static let linuxVM = UTType(exportedAs: "com.metacognitive.vm.linux", conformingTo: UTType.VM)
+    static let macVM = UTType(exportedAs: "com.metacognitive.vm.macos", conformingTo: UTType.VM)
 }
 
 struct MicroverseDocument: FileDocument {
