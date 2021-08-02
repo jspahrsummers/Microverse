@@ -20,10 +20,12 @@ struct MicroverseDocument: FileDocument {
         case Metadata = "metadata.json"
     }
 
+    var name: String
     var virtualMachine: LinuxVirtualMachine
 
     init() {
         virtualMachine = LinuxVirtualMachine()
+        name = "
     }
 
     init(configuration: ReadConfiguration) throws {

@@ -20,7 +20,7 @@ struct ContentView: View {
 
     var body: some View {
         if let machine = machine {
-            ConsoleView(fileHandleToReadFrom: pipeForReadingFromVM.fileHandleForReading, fileHandleToWriteTo: pipeForWritingToVM.fileHandleForWriting)
+            VirtualMachineView(virtualMachine: machine)
         } else {
             VStack {
                 VirtualMachineConfigurationView(configuration: $configuration)
@@ -33,6 +33,9 @@ struct ContentView: View {
                     
                     let config = VZVirtualMachineConfiguration(configuration)
                     config.storageDevices = storageDevices
+                    
+                    let pipeForReadingFromVM = Pipe()
+                    let pipeForWritingToVM = Pipe()
                     
                     let serialOut = VZVirtioConsoleDeviceSerialPortConfiguration()
                     serialOut.attachment = VZFileHandleSerialPortAttachment(fileHandleForReading: pipeForWritingToVM.fileHandleForReading, fileHandleForWriting: pipeForReadingFromVM.fileHandleForWriting)
@@ -47,6 +50,14 @@ struct ContentView: View {
                     
                     machine = VZVirtualMachine(configuration: config)
                     machine?.start(completionHandler: { result in NSLog("Machine started: \(result)") })
+                    
+                    let consoleView = ConsoleView(fileHandleToReadFrom: pipeForReadingFromVM.fileHandleForReading, fileHandleToWriteTo: pipeForWritingToVM.fileHandleForWriting)
+                    let window = NSWindow(rootView: consoleView)
+                    Task {
+                        window.title = "Terminal"
+                        window.setContentSize(NSSize(width: 800, height: 600))
+                        window.makeKeyAndOrderFront(nil)
+                    }
                 }
             }
         }
