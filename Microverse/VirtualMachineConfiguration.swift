@@ -17,3 +17,12 @@ struct VirtualMachineConfiguration: Codable {
     public var CPUCount = minimumCPUCount
     public var memoryMB = minimumMemoryMB
 }
+
+extension VZVirtualMachineConfiguration {
+    convenience init(_ config: VirtualMachineConfiguration) {
+        self.init()
+        self.cpuCount = config.CPUCount
+        self.memorySize = config.memoryMB * 1024 * 1024
+        self.memoryBalloonDevices = [VZVirtioTraditionalMemoryBalloonDeviceConfiguration()]
+    }
+}
