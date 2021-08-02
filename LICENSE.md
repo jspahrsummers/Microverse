@@ -28,7 +28,7 @@ SOFTWARE.
 
 [SwiftTerm](https://github.com/migueldeicaza/SwiftTerm), released under the [MIT license](https://github.com/migueldeicaza/SwiftTerm/blob/731731c0290d03c96615ea34187fbbb1cfe3d852/LICENSE), is used as a dependency.
 
-Copyright (c) 2019-2021 Miguel de Icaza (https://github.com/migueldeicaza)
-Copyright (c) 2017-2019, The xterm.js authors (https://github.com/xtermjs/xterm.js)
-Copyright (c) 2014-2016, SourceLair Private Company (https://www.sourcelair.com)
+Copyright (c) 2019-2021 Miguel de Icaza (https://github.com/migueldeicaza)<br />
+Copyright (c) 2017-2019, The xterm.js authors (https://github.com/xtermjs/xterm.js)<br />
+Copyright (c) 2014-2016, SourceLair Private Company (https://www.sourcelair.com)<br />
 Copyright (c) 2012-2013, Christopher Jeffrey (https://github.com/chjj/)
