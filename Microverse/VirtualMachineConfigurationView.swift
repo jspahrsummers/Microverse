@@ -13,7 +13,7 @@ struct VirtualMachineConfigurationView: View {
     var body: some View {
         Form {
             Section {
-                Slider(value: Binding(get: { Double(configuration.CPUCount) }, set: { v in configuration.CPUCount = Int(v) }), in: Double(VirtualMachineConfiguration.minimumCPUCount)...Double(VirtualMachineConfiguration.maximumCPUCount), step: 1) {
+                Slider(value: Binding(get: { Float(configuration.CPUCount) }, set: { v in configuration.CPUCount = Int(v) }), in: Float(VirtualMachineConfiguration.minimumCPUCount)...Float(VirtualMachineConfiguration.maximumCPUCount), step: 1) {
                 } minimumValueLabel: {
                     Text("\(VirtualMachineConfiguration.minimumCPUCount)")
                 } maximumValueLabel: {
@@ -22,7 +22,7 @@ struct VirtualMachineConfigurationView: View {
                 Text(configuration.CPUCount > 1 ? "\(Int(configuration.CPUCount)) CPUs" : "1 CPU").foregroundColor(Color.blue)
             }
             Section {
-                Slider(value: Binding(get: { Double(configuration.memoryMB) }, set: { v in configuration.memoryMB = UInt64(v) }), in: Double(VirtualMachineConfiguration.minimumMemoryMB)...Double(VirtualMachineConfiguration.maximumMemoryMB), step: 256) {
+                Slider(value: Binding(get: { Float(configuration.memoryMB) }, set: { v in configuration.memoryMB = UInt64(v) }), in: Float(VirtualMachineConfiguration.minimumMemoryMB)...Float(VirtualMachineConfiguration.maximumMemoryMB), step: 256) {
                 } minimumValueLabel: {
                     Text("\(VirtualMachineConfiguration.minimumMemoryMB) MB")
                 } maximumValueLabel: {

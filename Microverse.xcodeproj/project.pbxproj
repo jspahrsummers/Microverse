@@ -16,6 +16,7 @@
 		35CF8D7A26B8421B00E83536 /* VirtualMachineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF8D7926B8421B00E83536 /* VirtualMachineView.swift */; };
 		35CF8D7C26B8431300E83536 /* VirtualMachineConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF8D7B26B8431300E83536 /* VirtualMachineConfigurationView.swift */; };
 		35CF8D7E26B855E200E83536 /* VirtualMachineConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF8D7D26B855E200E83536 /* VirtualMachineConfiguration.swift */; };
+		35CF8D8026B8704200E83536 /* DiskCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF8D7F26B8704200E83536 /* DiskCreationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		35CF8D7926B8421B00E83536 /* VirtualMachineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualMachineView.swift; sourceTree = "<group>"; };
 		35CF8D7B26B8431300E83536 /* VirtualMachineConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualMachineConfigurationView.swift; sourceTree = "<group>"; };
 		35CF8D7D26B855E200E83536 /* VirtualMachineConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualMachineConfiguration.swift; sourceTree = "<group>"; };
+		35CF8D7F26B8704200E83536 /* DiskCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCreationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +48,7 @@
 		35CF8D5426B8300F00E83536 = {
 			isa = PBXGroup;
 			children = (
+				35CF8D7F26B8704200E83536 /* DiskCreationView.swift */,
 				35CF8D7D26B855E200E83536 /* VirtualMachineConfiguration.swift */,
 				35CF8D5F26B8300F00E83536 /* Microverse */,
 				35CF8D5E26B8300F00E83536 /* Products */,
@@ -158,6 +161,7 @@
 				35CF8D7C26B8431300E83536 /* VirtualMachineConfigurationView.swift in Sources */,
 				35CF8D6126B8300F00E83536 /* MicroverseApp.swift in Sources */,
 				35CF8D7A26B8421B00E83536 /* VirtualMachineView.swift in Sources */,
+				35CF8D8026B8704200E83536 /* DiskCreationView.swift in Sources */,
 				35CF8D6326B8300F00E83536 /* MicroverseDocument.swift in Sources */,
 				35CF8D7E26B855E200E83536 /* VirtualMachineConfiguration.swift in Sources */,
 				35CF8D6526B8300F00E83536 /* ContentView.swift in Sources */,
