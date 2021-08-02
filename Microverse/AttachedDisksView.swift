@@ -34,7 +34,7 @@ struct AttachedDisksViewModel {
 }
 
 struct AttachedDisksView: View {
-    @State var viewModel: AttachedDisksViewModel
+    @Binding var viewModel: AttachedDisksViewModel
     
     var body: some View {
         Form {
@@ -49,7 +49,7 @@ struct AttachedDisksView_Previews: PreviewProvider {
     struct Holder: View {
         @State var viewModel = AttachedDisksViewModel()
         var body: some View {
-            return AttachedDisksView(viewModel: viewModel)
+            return AttachedDisksView(viewModel: $viewModel)
         }
     }
     

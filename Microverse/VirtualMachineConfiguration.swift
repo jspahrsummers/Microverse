@@ -24,5 +24,14 @@ extension VZVirtualMachineConfiguration {
         self.cpuCount = config.CPUCount
         self.memorySize = config.memoryMB * 1024 * 1024
         self.memoryBalloonDevices = [VZVirtioTraditionalMemoryBalloonDeviceConfiguration()]
+        self.entropyDevices = [VZVirtioEntropyDeviceConfiguration()]
+        
+        let serialOut = VZVirtioConsoleDeviceSerialPortConfiguration()
+        serialOut.attachment = VZFileHandleSerialPortAttachment(fileHandleForReading: nil, fileHandleForWriting: FileHandle.standardError)
+        self.serialPorts = [serialOut]
+        
+        let network = VZVirtioNetworkDeviceConfiguration()
+        network.attachment = VZNATNetworkDeviceAttachment()
+        self.networkDevices = [network]
     }
 }
