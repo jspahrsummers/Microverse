@@ -15,7 +15,7 @@ extension UTType {
 }
 
 struct MicroverseDocument: FileDocument {
-    static var readableContentTypes: [UTType] { [.linuxVM] }
+    static var readableContentTypes: [UTType] { [.linuxVM, .macVM] }
     
     enum PackageItem: String {
         case Metadata = "metadata.json"

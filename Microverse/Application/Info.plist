@@ -8,7 +8,7 @@
 			<key>CFBundleTypeIconSystemGenerated</key>
 			<integer>1</integer>
 			<key>CFBundleTypeName</key>
-			<string>Linux VM</string>
+			<string>Linux virtual machine</string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSHandlerRank</key>
@@ -22,14 +22,14 @@
 			<key>CFBundleTypeIconSystemGenerated</key>
 			<integer>1</integer>
 			<key>CFBundleTypeName</key>
-			<string>Mac VM</string>
+			<string>macOS virtual machine</string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSHandlerRank</key>
 			<string>Owner</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>com.metacognitive.vm.mac</string>
+				<string>com.metacognitive.vm.macos</string>
 			</array>
 		</dict>
 	</array>
