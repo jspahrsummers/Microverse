@@ -14,11 +14,14 @@ struct ContentView: View {
     @State var attachedDisks = AttachedDisksViewModel()
     @State var configuration = VirtualMachineConfiguration()
     @State var machine: VZVirtualMachine?
+    @State var restoreImage: VZMacOSRestoreImage? = nil
     
     let pipeForReadingFromVM = Pipe()
     let pipeForWritingToVM = Pipe()
 
     var body: some View {
+        MacRestoreView(restoreImage: $restoreImage)
+        
         if let machine = machine {
             VirtualMachineView(virtualMachine: machine)
         } else {
