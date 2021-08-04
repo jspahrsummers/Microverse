@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UniformTypeIdentifiers
 
 struct LinuxBootViewModel {
     var kernelPath = ""
@@ -18,8 +19,8 @@ struct LinuxBootView: View {
     
     var body: some View {
         Form {
-            TextField("Path to kernel", text: $viewModel.kernelPath)
-            TextField("Path to initial RAM disk", text: $viewModel.initialRamdiskPath)
+            PathField(title: "Path to kernel", path: $viewModel.kernelPath, allowedContentTypes: [UTType.data])
+            PathField(title: "Path to initial RAM disk", path: $viewModel.initialRamdiskPath, allowedContentTypes: [UTType.data])
             TextField("Command line arguments", text: $viewModel.commandLine)
         }
     }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UniformTypeIdentifiers
 
 struct AttachedDiskImage {
     var path: String = ""
@@ -22,7 +23,7 @@ struct AttachedDiskView: View {
     var body: some View {
         Form {
             HStack {
-                TextField("Path to disk image", text: $diskImage.path)
+                PathField(title: "Path to disk image", path: $diskImage.path, allowedContentTypes: [UTType.diskImage])
                 Toggle("Read only", isOn: $diskImage.isReadOnly)
             }
         }

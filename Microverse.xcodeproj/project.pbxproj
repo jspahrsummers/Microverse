@@ -66,9 +66,9 @@
 				35CF8D6426B8300F00E83536 /* ContentView.swift */,
 				35CF8D7F26B8704200E83536 /* DiskCreationView.swift */,
 				35CF8D8126B87D8600E83536 /* LinuxBootView.swift */,
+				352AF07526BAFDD700AFD751 /* PathField.swift */,
 				35CF8D7B26B8431300E83536 /* VirtualMachineConfigurationView.swift */,
 				35CF8D7926B8421B00E83536 /* VirtualMachineView.swift */,
-				352AF07526BAFDD700AFD751 /* PathField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
