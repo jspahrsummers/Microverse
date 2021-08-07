@@ -30,6 +30,7 @@
 		35FE87DA26BEC041009B9B51 /* LinuxVirtualMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE87D926BEC041009B9B51 /* LinuxVirtualMachine.swift */; };
 		35FE87DC26BEC049009B9B51 /* MacOSVirtualMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE87DB26BEC049009B9B51 /* MacOSVirtualMachine.swift */; };
 		35FE87DE26BEC05C009B9B51 /* ConfigurableVirtualMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE87DD26BEC05C009B9B51 /* ConfigurableVirtualMachine.swift */; };
+		35FE87E026BECD2E009B9B51 /* MacOSInstallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE87DF26BECD2E009B9B51 /* MacOSInstallView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		35FE87D926BEC041009B9B51 /* LinuxVirtualMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinuxVirtualMachine.swift; sourceTree = "<group>"; };
 		35FE87DB26BEC049009B9B51 /* MacOSVirtualMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSVirtualMachine.swift; sourceTree = "<group>"; };
 		35FE87DD26BEC05C009B9B51 /* ConfigurableVirtualMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableVirtualMachine.swift; sourceTree = "<group>"; };
+		35FE87DF26BECD2E009B9B51 /* MacOSInstallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSInstallView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				35CF8D8126B87D8600E83536 /* LinuxBootView.swift */,
 				35FE87D526BEBD57009B9B51 /* LinuxDocumentView.swift */,
 				35FE87D726BEBD62009B9B51 /* MacOSDocumentView.swift */,
+				35FE87DF26BECD2E009B9B51 /* MacOSInstallView.swift */,
 				352AF07926BB026900AFD751 /* MacRestoreImageView.swift */,
 				352AF07526BAFDD700AFD751 /* PathField.swift */,
 				35CF8D7B26B8431300E83536 /* VirtualMachineConfigurationView.swift */,
@@ -253,6 +256,7 @@
 				35FE87D826BEBD62009B9B51 /* MacOSDocumentView.swift in Sources */,
 				35FE87DE26BEC05C009B9B51 /* ConfigurableVirtualMachine.swift in Sources */,
 				35CF8D7A26B8421B00E83536 /* VirtualMachineView.swift in Sources */,
+				35FE87E026BECD2E009B9B51 /* MacOSInstallView.swift in Sources */,
 				35CF8D8026B8704200E83536 /* DiskCreationView.swift in Sources */,
 				35CF8D8726B8837500E83536 /* AttachedDisksView.swift in Sources */,
 				35CF8D8C26B8992800E83536 /* ConsoleView.swift in Sources */,
