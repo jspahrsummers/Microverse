@@ -18,10 +18,12 @@ struct LinuxBootView: View {
     @Binding var viewModel: LinuxBootViewModel
     
     var body: some View {
-        Form {
-            PathField(title: "Path to kernel", path: $viewModel.kernelPath, allowedContentTypes: [UTType.data])
-            PathField(title: "Path to initial RAM disk", path: $viewModel.initialRamdiskPath, allowedContentTypes: [UTType.data])
-            TextField("Command line arguments", text: $viewModel.commandLine)
+        HStack {
+            Form {
+                PathField(title: "Path to Kernel (vmlinux):", path: $viewModel.kernelPath, allowedContentTypes: [UTType.data])
+                PathField(title: "Path to Initial RAM Disk (initrd):", path: $viewModel.initialRamdiskPath, allowedContentTypes: [UTType.data])
+                TextField("Command Line Arguments:", text: $viewModel.commandLine)
+            }
         }
     }
 }

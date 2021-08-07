@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		352AF07626BAFDD700AFD751 /* PathField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352AF07526BAFDD700AFD751 /* PathField.swift */; };
 		352AF07A26BB026900AFD751 /* MacRestoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352AF07926BB026900AFD751 /* MacRestoreView.swift */; };
-		357534C126BB035900E52E33 /* Virtualization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 357534C026BB035900E52E33 /* Virtualization.framework */; };
 		359B9B0626B8AAC100AA3989 /* MicroverseDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359B9B0526B8AAC100AA3989 /* MicroverseDocument.swift */; };
 		35CF8D6126B8300F00E83536 /* MicroverseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF8D6026B8300F00E83536 /* MicroverseApp.swift */; };
 		35CF8D6526B8300F00E83536 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF8D6426B8300F00E83536 /* ContentView.swift */; };
@@ -30,7 +29,6 @@
 /* Begin PBXFileReference section */
 		352AF07526BAFDD700AFD751 /* PathField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathField.swift; sourceTree = "<group>"; };
 		352AF07926BB026900AFD751 /* MacRestoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacRestoreView.swift; sourceTree = "<group>"; };
-		357534C026BB035900E52E33 /* Virtualization.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Virtualization.framework; path = System/Library/Frameworks/Virtualization.framework; sourceTree = SDKROOT; };
 		359B9B0526B8AAC100AA3989 /* MicroverseDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MicroverseDocument.swift; sourceTree = "<group>"; };
 		35CF8D5D26B8300F00E83536 /* Microverse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Microverse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35CF8D6026B8300F00E83536 /* MicroverseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroverseApp.swift; sourceTree = "<group>"; };
@@ -56,7 +54,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				35CF8D8A26B8986700E83536 /* SwiftTerm in Frameworks */,
-				357534C126BB035900E52E33 /* Virtualization.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,20 +113,11 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		357534BF26BB035900E52E33 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				357534C026BB035900E52E33 /* Virtualization.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		35CF8D5426B8300F00E83536 = {
 			isa = PBXGroup;
 			children = (
 				35CF8D5F26B8300F00E83536 /* Microverse */,
 				35CF8D5E26B8300F00E83536 /* Products */,
-				357534BF26BB035900E52E33 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};

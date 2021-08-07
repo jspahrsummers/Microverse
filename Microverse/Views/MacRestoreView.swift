@@ -9,10 +9,16 @@ import SwiftUI
 import UniformTypeIdentifiers
 import Virtualization
 
+enum MacRestoreImageSource {
+    case latest
+    case fromFile
+}
+
 struct MacRestoreView: View {
     @Binding var restoreImage: VZMacOSRestoreImage?
     @State var ipswPath: String = ""
     @State var loading = false
+    @State var restoreImageSource: MacRestoreImageSource = .latest
     
     var body: some View {
         let imageLoadCompleted = { (result: Result<VZMacOSRestoreImage, Error>) in
@@ -25,24 +31,40 @@ struct MacRestoreView: View {
             restoreImage = image
         }
         
-        if let restoreImage = restoreImage {
-            HStack {
-                Text("Loaded image for macOS build \(restoreImage.buildVersion)")
-                Button("Reset") {
-                    self.restoreImage = nil
+        
+        HStack {
+            Form {
+                Picker("MacOS Restore Image:", selection: $restoreImageSource) {
+                    Text("Latest").tag(MacRestoreImageSource.latest)
+                    HStack {
+                        Text("From File:")
+                        PathField(title: "Path", path: $ipswPath, allowedContentTypes: [UTType(filenameExtension: "ipsw") ?? .data]).onChange(of: ipswPath) { newValue in
+                            loading = true
+                            VZMacOSRestoreImage.load(from: URL(fileURLWithPath: ipswPath), completionHandler: imageLoadCompleted)
+                        }
+                    }.tag(MacRestoreImageSource.fromFile)
+                }.pickerStyle(.inline).onChange(of: restoreImageSource) { newValue in
+                    restoreImage = nil
+                    
+                    switch newValue {
+                    case .latest:
+                        loading = true
+                        VZMacOSRestoreImage.fetchLatestSupported(completionHandler: imageLoadCompleted)
+                        
+                    case .fromFile:
+                        loading = false
+                    }
                 }
-            }
-        } else if loading {
-            ProgressView()
-        } else {
-            VStack {
-                Button("Load Latest…") {
-                    loading = true
-                    VZMacOSRestoreImage.fetchLatestSupported(completionHandler: imageLoadCompleted)
-                }
-                PathField(title: "Path to .ipsw", path: $ipswPath, allowedContentTypes: [UTType(filenameExtension: "ipsw") ?? .data]).onChange(of: ipswPath) { newValue in
-                    loading = true
-                    VZMacOSRestoreImage.load(from: URL(fileURLWithPath: ipswPath), completionHandler: imageLoadCompleted)
+                
+                if loading {
+                    ProgressView()
+                } else if let restoreImage = restoreImage {
+                    HStack {
+                        Text("Loaded image for macOS build \(restoreImage.buildVersion)")
+                        Button("Reset") {
+                            self.restoreImage = nil
+                        }
+                    }
                 }
             }
         }

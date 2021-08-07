@@ -13,8 +13,10 @@ struct DiskCreationView: View {
     var body: some View {
         let numberFormatter = NumberFormatter()
         
-        Form {
-            TextField("Disk size (GB)", value: $diskSizeGB, formatter: numberFormatter)
+        HStack {
+            Form {
+                TextField("Disk Size (GB):", value: $diskSizeGB, formatter: numberFormatter)
+            }
         }
     }
 }

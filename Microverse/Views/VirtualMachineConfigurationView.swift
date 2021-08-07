@@ -11,24 +11,26 @@ struct VirtualMachineConfigurationView: View {
     @Binding var configuration: VirtualMachineConfiguration
     
     var body: some View {
-        Form {
-            Section {
-                Slider(value: Binding(get: { Float(configuration.CPUCount) }, set: { v in configuration.CPUCount = Int(v) }), in: Float(VirtualMachineConfiguration.minimumCPUCount)...Float(VirtualMachineConfiguration.maximumCPUCount), step: 1) {
-                } minimumValueLabel: {
-                    Text("\(VirtualMachineConfiguration.minimumCPUCount)")
-                } maximumValueLabel: {
-                    Text("\(VirtualMachineConfiguration.maximumCPUCount)")
+        HStack {
+            Form {
+                Picker("CPUs:", selection: $configuration.CPUCount) {
+                    ForEach(VirtualMachineConfiguration.minimumCPUCount...VirtualMachineConfiguration.maximumCPUCount, id: \.self) { count in
+                        Text("\(count)")
+                    }
                 }
-                Text(configuration.CPUCount > 1 ? "\(Int(configuration.CPUCount)) CPUs" : "1 CPU").foregroundColor(Color.blue)
-            }
-            Section {
+                
                 Slider(value: Binding(get: { Float(configuration.memoryMB) }, set: { v in configuration.memoryMB = UInt64(v) }), in: Float(VirtualMachineConfiguration.minimumMemoryMB)...Float(VirtualMachineConfiguration.maximumMemoryMB), step: 256) {
+                    Text("Memory:")
                 } minimumValueLabel: {
                     Text("\(VirtualMachineConfiguration.minimumMemoryMB) MB")
                 } maximumValueLabel: {
                     Text("\(VirtualMachineConfiguration.maximumMemoryMB) MB")
                 }
-                Text("\(Int(configuration.memoryMB)) MB").foregroundColor(Color.blue)
+                HStack {
+                    Spacer()
+                    Text("\(Int(configuration.memoryMB)) MB").foregroundColor(Color.blue)
+                    Spacer()
+                }
             }
         }
     }

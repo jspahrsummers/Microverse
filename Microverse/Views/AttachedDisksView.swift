@@ -21,9 +21,9 @@ struct AttachedDiskView: View {
     @Binding var diskImage: AttachedDiskImage
     
     var body: some View {
-        Form {
-            HStack {
-                PathField(title: "Path to disk image", path: $diskImage.path, allowedContentTypes: [UTType.diskImage])
+        HStack {
+            Form {
+                PathField(title: "Attach Disk Image:", path: $diskImage.path, allowedContentTypes: [UTType.diskImage])
                 Toggle("Read only", isOn: $diskImage.isReadOnly)
             }
         }
