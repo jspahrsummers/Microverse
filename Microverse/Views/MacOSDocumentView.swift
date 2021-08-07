@@ -56,13 +56,8 @@ struct MacOSDocumentView: View {
             
             if let vmConfig = try! VZVirtualMachineConfiguration(forMacOSVM: virtualMachine) {
                 if !virtualMachine.osInstalled {
-                    MacOSInstallView(vzVirtualMachineConfiguration: vmConfig, restoreImageURL: restoreImage!.url) { result in
-                        switch result {
-                        case .success:
-                            virtualMachine.osInstalled = true
-                        case let .failure(error):
-                            NSLog("Could not install macOS into VM: \(error)")
-                        }
+                    MacOSInstallView(vzVirtualMachineConfiguration: vmConfig, restoreImageURL: restoreImage!.url) {
+                        virtualMachine.osInstalled = true
                     }
                 } else if let vzVirtualMachine = vzVirtualMachine {
                     VirtualMachineView(virtualMachine: vzVirtualMachine)
@@ -70,13 +65,14 @@ struct MacOSDocumentView: View {
                     Button("Start") {
                         do {
                             try vmConfig.validate()
-                            let vzVirtualMachine = VZVirtualMachine(configuration: vmConfig)
-                            vzVirtualMachine.start { result in
+                            vzVirtualMachine = VZVirtualMachine(configuration: vmConfig)
+                            vzVirtualMachine!.start { result in
                                 switch result {
                                 case .success:
-                                    self.vzVirtualMachine = vzVirtualMachine
+                                    NSLog("Launched VM")
                                 case let .failure(error):
                                     NSLog("Failed to start VM: \(error)")
+                                    self.vzVirtualMachine = nil
                                 }
                             }
                         } catch {

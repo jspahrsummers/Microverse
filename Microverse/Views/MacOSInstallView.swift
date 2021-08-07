@@ -12,7 +12,7 @@ struct MacOSInstallView: View {
     var vzVirtualMachineConfiguration: VZVirtualMachineConfiguration
     var restoreImageURL: URL
     @State var installer: VZMacOSInstaller? = nil
-    var action: (Result<Void, Error>) -> Void
+    var action: () -> Void
     
     var body: some View {
         GroupBox("macOS Installation") {
@@ -31,7 +31,15 @@ struct MacOSInstallView: View {
                             let vzVirtualMachine = VZVirtualMachine(configuration: vzVirtualMachineConfiguration)
                             installer = VZMacOSInstaller(virtualMachine: vzVirtualMachine, restoringFromImageAt: restoreImageURL)
                             NSLog("Starting installation into \(vzVirtualMachine) from \(restoreImageURL)")
-                            installer!.install(completionHandler: action)
+                            installer!.install { result in
+                                switch result {
+                                case .success:
+                                    action()
+                                case let .failure(error):
+                                    NSLog("Failed to install macOS into VM: \(error)")
+                                    self.installer = nil
+                                }
+                            }
                         }
                     }
                 }

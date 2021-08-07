@@ -27,7 +27,7 @@ extension VirtualMachine {
 
 struct MicroverseDocument: FileDocument {
     static var readableContentTypes: [UTType] { [.VM, .linuxVM, .macVM] }
-    static var writableContentTypes: [UTType] { [.linuxVM, .macVM] }
+    static var writableContentTypes: [UTType] { [.macVM, .linuxVM] }
     
     enum PackageItem: String {
         case Metadata = "metadata.json"
