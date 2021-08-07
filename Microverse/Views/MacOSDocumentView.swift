@@ -68,15 +68,19 @@ struct MacOSDocumentView: View {
                     VirtualMachineView(virtualMachine: vzVirtualMachine)
                 } else {
                     Button("Start") {
-                        try! vmConfig.validate()
-                        let vzVirtualMachine = VZVirtualMachine(configuration: vmConfig)
-                        vzVirtualMachine.start { result in
-                            switch result {
-                            case .success:
-                                self.vzVirtualMachine = vzVirtualMachine
-                            case let .failure(error):
-                                NSLog("Failed to start VM: \(error)")
+                        do {
+                            try vmConfig.validate()
+                            let vzVirtualMachine = VZVirtualMachine(configuration: vmConfig)
+                            vzVirtualMachine.start { result in
+                                switch result {
+                                case .success:
+                                    self.vzVirtualMachine = vzVirtualMachine
+                                case let .failure(error):
+                                    NSLog("Failed to start VM: \(error)")
+                                }
                             }
+                        } catch {
+                            NSLog("Failed to validate machine configuration \(vmConfig): \(error)")
                         }
                     }
                 }
