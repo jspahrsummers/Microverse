@@ -11,6 +11,24 @@ enum VirtualMachine: Codable, ConfigurableVirtualMachine {
     case linux(LinuxVirtualMachine)
     case macOS(MacOSVirtualMachine)
     
+    var linuxVM: LinuxVirtualMachine? {
+        switch self {
+        case let .linux(vm):
+            return vm
+        default:
+            return nil
+        }
+    }
+    
+    var macOSVM: MacOSVirtualMachine? {
+        switch self {
+        case let .macOS(vm):
+            return vm
+        default:
+            return nil
+        }
+    }
+    
     var configuration: VirtualMachineConfiguration {
         get {
             switch self {

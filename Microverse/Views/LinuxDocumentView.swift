@@ -8,13 +8,22 @@
 import SwiftUI
 
 struct LinuxDocumentView: View {
+    @Binding var virtualMachine: LinuxVirtualMachine
+    
     var body: some View {
-        Text("Linux virtual machine")
+        VirtualMachineConfigurationView(configuration: $virtualMachine.configuration)
     }
 }
 
 struct LinuxDocumentView_Previews: PreviewProvider {
+    struct Holder: View {
+        @State var virtualMachine = LinuxVirtualMachine(configuration: VirtualMachineConfiguration())
+        var body: some View {
+            LinuxDocumentView(virtualMachine: $virtualMachine)
+        }
+    }
+    
     static var previews: some View {
-        LinuxDocumentView()
+        Holder()
     }
 }

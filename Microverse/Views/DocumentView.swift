@@ -29,11 +29,15 @@ struct DocumentView: View {
                     }
                 }
                 
-            case let .some(.linux(vm)):
-                LinuxDocumentView()
+            case .some(.linux):
+                LinuxDocumentView(virtualMachine: Binding(get: {
+                    return document.virtualMachine!.linuxVM!
+                }, set: { vm in document.virtualMachine = .linux(vm) }))
                 
-            case let .some(.macOS(vm)):
-                MacOSDocumentView()
+            case .some(.macOS):
+                MacOSDocumentView(virtualMachine: Binding(get: {
+                    return document.virtualMachine!.macOSVM!
+                }, set: { vm in document.virtualMachine = .macOS(vm) }))
             }
             Spacer()
         }

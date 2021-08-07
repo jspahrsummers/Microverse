@@ -8,13 +8,22 @@
 import SwiftUI
 
 struct MacOSDocumentView: View {
+    @Binding var virtualMachine: MacOSVirtualMachine
+    
     var body: some View {
-        Text("macOS virtual machine")
+        VirtualMachineConfigurationView(configuration: $virtualMachine.configuration)
     }
 }
 
 struct MacOSDocumentView_Previews: PreviewProvider {
+    struct Holder: View {
+        @State var virtualMachine = MacOSVirtualMachine(configuration: VirtualMachineConfiguration())
+        var body: some View {
+            MacOSDocumentView(virtualMachine: $virtualMachine)
+        }
+    }
+    
     static var previews: some View {
-        MacOSDocumentView()
+        Holder()
     }
 }
