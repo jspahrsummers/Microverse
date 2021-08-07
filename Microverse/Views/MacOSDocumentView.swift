@@ -50,11 +50,11 @@ struct MacOSDocumentView: View {
                 }
             }
             
-            if let restoreImage = restoreImage, let config = restoreImage.mostFeaturefulSupportedConfiguration {
-                MacAuxiliaryStorageView(hardwareModel: config.hardwareModel, auxiliaryStorageURL: $virtualMachine.auxiliaryStorageURL)
+            if let hardwareModel = restoreImage?.mostFeaturefulSupportedConfiguration?.hardwareModel ?? virtualMachine.physicalMachine?.hardwareModel {
+                MacAuxiliaryStorageView(hardwareModel: hardwareModel, auxiliaryStorageURL: $virtualMachine.auxiliaryStorageURL)
             }
             
-            if let vmConfig = try! VZVirtualMachineConfiguration(forMacOSVM: virtualMachine) {
+            if let vmConfig = try? VZVirtualMachineConfiguration(forMacOSVM: virtualMachine) {
                 if !virtualMachine.osInstalled {
                     MacOSInstallView(vzVirtualMachineConfiguration: vmConfig, restoreImageURL: restoreImage!.url) {
                         virtualMachine.osInstalled = true
