@@ -55,7 +55,16 @@ struct MacOSDocumentView: View {
             }
             
             if let vmConfig = try! VZVirtualMachineConfiguration(forMacOSVM: virtualMachine) {
-                if let vzVirtualMachine = vzVirtualMachine {
+                if !virtualMachine.osInstalled {
+                    MacOSInstallView(vzVirtualMachineConfiguration: vmConfig, restoreImageURL: restoreImage!.url) { result in
+                        switch result {
+                        case .success:
+                            virtualMachine.osInstalled = true
+                        case let .failure(error):
+                            NSLog("Could not install macOS into VM: \(error)")
+                        }
+                    }
+                } else if let vzVirtualMachine = vzVirtualMachine {
                     VirtualMachineView(virtualMachine: vzVirtualMachine)
                 } else {
                     Button("Start") {
@@ -72,7 +81,11 @@ struct MacOSDocumentView: View {
                     }
                 }
             }
-        }
+        }.onChange(of: restoreImage, perform: { _ in
+            if let hardwareModel = restoreImage?.mostFeaturefulSupportedConfiguration?.hardwareModel, virtualMachine.physicalMachine == nil {
+                virtualMachine.physicalMachine = MacMachine(hardwareModelRepresentation: hardwareModel.dataRepresentation, machineIdentifierRepresentation: VZMacMachineIdentifier().dataRepresentation)
+            }
+        })
     }
 }
 

@@ -6,24 +6,36 @@
 //
 
 import SwiftUI
+import Virtualization
 
 struct MacOSInstallView: View {
-    @Binding var virtualMachine: MacOSVirtualMachine
+    var vzVirtualMachineConfiguration: VZVirtualMachineConfiguration
+    var restoreImageURL: URL
+    @State var installer: VZMacOSInstaller? = nil
+    var action: (Result<Void, Error>) -> Void
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-struct MacOSInstallView_Previews: PreviewProvider {
-    struct Holder: View {
-        @State var virtualMachine = MacOSVirtualMachine(configuration: VirtualMachineConfiguration())
-        var body: some View {
-            return MacOSInstallView(virtualMachine: $virtualMachine)
+        GroupBox("macOS Installation") {
+            HStack {
+                Form {
+                    if let installer = installer {
+                        ProgressView(installer.progress)
+                    } else {
+                        Button("Start") {
+                            do {
+                                try vzVirtualMachineConfiguration.validate()
+                            } catch {
+                                NSLog("Failed to validate machine configuration \(vzVirtualMachineConfiguration): \(error)")
+                            }
+                            
+                            let vzVirtualMachine = VZVirtualMachine(configuration: vzVirtualMachineConfiguration)
+                            let installer = VZMacOSInstaller(virtualMachine: vzVirtualMachine, restoringFromImageAt: restoreImageURL)
+                            self.installer = installer
+                            installer.install(completionHandler: action)
+                        }
+                    }
+                }
+            }
         }
-    }
-    
-    static var previews: some View {
-        Holder()
     }
 }

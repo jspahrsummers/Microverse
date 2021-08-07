@@ -25,6 +25,7 @@ struct MacOSVirtualMachine: Codable, ConfigurableVirtualMachine {
     var startupDiskURL: URL? = nil
     var auxiliaryStorageURL: URL? = nil
     var physicalMachine: MacMachine? = nil
+    var osInstalled = false
 }
 
 extension VZVirtualMachineConfiguration {
