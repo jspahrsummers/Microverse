@@ -37,7 +37,9 @@ extension VZVirtualMachineConfiguration {
             return nil
         }
         
-        var storageDevices = try vm.attachedDiskImages.map { image in
+        var storageDevices = try vm.attachedDiskImages.filter { image in
+            !image.path.isEmpty
+        }.map { image in
             VZVirtioBlockDeviceConfiguration(attachment: try VZDiskImageStorageDeviceAttachment(url: URL(fileURLWithPath: image.path), readOnly: image.isReadOnly))
         }
         
