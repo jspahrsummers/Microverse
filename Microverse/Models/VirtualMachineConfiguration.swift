@@ -25,6 +25,8 @@ extension VZVirtualMachineConfiguration {
         self.memorySize = config.memoryMB * 1024 * 1024
         self.memoryBalloonDevices = [VZVirtioTraditionalMemoryBalloonDeviceConfiguration()]
         self.entropyDevices = [VZVirtioEntropyDeviceConfiguration()]
+        self.pointingDevices = [VZUSBScreenCoordinatePointingDeviceConfiguration()]
+        self.keyboards = [VZUSBKeyboardConfiguration()]
         
         let network = VZVirtioNetworkDeviceConfiguration()
         network.attachment = VZNATNetworkDeviceAttachment()
