@@ -11,7 +11,38 @@ struct MacOSDocumentView: View {
     @Binding var virtualMachine: MacOSVirtualMachine
     
     var body: some View {
-        VirtualMachineConfigurationView(configuration: $virtualMachine.configuration)
+        VStack {
+            GroupBox("Startup Disk") {
+                if let startupDiskURL = virtualMachine.startupDiskURL {
+                    Text("\(startupDiskURL.path)")
+                } else {
+                    DiskCreationView { url, bytes in
+                        let blockSize: UInt64 = 4096
+                        do {
+                            let process = Process()
+                            process.launchPath = "/bin/dd"
+                            process.arguments = [
+                                "if=/dev/zero",
+                                "of=\(url.path)",
+                                "bs=\(blockSize)",
+                                "seek=\(bytes / blockSize)",
+                                "count=0"
+                            ]
+                            try process.run()
+                            process.waitUntilExit()
+                            
+                            virtualMachine.startupDiskURL = url
+                        } catch {
+                            NSLog("Failed to create disk image")
+                        }
+                    }
+                }
+            }
+            
+            if virtualMachine.startupDiskURL != nil {
+                VirtualMachineConfigurationView(configuration: $virtualMachine.configuration)
+            }
+        }
     }
 }
 

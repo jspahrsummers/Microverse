@@ -9,4 +9,5 @@ import Foundation
 
 struct MacOSVirtualMachine: Codable, ConfigurableVirtualMachine {
     var configuration: VirtualMachineConfiguration
+    var startupDiskURL: URL? = nil
 }
