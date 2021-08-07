@@ -18,7 +18,7 @@ struct MacRestoreView: View {
     @Binding var restoreImage: VZMacOSRestoreImage?
     @State var ipswPath: String = ""
     @State var loading = false
-    @State var restoreImageSource: MacRestoreImageSource = .latest
+    @State var restoreImageSource: MacRestoreImageSource = .fromFile
     
     var body: some View {
         let imageLoadCompleted = { (result: Result<VZMacOSRestoreImage, Error>) in

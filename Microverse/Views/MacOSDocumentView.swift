@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import Virtualization
 
 struct MacOSDocumentView: View {
     @Binding var virtualMachine: MacOSVirtualMachine
+    @State var restoreImage: VZMacOSRestoreImage? = nil
     
     var body: some View {
         VStack {
@@ -41,6 +43,10 @@ struct MacOSDocumentView: View {
             
             if virtualMachine.startupDiskURL != nil {
                 VirtualMachineConfigurationView(configuration: $virtualMachine.configuration)
+                
+                if virtualMachine.physicalMachine == nil {
+                    MacRestoreView(restoreImage: $restoreImage)
+                }
             }
         }
     }
