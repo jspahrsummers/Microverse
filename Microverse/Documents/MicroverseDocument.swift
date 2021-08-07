@@ -35,7 +35,7 @@ struct MicroverseDocument: FileDocument {
 
     var virtualMachine: VirtualMachine
 
-    init(virtualMachine: VirtualMachine = .linux) {
+    init(virtualMachine: VirtualMachine = .linux(LinuxVirtualMachine(configuration: VirtualMachineConfiguration()))) {
         self.virtualMachine = virtualMachine
     }
 
