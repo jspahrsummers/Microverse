@@ -48,15 +48,3 @@ enum VirtualMachine: Codable, ConfigurableVirtualMachine {
         }
     }
 }
-
-protocol ConfigurableVirtualMachine {
-    var configuration: VirtualMachineConfiguration { get set }
-}
-
-struct LinuxVirtualMachine: Codable, ConfigurableVirtualMachine {
-    var configuration: VirtualMachineConfiguration
-}
-
-struct MacOSVirtualMachine: Codable, ConfigurableVirtualMachine {
-    var configuration: VirtualMachineConfiguration
-}
