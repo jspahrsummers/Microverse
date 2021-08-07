@@ -64,7 +64,7 @@ struct DocumentView: View {
 //            HStack {
 //                Spacer()
 //                VStack {
-//                    MacRestoreView(restoreImage: $restoreImage)
+//                    MacRestoreImageView(restoreImage: $restoreImage)
 //                    VirtualMachineConfigurationView(configuration: $configuration)
 //                    LinuxBootView(viewModel: $linuxBoot)
 //                    AttachedDisksView(viewModel: $attachedDisks)

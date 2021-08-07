@@ -1,6 +1,6 @@
 //
-//  MacRestoreView.swift
-//  MacRestoreView
+//  MacRestoreImageView.swift
+//  MacRestoreImageView
 //
 //  Created by Justin Spahr-Summers on 04/08/2021.
 //
@@ -14,7 +14,7 @@ enum MacRestoreImageSource {
     case fromFile
 }
 
-struct MacRestoreView: View {
+struct MacRestoreImageView: View {
     @Binding var restoreImage: VZMacOSRestoreImage?
     @State var ipswPath: String = ""
     @State var loading = false
@@ -77,7 +77,7 @@ struct MacRestoreView_Previews: PreviewProvider {
     struct Holder: View {
         @State var restoreImage: VZMacOSRestoreImage? = nil
         var body: some View {
-            return MacRestoreView(restoreImage: $restoreImage)
+            return MacRestoreImageView(restoreImage: $restoreImage)
         }
     }
     

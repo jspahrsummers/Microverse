@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		352AF07626BAFDD700AFD751 /* PathField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352AF07526BAFDD700AFD751 /* PathField.swift */; };
-		352AF07A26BB026900AFD751 /* MacRestoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352AF07926BB026900AFD751 /* MacRestoreView.swift */; };
+		352AF07A26BB026900AFD751 /* MacRestoreImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352AF07926BB026900AFD751 /* MacRestoreImageView.swift */; };
 		359B9B0626B8AAC100AA3989 /* MicroverseDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359B9B0526B8AAC100AA3989 /* MicroverseDocument.swift */; };
 		35CF8D6126B8300F00E83536 /* MicroverseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF8D6026B8300F00E83536 /* MicroverseApp.swift */; };
 		35CF8D6526B8300F00E83536 /* DocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF8D6426B8300F00E83536 /* DocumentView.swift */; };
@@ -34,7 +34,7 @@
 
 /* Begin PBXFileReference section */
 		352AF07526BAFDD700AFD751 /* PathField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathField.swift; sourceTree = "<group>"; };
-		352AF07926BB026900AFD751 /* MacRestoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacRestoreView.swift; sourceTree = "<group>"; };
+		352AF07926BB026900AFD751 /* MacRestoreImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacRestoreImageView.swift; sourceTree = "<group>"; };
 		359B9B0526B8AAC100AA3989 /* MicroverseDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MicroverseDocument.swift; sourceTree = "<group>"; };
 		35CF8D5D26B8300F00E83536 /* Microverse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Microverse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35CF8D6026B8300F00E83536 /* MicroverseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroverseApp.swift; sourceTree = "<group>"; };
@@ -83,7 +83,7 @@
 				35CF8D8126B87D8600E83536 /* LinuxBootView.swift */,
 				35FE87D526BEBD57009B9B51 /* LinuxDocumentView.swift */,
 				35FE87D726BEBD62009B9B51 /* MacOSDocumentView.swift */,
-				352AF07926BB026900AFD751 /* MacRestoreView.swift */,
+				352AF07926BB026900AFD751 /* MacRestoreImageView.swift */,
 				352AF07526BAFDD700AFD751 /* PathField.swift */,
 				35CF8D7B26B8431300E83536 /* VirtualMachineConfigurationView.swift */,
 				35CF8D7926B8421B00E83536 /* VirtualMachineView.swift */,
@@ -259,7 +259,7 @@
 				35CF8D7E26B855E200E83536 /* VirtualMachineConfiguration.swift in Sources */,
 				35FE87D626BEBD57009B9B51 /* LinuxDocumentView.swift in Sources */,
 				35FE87DC26BEC049009B9B51 /* MacOSVirtualMachine.swift in Sources */,
-				352AF07A26BB026900AFD751 /* MacRestoreView.swift in Sources */,
+				352AF07A26BB026900AFD751 /* MacRestoreImageView.swift in Sources */,
 				352AF07626BAFDD700AFD751 /* PathField.swift in Sources */,
 				35FE87DA26BEC041009B9B51 /* LinuxVirtualMachine.swift in Sources */,
 				35CF8D6526B8300F00E83536 /* DocumentView.swift in Sources */,

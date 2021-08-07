@@ -45,7 +45,7 @@ struct MacOSDocumentView: View {
                 VirtualMachineConfigurationView(configuration: $virtualMachine.configuration)
                 
                 if virtualMachine.physicalMachine == nil {
-                    MacRestoreView(restoreImage: $restoreImage)
+                    MacRestoreImageView(restoreImage: $restoreImage)
                 }
             }
         }
