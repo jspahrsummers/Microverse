@@ -11,6 +11,7 @@ import Virtualization
 struct MacOSDocumentView: View {
     @Binding var virtualMachine: MacOSVirtualMachine
     @State var restoreImage: VZMacOSRestoreImage? = nil
+    @State var vzVirtualMachine: VZVirtualMachine? = nil
     
     var body: some View {
         VStack {
@@ -46,6 +47,29 @@ struct MacOSDocumentView: View {
                 
                 if virtualMachine.physicalMachine == nil {
                     MacRestoreImageView(restoreImage: $restoreImage)
+                }
+            }
+            
+            if let restoreImage = restoreImage, let config = restoreImage.mostFeaturefulSupportedConfiguration {
+                MacAuxiliaryStorageView(hardwareModel: config.hardwareModel, auxiliaryStorageURL: $virtualMachine.auxiliaryStorageURL)
+            }
+            
+            if let vmConfig = try! VZVirtualMachineConfiguration(forMacOSVM: virtualMachine) {
+                if let vzVirtualMachine = vzVirtualMachine {
+                    VirtualMachineView(virtualMachine: vzVirtualMachine)
+                } else {
+                    Button("Start") {
+                        try! vmConfig.validate()
+                        let vzVirtualMachine = VZVirtualMachine(configuration: vmConfig)
+                        vzVirtualMachine.start { result in
+                            switch result {
+                            case .success:
+                                self.vzVirtualMachine = vzVirtualMachine
+                            case let .failure(error):
+                                NSLog("Failed to start VM: \(error)")
+                            }
+                        }
+                    }
                 }
             }
         }

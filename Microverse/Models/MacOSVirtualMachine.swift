@@ -28,15 +28,23 @@ struct MacOSVirtualMachine: Codable, ConfigurableVirtualMachine {
 }
 
 extension VZVirtualMachineConfiguration {
-    convenience init(forMacOSVM vm: MacOSVirtualMachine) throws {
+    convenience init?(forMacOSVM vm: MacOSVirtualMachine) throws {
         self.init(vm.configuration)
         
-        self.storageDevices = [VZVirtioBlockDeviceConfiguration(attachment: try VZDiskImageStorageDeviceAttachment(url: vm.startupDiskURL!, readOnly: false))]
+        guard let startupDiskURL = vm.startupDiskURL else {
+            return nil
+        }
+        
+        self.storageDevices = [VZVirtioBlockDeviceConfiguration(attachment: try VZDiskImageStorageDeviceAttachment(url: startupDiskURL, readOnly: false))]
+        
+        guard let hardwareModel = vm.physicalMachine?.hardwareModel, let machineIdentifier = vm.physicalMachine?.machineIdentifier, let auxiliaryStorageURL = vm.auxiliaryStorageURL else {
+            return nil
+        }
         
         let platform = VZMacPlatformConfiguration()
-        platform.hardwareModel = vm.physicalMachine!.hardwareModel!
-        platform.machineIdentifier = vm.physicalMachine!.machineIdentifier!
-        platform.auxiliaryStorage = VZMacAuxiliaryStorage(contentsOf: vm.auxiliaryStorageURL!)
+        platform.hardwareModel = hardwareModel
+        platform.machineIdentifier = machineIdentifier
+        platform.auxiliaryStorage = VZMacAuxiliaryStorage(contentsOf: auxiliaryStorageURL)
         self.platform = platform
         
         let graphics = VZMacGraphicsDeviceConfiguration()
@@ -48,5 +56,7 @@ extension VZVirtualMachineConfiguration {
             )
         ]
         self.graphicsDevices = [graphics]
+        
+        self.bootLoader = VZMacOSBootLoader()
     }
 }
