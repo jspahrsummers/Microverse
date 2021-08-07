@@ -33,9 +33,9 @@ struct MicroverseDocument: FileDocument {
         case Metadata = "metadata.json"
     }
 
-    var virtualMachine: VirtualMachine
-
-    init(virtualMachine: VirtualMachine = .linux(LinuxVirtualMachine(configuration: VirtualMachineConfiguration()))) {
+    var virtualMachine: VirtualMachine?
+    
+    init(virtualMachine: VirtualMachine? = nil) {
         self.virtualMachine = virtualMachine
     }
 
@@ -45,12 +45,16 @@ struct MicroverseDocument: FileDocument {
         }
         
         virtualMachine = try JSONDecoder().decode(VirtualMachine.self, from: metadata)
-        if !configuration.contentType.conforms(to: virtualMachine.contentType) {
+        if let virtualMachine = virtualMachine, !configuration.contentType.conforms(to: virtualMachine.contentType) {
             NSLog("Loaded virtual machine \(virtualMachine) had incorrect content type in document: \(configuration.contentType)")
         }
     }
     
     func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
+        guard let virtualMachine = virtualMachine else {
+            return FileWrapper(directoryWithFileWrappers: [:])
+        }
+
         guard virtualMachine.contentType.conforms(to: configuration.contentType) else {
             throw CocoaError(.fileWriteInvalidFileName)
         }

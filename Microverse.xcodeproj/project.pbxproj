@@ -24,6 +24,9 @@
 		35CF8D8A26B8986700E83536 /* SwiftTerm in Frameworks */ = {isa = PBXBuildFile; productRef = 35CF8D8926B8986700E83536 /* SwiftTerm */; };
 		35CF8D8C26B8992800E83536 /* ConsoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF8D8B26B8992800E83536 /* ConsoleView.swift */; };
 		35CF8D8E26B89E9B00E83536 /* NSWindowExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF8D8D26B89E9B00E83536 /* NSWindowExtensions.swift */; };
+		35FE87D426BEB7C1009B9B51 /* BlankDocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE87D326BEB7C1009B9B51 /* BlankDocumentView.swift */; };
+		35FE87D626BEBD57009B9B51 /* LinuxDocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE87D526BEBD57009B9B51 /* LinuxDocumentView.swift */; };
+		35FE87D826BEBD62009B9B51 /* MacOSDocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE87D726BEBD62009B9B51 /* MacOSDocumentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +49,9 @@
 		35CF8D8626B8837500E83536 /* AttachedDisksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachedDisksView.swift; sourceTree = "<group>"; };
 		35CF8D8B26B8992800E83536 /* ConsoleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleView.swift; sourceTree = "<group>"; };
 		35CF8D8D26B89E9B00E83536 /* NSWindowExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSWindowExtensions.swift; sourceTree = "<group>"; };
+		35FE87D326BEB7C1009B9B51 /* BlankDocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankDocumentView.swift; sourceTree = "<group>"; };
+		35FE87D526BEBD57009B9B51 /* LinuxDocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinuxDocumentView.swift; sourceTree = "<group>"; };
+		35FE87D726BEBD62009B9B51 /* MacOSDocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSDocumentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,10 +70,13 @@
 			isa = PBXGroup;
 			children = (
 				35CF8D8626B8837500E83536 /* AttachedDisksView.swift */,
+				35FE87D326BEB7C1009B9B51 /* BlankDocumentView.swift */,
 				35CF8D8B26B8992800E83536 /* ConsoleView.swift */,
 				35CF8D7F26B8704200E83536 /* DiskCreationView.swift */,
 				35CF8D6426B8300F00E83536 /* DocumentView.swift */,
 				35CF8D8126B87D8600E83536 /* LinuxBootView.swift */,
+				35FE87D526BEBD57009B9B51 /* LinuxDocumentView.swift */,
+				35FE87D726BEBD62009B9B51 /* MacOSDocumentView.swift */,
 				352AF07926BB026900AFD751 /* MacRestoreView.swift */,
 				352AF07526BAFDD700AFD751 /* PathField.swift */,
 				35CF8D7B26B8431300E83536 /* VirtualMachineConfigurationView.swift */,
@@ -231,11 +240,14 @@
 				35CF8D6126B8300F00E83536 /* MicroverseApp.swift in Sources */,
 				35CF8D8226B87D8600E83536 /* LinuxBootView.swift in Sources */,
 				35CF8D8E26B89E9B00E83536 /* NSWindowExtensions.swift in Sources */,
+				35FE87D426BEB7C1009B9B51 /* BlankDocumentView.swift in Sources */,
+				35FE87D826BEBD62009B9B51 /* MacOSDocumentView.swift in Sources */,
 				35CF8D7A26B8421B00E83536 /* VirtualMachineView.swift in Sources */,
 				35CF8D8026B8704200E83536 /* DiskCreationView.swift in Sources */,
 				35CF8D8726B8837500E83536 /* AttachedDisksView.swift in Sources */,
 				35CF8D8C26B8992800E83536 /* ConsoleView.swift in Sources */,
 				35CF8D7E26B855E200E83536 /* VirtualMachineConfiguration.swift in Sources */,
+				35FE87D626BEBD57009B9B51 /* LinuxDocumentView.swift in Sources */,
 				352AF07A26BB026900AFD751 /* MacRestoreView.swift in Sources */,
 				352AF07626BAFDD700AFD751 /* PathField.swift in Sources */,
 				35CF8D6526B8300F00E83536 /* DocumentView.swift in Sources */,
