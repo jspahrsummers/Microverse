@@ -8,15 +8,6 @@
 import SwiftUI
 import UniformTypeIdentifiers
 
-struct AttachedDiskImage {
-    var path: String = ""
-    var isReadOnly: Bool = true
-}
-
-extension AttachedDiskImage {
-    var id: String { return path }
-}
-
 struct AttachedDiskView: View {
     var label: String
     @Binding var diskImage: AttachedDiskImage
@@ -27,30 +18,26 @@ struct AttachedDiskView: View {
     }
 }
 
-struct AttachedDisksViewModel {
-    var diskImages: [AttachedDiskImage] = []
-}
-
 struct AttachedDisksView: View {
-    @Binding var viewModel: AttachedDisksViewModel
+    @Binding var diskImages: [AttachedDiskImage]
     
     var body: some View {
         GroupBox("Attached Disks") {
             HStack {
                 Form {
-                    ForEach(Array($viewModel.diskImages.enumerated()), id: \.offset) { index, element in
+                    ForEach(Array($diskImages.enumerated()), id: \.offset) { index, element in
                         HStack {
                             Button("Remove") {
-                                viewModel.diskImages.remove(at: index)
+                                diskImages.remove(at: index)
                             }
                             Spacer()
-                            AttachedDiskView(label: "Disk Image \(index + 1):", diskImage: $viewModel.diskImages[index])
+                            AttachedDiskView(label: "Disk Image \(index + 1):", diskImage: $diskImages[index])
                         }
                     }
                     HStack {
                         Spacer()
                         Button("Add") {
-                            viewModel.diskImages.append(AttachedDiskImage())
+                            diskImages.append(AttachedDiskImage())
                         }
                     }
                 }
@@ -61,9 +48,9 @@ struct AttachedDisksView: View {
 
 struct AttachedDisksView_Previews: PreviewProvider {
     struct Holder: View {
-        @State var viewModel = AttachedDisksViewModel()
+        @State var disks: [AttachedDiskImage] = []
         var body: some View {
-            return AttachedDisksView(viewModel: $viewModel)
+            return AttachedDisksView(diskImages: $disks)
         }
     }
     

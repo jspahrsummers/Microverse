@@ -26,6 +26,7 @@ struct MacOSVirtualMachine: Codable, ConfigurableVirtualMachine {
     var auxiliaryStorageURL: URL? = nil
     var physicalMachine: MacMachine? = nil
     var osInstalled = false
+    var attachedDiskImages: [AttachedDiskImage] = []
 }
 
 extension VZVirtualMachineConfiguration {
@@ -36,7 +37,12 @@ extension VZVirtualMachineConfiguration {
             return nil
         }
         
-        self.storageDevices = [VZVirtioBlockDeviceConfiguration(attachment: try VZDiskImageStorageDeviceAttachment(url: startupDiskURL, readOnly: false))]
+        var storageDevices = try vm.attachedDiskImages.map { image in
+            VZVirtioBlockDeviceConfiguration(attachment: try VZDiskImageStorageDeviceAttachment(url: URL(fileURLWithPath: image.path), readOnly: image.isReadOnly))
+        }
+        
+        storageDevices.insert(VZVirtioBlockDeviceConfiguration(attachment: try VZDiskImageStorageDeviceAttachment(url: startupDiskURL, readOnly: false)), at: 0)
+        self.storageDevices = storageDevices
         
         guard let hardwareModel = vm.physicalMachine?.hardwareModel, let machineIdentifier = vm.physicalMachine?.machineIdentifier, let auxiliaryStorageURL = vm.auxiliaryStorageURL else {
             return nil
@@ -60,12 +66,12 @@ extension VZVirtualMachineConfiguration {
         
         self.bootLoader = VZMacOSBootLoader()
         
-        let sharedDirectory = VZSharedDirectory(url: URL(fileURLWithPath: "/Applications"), readOnly: true)
-        let tag = "HostApplications"
-        try VZVirtioFileSystemDeviceConfiguration.validateTag(tag)
-        
-        let fsDevice = VZVirtioFileSystemDeviceConfiguration(tag: tag)
-        fsDevice.share = VZSingleDirectoryShare(directory: sharedDirectory)
-        self.directorySharingDevices = [fsDevice]
+//        let sharedDirectory = VZSharedDirectory(url: URL(fileURLWithPath: "/Applications"), readOnly: true)
+//        let tag = "HostApplications"
+//        try VZVirtioFileSystemDeviceConfiguration.validateTag(tag)
+//
+//        let fsDevice = VZVirtioFileSystemDeviceConfiguration(tag: tag)
+//        fsDevice.share = VZSingleDirectoryShare(directory: sharedDirectory)
+//        self.directorySharingDevices = [fsDevice]
     }
 }

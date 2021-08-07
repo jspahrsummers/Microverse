@@ -48,6 +48,8 @@ struct MacOSDocumentView: View {
                         }
                     }
                     
+                    AttachedDisksView(diskImages: $virtualMachine.attachedDiskImages)
+                    
                     if virtualMachine.startupDiskURL != nil {
                         VirtualMachineConfigurationView(configuration: $virtualMachine.configuration)
                         
