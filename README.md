@@ -10,6 +10,7 @@ This project makes use of APIs from the macOS 12 (Monterey) [beta](https://beta.
 
 macOS 11 (Big Sur) is unsupported.
 
+<!--
 ## Running Linux
 
 [`VZLinuxBootLoader`](https://developer.apple.com/documentation/virtualization/vzlinuxbootloader) is quite picky about its inputs. I had the best luck with [Ubuntu cloud images](https://cloud-images.ubuntu.com/), based on [this helpful comment by @droidix on `evansm7/vftool`](https://github.com/evansm7/vftool/issues/2#issuecomment-735455161).
@@ -29,6 +30,7 @@ The corresponding `initrd` can be used as-is: https://cloud-images.ubuntu.com/re
 ### Startup disk image
 
 The startup image can be used as-is: https://cloud-images.ubuntu.com/releases/focal/release/ubuntu-20.04-server-cloudimg-arm64.img
+-->
 
 ## License and credit
 
