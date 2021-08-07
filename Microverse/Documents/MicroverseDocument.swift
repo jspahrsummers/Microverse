@@ -14,28 +14,47 @@ extension UTType {
     static let macVM = UTType(exportedAs: "com.metacognitive.vm.macos", conformingTo: UTType.VM)
 }
 
+extension VirtualMachine {
+    var contentType: UTType {
+        switch self {
+        case .linux:
+            return .linuxVM
+        case .macOS:
+            return .macVM
+        }
+    }
+}
+
 struct MicroverseDocument: FileDocument {
-    static var readableContentTypes: [UTType] { [.linuxVM, .macVM] }
+    static var readableContentTypes: [UTType] { [.VM, .linuxVM, .macVM] }
+    static var writableContentTypes: [UTType] { [.linuxVM, .macVM] }
     
     enum PackageItem: String {
         case Metadata = "metadata.json"
     }
 
-    var virtualMachine: LinuxVirtualMachine
+    var virtualMachine: VirtualMachine
 
-    init() {
-        virtualMachine = LinuxVirtualMachine()
+    init(virtualMachine: VirtualMachine = .linux) {
+        self.virtualMachine = virtualMachine
     }
 
     init(configuration: ReadConfiguration) throws {
-        guard configuration.contentType == UTType.linuxVM, let metadata = configuration.file.fileWrappers?[PackageItem.Metadata.rawValue]?.regularFileContents else {
+        guard configuration.contentType.conforms(to: .VM), let metadata = configuration.file.fileWrappers?[PackageItem.Metadata.rawValue]?.regularFileContents else {
             throw CocoaError(.fileReadCorruptFile)
         }
         
-        virtualMachine = try JSONDecoder().decode(LinuxVirtualMachine.self, from: metadata)
+        virtualMachine = try JSONDecoder().decode(VirtualMachine.self, from: metadata)
+        if !configuration.contentType.conforms(to: virtualMachine.contentType) {
+            NSLog("Loaded virtual machine \(virtualMachine) had incorrect content type in document: \(configuration.contentType)")
+        }
     }
     
     func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
+        guard virtualMachine.contentType.conforms(to: configuration.contentType) else {
+            throw CocoaError(.fileWriteInvalidFileName)
+        }
+        
         let metadata = try JSONEncoder().encode(virtualMachine)
         let metadataWrapper = FileWrapper(regularFileWithContents: metadata)
         metadataWrapper.preferredFilename = PackageItem.Metadata.rawValue
