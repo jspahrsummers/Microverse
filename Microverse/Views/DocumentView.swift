@@ -12,36 +12,30 @@ struct DocumentView: View {
     @Binding var document: MicroverseDocument
     
     var body: some View {
-        Spacer()
-        HStack {
-            Spacer()
-            switch document.virtualMachine {
-            case .none:
-                BlankDocumentView { platform in
-                    let config = VirtualMachineConfiguration()
+        switch document.virtualMachine {
+        case .none:
+            BlankDocumentView { platform in
+                let config = VirtualMachineConfiguration()
+                
+                switch platform {
+                case .macOS:
+                    document.virtualMachine = .macOS(MacOSVirtualMachine(configuration: config))
                     
-                    switch platform {
-                    case .macOS:
-                        document.virtualMachine = .macOS(MacOSVirtualMachine(configuration: config))
-                        
-                    case .linux:
-                        document.virtualMachine = .linux(LinuxVirtualMachine(configuration: config))
-                    }
+                case .linux:
+                    document.virtualMachine = .linux(LinuxVirtualMachine(configuration: config))
                 }
-                
-            case .some(.linux):
-                LinuxDocumentView(virtualMachine: Binding(get: {
-                    return document.virtualMachine!.linuxVM!
-                }, set: { vm in document.virtualMachine = .linux(vm) }))
-                
-            case .some(.macOS):
-                MacOSDocumentView(virtualMachine: Binding(get: {
-                    return document.virtualMachine!.macOSVM!
-                }, set: { vm in document.virtualMachine = .macOS(vm) }))
             }
-            Spacer()
+            
+        case .some(.linux):
+            LinuxDocumentView(virtualMachine: Binding(get: {
+                return document.virtualMachine!.linuxVM!
+            }, set: { vm in document.virtualMachine = .linux(vm) }))
+            
+        case .some(.macOS):
+            MacOSDocumentView(virtualMachine: Binding(get: {
+                return document.virtualMachine!.macOSVM!
+            }, set: { vm in document.virtualMachine = .macOS(vm) }))
         }
-        Spacer()
     }
 }
 

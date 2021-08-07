@@ -14,78 +14,86 @@ struct MacOSDocumentView: View {
     @State var vzVirtualMachine: VZVirtualMachine? = nil
     
     var body: some View {
-        VStack {
-            GroupBox("Startup Disk") {
-                if let startupDiskURL = virtualMachine.startupDiskURL {
-                    Text("\(startupDiskURL.path)")
-                } else {
-                    DiskCreationView { url, bytes in
-                        let blockSize: UInt64 = 4096
-                        do {
-                            let process = Process()
-                            process.launchPath = "/bin/dd"
-                            process.arguments = [
-                                "if=/dev/zero",
-                                "of=\(url.path)",
-                                "bs=\(blockSize)",
-                                "seek=\(bytes / blockSize)",
-                                "count=0"
-                            ]
-                            try process.run()
-                            process.waitUntilExit()
-                            
-                            virtualMachine.startupDiskURL = url
-                        } catch {
-                            NSLog("Failed to create disk image")
-                        }
-                    }
-                }
-            }
-            
-            if virtualMachine.startupDiskURL != nil {
-                VirtualMachineConfigurationView(configuration: $virtualMachine.configuration)
-                
-                if virtualMachine.physicalMachine == nil {
-                    MacRestoreImageView(restoreImage: $restoreImage)
-                }
-            }
-            
-            if let hardwareModel = restoreImage?.mostFeaturefulSupportedConfiguration?.hardwareModel ?? virtualMachine.physicalMachine?.hardwareModel {
-                MacAuxiliaryStorageView(hardwareModel: hardwareModel, auxiliaryStorageURL: $virtualMachine.auxiliaryStorageURL)
-            }
-            
-            if let vmConfig = try! VZVirtualMachineConfiguration(forMacOSVM: virtualMachine) {
-                if !virtualMachine.osInstalled {
-                    MacOSInstallView(vzVirtualMachineConfiguration: vmConfig, restoreImageURL: restoreImage!.url) {
-                        virtualMachine.osInstalled = true
-                    }
-                } else if let vzVirtualMachine = vzVirtualMachine {
-                    VirtualMachineView(virtualMachine: vzVirtualMachine)
-                } else {
-                    Button("Start") {
-                        do {
-                            try vmConfig.validate()
-                            vzVirtualMachine = VZVirtualMachine(configuration: vmConfig)
-                            vzVirtualMachine!.start { result in
-                                switch result {
-                                case .success:
-                                    NSLog("Launched VM")
-                                case let .failure(error):
-                                    NSLog("Failed to start VM: \(error)")
-                                    self.vzVirtualMachine = nil
+        if let vzVirtualMachine = vzVirtualMachine {
+            VirtualMachineView(virtualMachine: vzVirtualMachine)
+        } else {
+            HStack {
+                Spacer()
+                VStack {
+                    Spacer()
+                    GroupBox("Startup Disk") {
+                        if let startupDiskURL = virtualMachine.startupDiskURL {
+                            Text("\(startupDiskURL.path)")
+                        } else {
+                            DiskCreationView { url, bytes in
+                                let blockSize: UInt64 = 4096
+                                do {
+                                    let process = Process()
+                                    process.launchPath = "/bin/dd"
+                                    process.arguments = [
+                                        "if=/dev/zero",
+                                        "of=\(url.path)",
+                                        "bs=\(blockSize)",
+                                        "seek=\(bytes / blockSize)",
+                                        "count=0"
+                                    ]
+                                    try process.run()
+                                    process.waitUntilExit()
+                                    
+                                    virtualMachine.startupDiskURL = url
+                                } catch {
+                                    NSLog("Failed to create disk image")
                                 }
                             }
-                        } catch {
-                            NSLog("Failed to validate machine configuration \(vmConfig): \(error)")
                         }
                     }
+                    
+                    if virtualMachine.startupDiskURL != nil {
+                        VirtualMachineConfigurationView(configuration: $virtualMachine.configuration)
+                        
+                        if virtualMachine.physicalMachine == nil {
+                            MacRestoreImageView(restoreImage: $restoreImage)
+                        }
+                    }
+                    
+                    if let hardwareModel = restoreImage?.mostFeaturefulSupportedConfiguration?.hardwareModel ?? virtualMachine.physicalMachine?.hardwareModel {
+                        MacAuxiliaryStorageView(hardwareModel: hardwareModel, auxiliaryStorageURL: $virtualMachine.auxiliaryStorageURL)
+                    }
+                    
+                    if let vmConfig = try! VZVirtualMachineConfiguration(forMacOSVM: virtualMachine) {
+                        if !virtualMachine.osInstalled {
+                            MacOSInstallView(vzVirtualMachineConfiguration: vmConfig, restoreImageURL: restoreImage!.url) {
+                                virtualMachine.osInstalled = true
+                            }
+                        } else {
+                            Button("Start") {
+                                do {
+                                    try vmConfig.validate()
+                                    vzVirtualMachine = VZVirtualMachine(configuration: vmConfig)
+                                    vzVirtualMachine!.start { result in
+                                        switch result {
+                                        case .success:
+                                            NSLog("Launched VM")
+                                        case let .failure(error):
+                                            NSLog("Failed to start VM: \(error)")
+                                            self.vzVirtualMachine = nil
+                                        }
+                                    }
+                                } catch {
+                                    NSLog("Failed to validate machine configuration \(vmConfig): \(error)")
+                                }
+                            }
+                        }
+                    }
+                    Spacer()
+                }.onChange(of: restoreImage) { _ in
+                    if let hardwareModel = restoreImage?.mostFeaturefulSupportedConfiguration?.hardwareModel, virtualMachine.physicalMachine == nil {
+                        virtualMachine.physicalMachine = MacMachine(hardwareModelRepresentation: hardwareModel.dataRepresentation, machineIdentifierRepresentation: VZMacMachineIdentifier().dataRepresentation)
+                    }
                 }
+                Spacer()
             }
-        }.onChange(of: restoreImage, perform: { _ in
-            if let hardwareModel = restoreImage?.mostFeaturefulSupportedConfiguration?.hardwareModel, virtualMachine.physicalMachine == nil {
-                virtualMachine.physicalMachine = MacMachine(hardwareModelRepresentation: hardwareModel.dataRepresentation, machineIdentifierRepresentation: VZMacMachineIdentifier().dataRepresentation)
-            }
-        })
+        }
     }
 }
 
