@@ -32,37 +32,39 @@ struct MacRestoreView: View {
         }
         
         
-        HStack {
-            Form {
-                Picker("MacOS Restore Image:", selection: $restoreImageSource) {
-                    Text("Latest").tag(MacRestoreImageSource.latest)
-                    HStack {
-                        Text("From File:")
-                        PathField(title: "Path", path: $ipswPath, allowedContentTypes: [UTType(filenameExtension: "ipsw") ?? .data]).onChange(of: ipswPath) { newValue in
-                            loading = true
-                            VZMacOSRestoreImage.load(from: URL(fileURLWithPath: ipswPath), completionHandler: imageLoadCompleted)
-                        }
-                    }.tag(MacRestoreImageSource.fromFile)
-                }.pickerStyle(.inline).onChange(of: restoreImageSource) { newValue in
-                    restoreImage = nil
-                    
-                    switch newValue {
-                    case .latest:
-                        loading = true
-                        VZMacOSRestoreImage.fetchLatestSupported(completionHandler: imageLoadCompleted)
+        GroupBox("MacOS Installation") {
+            HStack {
+                Form {
+                    Picker("System Restore Image:", selection: $restoreImageSource) {
+                        Text("Latest").tag(MacRestoreImageSource.latest)
+                        HStack {
+                            Text("From File:")
+                            PathField(title: "Path", path: $ipswPath, allowedContentTypes: [UTType(filenameExtension: "ipsw") ?? .data]).onChange(of: ipswPath) { newValue in
+                                loading = true
+                                VZMacOSRestoreImage.load(from: URL(fileURLWithPath: ipswPath), completionHandler: imageLoadCompleted)
+                            }
+                        }.tag(MacRestoreImageSource.fromFile)
+                    }.pickerStyle(.inline).onChange(of: restoreImageSource) { newValue in
+                        restoreImage = nil
                         
-                    case .fromFile:
-                        loading = false
+                        switch newValue {
+                        case .latest:
+                            loading = true
+                            VZMacOSRestoreImage.fetchLatestSupported(completionHandler: imageLoadCompleted)
+                            
+                        case .fromFile:
+                            loading = false
+                        }
                     }
-                }
-                
-                if loading {
-                    ProgressView()
-                } else if let restoreImage = restoreImage {
-                    HStack {
-                        Text("Loaded image for macOS build \(restoreImage.buildVersion)")
-                        Button("Reset") {
-                            self.restoreImage = nil
+                    
+                    if loading {
+                        ProgressView()
+                    } else if let restoreImage = restoreImage {
+                        HStack {
+                            Text("Loaded image for macOS build \(restoreImage.buildVersion)")
+                            Button("Reset") {
+                                self.restoreImage = nil
+                            }
                         }
                     }
                 }

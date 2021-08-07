@@ -23,8 +23,10 @@ struct ContentView: View {
         if let machine = machine {
             VirtualMachineView(virtualMachine: machine)
         } else {
+            Spacer()
             HStack {
-                Form {
+                Spacer()
+                VStack {
                     MacRestoreView(restoreImage: $restoreImage)
                     VirtualMachineConfigurationView(configuration: $configuration)
                     LinuxBootView(viewModel: $linuxBoot)
@@ -63,7 +65,9 @@ struct ContentView: View {
                         }
                     }
                 }
+                Spacer()
             }
+            Spacer()
         }
     }
 }

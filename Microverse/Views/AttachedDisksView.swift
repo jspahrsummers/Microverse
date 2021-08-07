@@ -13,34 +13,47 @@ struct AttachedDiskImage {
     var isReadOnly: Bool = true
 }
 
-extension AttachedDiskImage: Identifiable {
+extension AttachedDiskImage {
     var id: String { return path }
 }
 
 struct AttachedDiskView: View {
+    var label: String
     @Binding var diskImage: AttachedDiskImage
     
     var body: some View {
-        HStack {
-            Form {
-                PathField(title: "Attach Disk Image:", path: $diskImage.path, allowedContentTypes: [UTType.diskImage])
-                Toggle("Read only", isOn: $diskImage.isReadOnly)
-            }
-        }
+        PathField(title: label, path: $diskImage.path, allowedContentTypes: [UTType.diskImage])
+        Toggle("Read only", isOn: $diskImage.isReadOnly)
     }
 }
 
 struct AttachedDisksViewModel {
-    var diskImages: [AttachedDiskImage] = [AttachedDiskImage()]
+    var diskImages: [AttachedDiskImage] = []
 }
 
 struct AttachedDisksView: View {
     @Binding var viewModel: AttachedDisksViewModel
     
     var body: some View {
-        Form {
-            ForEach($viewModel.diskImages) { diskImage in
-                AttachedDiskView(diskImage: diskImage)
+        GroupBox("Attached Disks") {
+            HStack {
+                Form {
+                    ForEach(Array($viewModel.diskImages.enumerated()), id: \.offset) { index, element in
+                        HStack {
+                            Button("Remove") {
+                                viewModel.diskImages.remove(at: index)
+                            }
+                            Spacer()
+                            AttachedDiskView(label: "Disk Image \(index + 1):", diskImage: $viewModel.diskImages[index])
+                        }
+                    }
+                    HStack {
+                        Spacer()
+                        Button("Add") {
+                            viewModel.diskImages.append(AttachedDiskImage())
+                        }
+                    }
+                }
             }
         }
     }

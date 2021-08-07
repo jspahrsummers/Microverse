@@ -11,7 +11,7 @@ import SwiftUI
 struct MicroverseApp: App {
     var body: some Scene {
         DocumentGroup(newDocument: MicroverseDocument()) { file in
-            ContentView(document: file.$document)
+            ContentView(document: file.$document).frame(minWidth: 600, maxWidth: .infinity).fixedSize(horizontal: false, vertical: true)
         }
     }
 }
