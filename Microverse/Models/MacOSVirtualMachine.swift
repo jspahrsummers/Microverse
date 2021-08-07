@@ -22,8 +22,57 @@ struct MacMachine: Codable {
 
 struct MacOSVirtualMachine: Codable, ConfigurableVirtualMachine {
     var configuration: VirtualMachineConfiguration
-    var startupDiskURL: URL? = nil
-    var auxiliaryStorageURL: URL? = nil
+    
+    var startupDiskBookmark: Data? = nil
+    var startupDiskURL: URL? {
+        get {
+            guard let startupDiskBookmark = startupDiskBookmark else {
+                return nil
+            }
+
+            do {
+                var stale = false
+                let url = try URL(resolvingBookmarkData: startupDiskBookmark, options: .withSecurityScope, relativeTo: nil, bookmarkDataIsStale: &stale)
+                return url
+            } catch {
+                NSLog("Could not resolve startup disk bookmark: \(error)")
+                return nil
+            }
+        }
+        set(url) {
+            do {
+                startupDiskBookmark = try url?.bookmarkData(options: .withSecurityScope, includingResourceValuesForKeys: nil, relativeTo: nil)
+            } catch {
+                NSLog("Could not create startup disk bookmark: \(error)")
+            }
+        }
+    }
+    
+    var auxiliaryStorageBookmark: Data? = nil
+    var auxiliaryStorageURL: URL? {
+        get {
+            guard let auxiliaryStorageBookmark = auxiliaryStorageBookmark else {
+                return nil
+            }
+            
+            do {
+                var stale = false
+                let url = try URL(resolvingBookmarkData: auxiliaryStorageBookmark, options: .withSecurityScope, relativeTo: nil, bookmarkDataIsStale: &stale)
+                return url
+            } catch {
+                NSLog("Could not resolve auxiliary storage bookmark: \(error)")
+                return nil
+            }
+        }
+        set(url) {
+            do {
+                auxiliaryStorageBookmark = try url?.bookmarkData(options: .withSecurityScope, includingResourceValuesForKeys: nil, relativeTo: nil)
+            } catch {
+                NSLog("Could not create auxiliary storage bookmark: \(error)")
+            }
+        }
+    }
+    
     var physicalMachine: MacMachine? = nil
     var osInstalled = false
     var attachedDiskImages: [AttachedDiskImage] = []
