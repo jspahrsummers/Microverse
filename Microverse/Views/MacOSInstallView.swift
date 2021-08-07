@@ -29,9 +29,9 @@ struct MacOSInstallView: View {
                             }
                             
                             let vzVirtualMachine = VZVirtualMachine(configuration: vzVirtualMachineConfiguration)
-                            let installer = VZMacOSInstaller(virtualMachine: vzVirtualMachine, restoringFromImageAt: restoreImageURL)
-                            self.installer = installer
-                            installer.install(completionHandler: action)
+                            installer = VZMacOSInstaller(virtualMachine: vzVirtualMachine, restoringFromImageAt: restoreImageURL)
+                            NSLog("Starting installation into \(vzVirtualMachine) from \(restoreImageURL)")
+                            installer?.install(completionHandler: action)
                         }
                     }
                 }

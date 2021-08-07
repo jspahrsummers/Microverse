@@ -9,7 +9,7 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 struct DiskCreationView: View {
-    @State private var diskSizeGB: Float = 4
+    @State private var diskSizeGB: Float = 32
     var action: (URL, UInt64) -> ()
     
     var body: some View {

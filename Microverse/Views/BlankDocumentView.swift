@@ -13,7 +13,7 @@ enum BlankDocumentVMPlatform: String, CaseIterable {
 }
 
 struct BlankDocumentView: View {
-    @State var platform: BlankDocumentVMPlatform = .linux
+    @State var platform: BlankDocumentVMPlatform = .macOS
     var action: (BlankDocumentVMPlatform) -> ()
     
     var body: some View {
