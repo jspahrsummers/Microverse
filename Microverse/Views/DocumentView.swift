@@ -8,7 +8,7 @@
 import SwiftUI
 import Virtualization
 
-struct ContentView: View {
+struct DocumentView: View {
     @Binding var document: MicroverseDocument
     @State var linuxBoot = LinuxBootViewModel()
     @State var attachedDisks = AttachedDisksViewModel()
@@ -74,6 +74,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(document: Binding.constant(MicroverseDocument()))
+        DocumentView(document: Binding.constant(MicroverseDocument()))
     }
 }
