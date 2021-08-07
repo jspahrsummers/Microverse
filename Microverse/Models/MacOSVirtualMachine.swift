@@ -33,6 +33,12 @@ struct MacOSVirtualMachine: Codable, ConfigurableVirtualMachine {
             do {
                 var stale = false
                 let url = try URL(resolvingBookmarkData: startupDiskBookmark, options: .withSecurityScope, relativeTo: nil, bookmarkDataIsStale: &stale)
+                
+                // FIXME: This is imbalanced right now!
+                if !url.startAccessingSecurityScopedResource() {
+                    throw CocoaError(.fileReadNoPermission)
+                }
+                
                 return url
             } catch {
                 NSLog("Could not resolve startup disk bookmark: \(error)")
@@ -58,6 +64,12 @@ struct MacOSVirtualMachine: Codable, ConfigurableVirtualMachine {
             do {
                 var stale = false
                 let url = try URL(resolvingBookmarkData: auxiliaryStorageBookmark, options: .withSecurityScope, relativeTo: nil, bookmarkDataIsStale: &stale)
+                
+                // FIXME: This is imbalanced right now!
+                if !url.startAccessingSecurityScopedResource() {
+                    throw CocoaError(.fileReadNoPermission)
+                }
+                
                 return url
             } catch {
                 NSLog("Could not resolve auxiliary storage bookmark: \(error)")
@@ -75,6 +87,8 @@ struct MacOSVirtualMachine: Codable, ConfigurableVirtualMachine {
     
     var physicalMachine: MacMachine? = nil
     var osInstalled = false
+    
+    // TODO: These should be saved as security-scoped bookmarks
     var attachedDiskImages: [AttachedDiskImage] = []
 }
 
