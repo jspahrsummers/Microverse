@@ -54,7 +54,7 @@ struct MacOSDocumentView: View {
                 MacAuxiliaryStorageView(hardwareModel: hardwareModel, auxiliaryStorageURL: $virtualMachine.auxiliaryStorageURL)
             }
             
-            if let vmConfig = try? VZVirtualMachineConfiguration(forMacOSVM: virtualMachine) {
+            if let vmConfig = try! VZVirtualMachineConfiguration(forMacOSVM: virtualMachine) {
                 if !virtualMachine.osInstalled {
                     MacOSInstallView(vzVirtualMachineConfiguration: vmConfig, restoreImageURL: restoreImage!.url) {
                         virtualMachine.osInstalled = true
