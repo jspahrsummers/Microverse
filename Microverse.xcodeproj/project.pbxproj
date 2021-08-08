@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3526598E26BFEFBF001D5029 /* VirtualMachineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3526598D26BFEFBF001D5029 /* VirtualMachineController.swift */; };
+		3526599026BFF2E2001D5029 /* MicroverseErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3526598F26BFF2E2001D5029 /* MicroverseErrors.swift */; };
 		352AF07626BAFDD700AFD751 /* PathField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352AF07526BAFDD700AFD751 /* PathField.swift */; };
 		352AF07A26BB026900AFD751 /* MacRestoreImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352AF07926BB026900AFD751 /* MacRestoreImageView.swift */; };
 		359B9B0626B8AAC100AA3989 /* MicroverseDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359B9B0526B8AAC100AA3989 /* MicroverseDocument.swift */; };
@@ -36,6 +38,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3526598D26BFEFBF001D5029 /* VirtualMachineController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualMachineController.swift; sourceTree = "<group>"; };
+		3526598F26BFF2E2001D5029 /* MicroverseErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroverseErrors.swift; sourceTree = "<group>"; };
 		352AF07526BAFDD700AFD751 /* PathField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathField.swift; sourceTree = "<group>"; };
 		352AF07926BB026900AFD751 /* MacRestoreImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacRestoreImageView.swift; sourceTree = "<group>"; };
 		359B9B0526B8AAC100AA3989 /* MicroverseDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MicroverseDocument.swift; sourceTree = "<group>"; };
@@ -127,8 +131,10 @@
 				35FE87DD26BEC05C009B9B51 /* ConfigurableVirtualMachine.swift */,
 				35FE87D926BEC041009B9B51 /* LinuxVirtualMachine.swift */,
 				35FE87DB26BEC049009B9B51 /* MacOSVirtualMachine.swift */,
+				3526598F26BFF2E2001D5029 /* MicroverseErrors.swift */,
 				35CF8D7526B836A900E83536 /* VirtualMachine.swift */,
 				35CF8D7D26B855E200E83536 /* VirtualMachineConfiguration.swift */,
+				3526598D26BFEFBF001D5029 /* VirtualMachineController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -260,7 +266,9 @@
 				35CF8D8726B8837500E83536 /* AttachedDisksView.swift in Sources */,
 				35C1E9EE26BF11E1005F47D0 /* AttachedDiskImage.swift in Sources */,
 				35CF8D8C26B8992800E83536 /* ConsoleView.swift in Sources */,
+				3526599026BFF2E2001D5029 /* MicroverseErrors.swift in Sources */,
 				35CF8D7E26B855E200E83536 /* VirtualMachineConfiguration.swift in Sources */,
+				3526598E26BFEFBF001D5029 /* VirtualMachineController.swift in Sources */,
 				35FE87D626BEBD57009B9B51 /* LinuxDocumentView.swift in Sources */,
 				35FE87DC26BEC049009B9B51 /* MacOSVirtualMachine.swift in Sources */,
 				352AF07A26BB026900AFD751 /* MacRestoreImageView.swift in Sources */,
