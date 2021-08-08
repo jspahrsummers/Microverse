@@ -31,5 +31,15 @@ extension VZVirtualMachineConfiguration {
         let network = VZVirtioNetworkDeviceConfiguration()
         network.attachment = VZNATNetworkDeviceAttachment()
         self.networkDevices = [network]
+        
+        let audioOut = VZVirtioSoundDeviceOutputStreamConfiguration()
+        audioOut.sink = VZHostAudioOutputStreamSink()
+        
+        let audioIn = VZVirtioSoundDeviceInputStreamConfiguration()
+        audioIn.source = VZHostAudioInputStreamSource()
+        
+        let audioDevice = VZVirtioSoundDeviceConfiguration()
+        audioDevice.streams = [audioIn, audioOut]
+        self.audioDevices = [audioDevice]
     }
 }
