@@ -9,5 +9,6 @@ import Foundation
 
 struct SharedDirectory: Codable, Equatable, Hashable {
     var path: String = ""
+    var tag: String = ""
     var isReadOnly: Bool = false
 }

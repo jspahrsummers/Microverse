@@ -12,7 +12,8 @@ struct SharedDirectoryView: View {
     @Binding var sharedDirectory: SharedDirectory
     
     var body: some View {
-        PathField(title: "", path: $sharedDirectory.path, allowedContentTypes: [UTType.directory])
+        PathField(title: "Directory:", path: $sharedDirectory.path, allowedContentTypes: [UTType.directory])
+        TextField("Tag:", text: $sharedDirectory.tag)
         Toggle("Read only", isOn: $sharedDirectory.isReadOnly)
     }
 }
@@ -25,12 +26,12 @@ struct SharedDirectoriesView: View {
             HStack {
                 Form {
                     ForEach(Array($sharedDirectories.enumerated()), id: \.offset) { index, element in
+                        SharedDirectoryView(sharedDirectory: $sharedDirectories[index])
                         HStack {
+                            Spacer()
                             Button("Remove") {
                                 sharedDirectories.remove(at: index)
                             }
-                            Spacer()
-                            SharedDirectoryView(sharedDirectory: $sharedDirectories[index])
                         }
                     }
                     HStack {
@@ -47,7 +48,7 @@ struct SharedDirectoriesView: View {
 
 struct SharedDirectoriesView_Previews: PreviewProvider {
     struct Holder: View {
-        @State var sharedDirectories: [SharedDirectory] = []
+        @State var sharedDirectories: [SharedDirectory] = [SharedDirectory()]
         var body: some View {
             SharedDirectoriesView(sharedDirectories: $sharedDirectories)
         }
