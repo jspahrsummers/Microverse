@@ -5,6 +5,7 @@
 //  Created by Justin Spahr-Summers on 02/08/2021.
 //
 
+import AVFoundation
 import Foundation
 import Virtualization
 
@@ -34,6 +35,8 @@ extension VZVirtualMachineConfiguration {
         
         let audioOut = VZVirtioSoundDeviceOutputStreamConfiguration()
         audioOut.sink = VZHostAudioOutputStreamSink()
+        
+        AVCaptureDevice.requestAccess(for: .audio) { _ in }
         
         let audioIn = VZVirtioSoundDeviceInputStreamConfiguration()
         audioIn.source = VZHostAudioInputStreamSource()
