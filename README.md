@@ -18,11 +18,6 @@ There's a known issue where the App Store cannot be contacted from within a VM. 
 
 ## Linux
 
-Linux support is temporarily disabled (it was in the code, then ripped out) while I've been getting macOS working. It will be back soon.
-
-<!--
-## Running Linux
-
 [`VZLinuxBootLoader`](https://developer.apple.com/documentation/virtualization/vzlinuxbootloader) is quite picky about its inputs. I had the best luck with [Ubuntu cloud images](https://cloud-images.ubuntu.com/), based on [this helpful comment by @droidix on `evansm7/vftool`](https://github.com/evansm7/vftool/issues/2#issuecomment-735455161).
 
 The following examples assume arm64, but x86_64 should work similarly (presuming you get the correct downloads).
@@ -37,10 +32,9 @@ The following examples assume arm64, but x86_64 should work similarly (presuming
 
 The corresponding `initrd` can be used as-is: https://cloud-images.ubuntu.com/releases/focal/release/unpacked/ubuntu-20.04-server-cloudimg-arm64-initrd-generic
 
-### Startup disk image
+### Attached disk
 
-The startup image can be used as-is: https://cloud-images.ubuntu.com/releases/focal/release/ubuntu-20.04-server-cloudimg-arm64.img
--->
+The startup disk image can be used as-is: https://cloud-images.ubuntu.com/releases/focal/release/ubuntu-20.04-server-cloudimg-arm64.img
 
 ## License and credit
 
