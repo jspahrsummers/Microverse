@@ -88,8 +88,45 @@ struct MacOSVirtualMachine: Codable, ConfigurableVirtualMachine, Equatable {
     var physicalMachine: MacMachine? = nil
     var osInstalled = false
     
-    // TODO: These should be saved as security-scoped bookmarks
-    var attachedDiskImages: [AttachedDiskImage] = []
+    struct AttachedDiskImageBookmark: Codable, Equatable, Hashable {
+        var data: Data
+        var isReadOnly: Bool
+    }
+    
+    var attachedDiskImageBookmarks: [AttachedDiskImageBookmark] = []
+    var attachedDiskImages: [AttachedDiskImage] {
+        get {
+            return attachedDiskImageBookmarks.compactMap { bookmark in
+                do {
+                    var stale = false
+                    let url = try URL(resolvingBookmarkData: bookmark.data, options: .withSecurityScope, relativeTo: nil, bookmarkDataIsStale: &stale)
+                    
+                    // FIXME: This is imbalanced right now!
+                    if !url.startAccessingSecurityScopedResource() {
+                        throw CocoaError(.fileReadNoPermission)
+                    }
+                    
+                    return AttachedDiskImage(path: url.path, isReadOnly: bookmark.isReadOnly)
+                } catch {
+                    NSLog("Could not resolve attached disk image bookmark: \(error)")
+                    return nil
+                }
+            }
+        }
+        
+        set(images) {
+            attachedDiskImageBookmarks = images.compactMap { image in
+                do {
+                    let url = URL(fileURLWithPath: image.path)
+                    let data = try url.bookmarkData(options: image.isReadOnly ? [.withSecurityScope, .securityScopeAllowOnlyReadAccess] : .withSecurityScope, includingResourceValuesForKeys: nil, relativeTo: nil)
+                    return AttachedDiskImageBookmark(data: data, isReadOnly: image.isReadOnly)
+                } catch {
+                    NSLog("Could not create attached disk image bookmark: \(error)")
+                    return nil
+                }
+            }
+        }
+    }
 }
 
 extension VZVirtualMachineConfiguration {
