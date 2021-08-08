@@ -22,10 +22,13 @@ struct MacOSInstallView: View {
                         ProgressView(installer.progress)
                     } else {
                         Button("Start") {
-                            let installer = VZMacOSInstaller(virtualMachine: virtualMachineController.virtualMachine, restoringFromImageAt: restoreImageURL)
-                            self.installer = installer
-                            
                             virtualMachineController.dispatchQueue.async {
+                                let installer = VZMacOSInstaller(virtualMachine: virtualMachineController.virtualMachine, restoringFromImageAt: restoreImageURL)
+
+                                DispatchQueue.main.async {
+                                    self.installer = installer
+                                }
+
                                 NSLog("Starting installation into \(virtualMachineController) from \(restoreImageURL)")
                                 installer.install { result in
                                     DispatchQueue.main.async {
