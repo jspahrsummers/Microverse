@@ -8,7 +8,7 @@ _* Note that macOS is only supported as a guest VM on arm64 processors. This is 
 
 ## Requirements
 
-This project makes use of APIs from the macOS 12 (Monterey) [beta](https://beta.apple.com/sp/betaprogram/). ARM and Intel Macs should both work.
+This project makes use of APIs from the macOS 12 (Monterey) [beta](https://beta.apple.com/sp/betaprogram/).
 
 macOS 11 (Big Sur) is unsupported.
 
