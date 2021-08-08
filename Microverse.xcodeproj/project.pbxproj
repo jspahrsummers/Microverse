@@ -78,7 +78,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		352AF07026BAFCCE00AFD751 /* Views */ = {
+		352AF07026BAFCCE00AFD751 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				35CF8D8626B8837500E83536 /* AttachedDisksView.swift */,
@@ -96,7 +96,7 @@
 				35CF8D7B26B8431300E83536 /* VirtualMachineConfigurationView.swift */,
 				35CF8D7926B8421B00E83536 /* VirtualMachineView.swift */,
 			);
-			path = Views;
+			path = View;
 			sourceTree = "<group>";
 		};
 		352AF07126BAFCE500AFD751 /* Extensions */ = {
@@ -114,20 +114,13 @@
 				35CF8D6B26B8301000E83536 /* Info.plist */,
 				35CF8D8326B8829500E83536 /* Microverse.entitlements */,
 				35CF8D6026B8300F00E83536 /* MicroverseApp.swift */,
+				359B9B0526B8AAC100AA3989 /* MicroverseDocument.swift */,
 				35CF8D6826B8301000E83536 /* Preview Content */,
 			);
 			path = Application;
 			sourceTree = "<group>";
 		};
-		352AF07326BAFCF900AFD751 /* Documents */ = {
-			isa = PBXGroup;
-			children = (
-				359B9B0526B8AAC100AA3989 /* MicroverseDocument.swift */,
-			);
-			path = Documents;
-			sourceTree = "<group>";
-		};
-		352AF07426BAFCFE00AFD751 /* Models */ = {
+		352AF07426BAFCFE00AFD751 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				35C1E9ED26BF11E1005F47D0 /* AttachedDiskImage.swift */,
@@ -137,7 +130,7 @@
 				35CF8D7526B836A900E83536 /* VirtualMachine.swift */,
 				35CF8D7D26B855E200E83536 /* VirtualMachineConfiguration.swift */,
 			);
-			path = Models;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		35CF8D5426B8300F00E83536 = {
@@ -160,10 +153,9 @@
 			isa = PBXGroup;
 			children = (
 				352AF07226BAFCEB00AFD751 /* Application */,
-				352AF07326BAFCF900AFD751 /* Documents */,
 				352AF07126BAFCE500AFD751 /* Extensions */,
-				352AF07426BAFCFE00AFD751 /* Models */,
-				352AF07026BAFCCE00AFD751 /* Views */,
+				352AF07426BAFCFE00AFD751 /* Model */,
+				352AF07026BAFCCE00AFD751 /* View */,
 			);
 			path = Microverse;
 			sourceTree = "<group>";
