@@ -58,6 +58,7 @@ extension AttachedDiskImage: Codable {
     }
 }
 
+#if swift(>=5.5)
 extension VZDiskImageSynchronizationMode {
     init(_ mode: AttachedDiskImage.SynchronizationMode) {
         switch mode {
@@ -70,3 +71,4 @@ extension VZDiskImageSynchronizationMode {
         }
     }
 }
+#endif

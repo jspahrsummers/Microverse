@@ -19,7 +19,7 @@ struct DocumentView: View {
                 
                 switch platform {
                 case .macOS:
-                    #if arch(arm64)
+                    #if arch(arm64) && swift(>=5.5)
                     document.virtualMachine = .macOS(MacOSVirtualMachine(configuration: config))
                     #else
                     let alert = NSAlert()
@@ -38,7 +38,7 @@ struct DocumentView: View {
                 return document.virtualMachine!.linuxVM!
             }, set: { vm in document.virtualMachine = .linux(vm) }))
         
-        #if arch(arm64)
+        #if arch(arm64) && swift(>=5.5)
         case .some(.macOS):
             MacOSDocumentView(virtualMachine: Binding(get: {
                 return document.virtualMachine!.macOSVM!

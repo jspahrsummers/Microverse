@@ -8,7 +8,7 @@
 import SwiftUI
 import Virtualization
 
-#if arch(arm64)
+#if arch(arm64) && swift(>=5.5)
 
 struct MacOSInstallView: View {
     var virtualMachineController: VirtualMachineController

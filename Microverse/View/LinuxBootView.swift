@@ -18,7 +18,7 @@ struct LinuxBootView: View {
     @Binding var viewModel: LinuxBootViewModel
     
     var body: some View {
-        GroupBox("Linux Boot Options") {
+        GroupBox(label: Text("Linux Boot Options")) {
             HStack {
                 Form {
                     PathField(title: "Path to Kernel (vmlinux):", path: $viewModel.kernelPath, allowedContentTypes: [UTType.data])

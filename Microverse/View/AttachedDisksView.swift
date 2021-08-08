@@ -29,9 +29,10 @@ struct AttachedDisksView: View {
     @Binding var diskImages: [AttachedDiskImage]
     
     var body: some View {
-        GroupBox("Attached Disks") {
+        GroupBox(label: Text("Attached Disks")) {
             HStack {
                 Form {
+                    #if swift(>=5.5)
                     ForEach(Array($diskImages.enumerated()), id: \.offset) { index, element in
                         AttachedDiskView(label: "Disk Image \(index + 1):", diskImage: $diskImages[index])
                         HStack {
@@ -41,6 +42,7 @@ struct AttachedDisksView: View {
                             }
                         }
                     }
+                    #endif
                     HStack {
                         Spacer()
                         Button("Add") {

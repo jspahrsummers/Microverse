@@ -8,6 +8,8 @@
 import SwiftUI
 import Virtualization
 
+#if swift(>=5.5)
+
 struct VirtualMachineView: NSViewRepresentable {
     var virtualMachine: VZVirtualMachine?
     
@@ -22,3 +24,5 @@ struct VirtualMachineView: NSViewRepresentable {
         nsView.virtualMachine = virtualMachine
     }
 }
+
+#endif

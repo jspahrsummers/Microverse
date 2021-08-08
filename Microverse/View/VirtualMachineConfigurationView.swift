@@ -11,9 +11,10 @@ struct VirtualMachineConfigurationView: View {
     @Binding var configuration: VirtualMachineConfiguration
     
     var body: some View {
-        GroupBox("Virtual Machine") {
+        GroupBox(label: Text("Virtual Machine")) {
             HStack {
                 Form {
+                    #if swift(>=5.5)
                     Picker("CPUs:", selection: $configuration.CPUCount) {
                         ForEach(VirtualMachineConfiguration.minimumCPUCount...VirtualMachineConfiguration.maximumCPUCount, id: \.self) { count in
                             Text("\(count)")
@@ -32,6 +33,7 @@ struct VirtualMachineConfigurationView: View {
                         Text("\(Int(configuration.memoryMB)) MB").foregroundColor(Color.blue)
                         Spacer()
                     }
+                    #endif
                 }
             }
         }

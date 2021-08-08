@@ -20,7 +20,7 @@ extension VirtualMachine {
         case .linux:
             return .linuxVM
         
-        #if arch(arm64)
+        #if arch(arm64) && swift(>=5.5)
         case .macOS:
             return .macVM
         #endif
@@ -29,7 +29,7 @@ extension VirtualMachine {
 }
 
 struct MicroverseDocument: FileDocument {
-    #if arch(arm64)
+    #if arch(arm64) && swift(>=5.5)
     static var readableContentTypes: [UTType] { [.VM, .macVM, .linuxVM] }
     static var writableContentTypes: [UTType] { [.macVM, .linuxVM] }
     #else

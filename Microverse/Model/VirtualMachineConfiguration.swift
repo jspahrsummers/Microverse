@@ -26,13 +26,17 @@ extension VZVirtualMachineConfiguration {
         self.memorySize = config.memoryMB * 1024 * 1024
         self.memoryBalloonDevices = [VZVirtioTraditionalMemoryBalloonDeviceConfiguration()]
         self.entropyDevices = [VZVirtioEntropyDeviceConfiguration()]
+        
+        #if swift(>=5.5)
         self.pointingDevices = [VZUSBScreenCoordinatePointingDeviceConfiguration()]
         self.keyboards = [VZUSBKeyboardConfiguration()]
+        #endif
         
         let network = VZVirtioNetworkDeviceConfiguration()
         network.attachment = VZNATNetworkDeviceAttachment()
         self.networkDevices = [network]
         
+        #if swift(>=5.5)
         let audioOut = VZVirtioSoundDeviceOutputStreamConfiguration()
         audioOut.sink = VZHostAudioOutputStreamSink()
         
@@ -44,5 +48,6 @@ extension VZVirtualMachineConfiguration {
         let audioDevice = VZVirtioSoundDeviceConfiguration()
         audioDevice.streams = [audioIn, audioOut]
         self.audioDevices = [audioDevice]
+        #endif
     }
 }

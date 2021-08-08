@@ -17,7 +17,9 @@ struct LinuxDocumentView: View {
     
     var body: some View {
         if let virtualMachineController = virtualMachineController, running {
+            #if swift(>=5.5)
             VirtualMachineView(virtualMachine: virtualMachineController.virtualMachine)
+            #endif
         } else {
             HStack {
                 Spacer()
@@ -56,7 +58,7 @@ struct LinuxDocumentView: View {
                         
                         let consoleView = ConsoleView(fileHandleToReadFrom: pipeForReadingFromVM.fileHandleForReading, fileHandleToWriteTo: pipeForWritingToVM.fileHandleForWriting)
                         let window = NSWindow(rootView: consoleView)
-                        Task {
+                        DispatchQueue.main.async {
                             window.title = "Terminal"
                             window.setContentSize(NSSize(width: 800, height: 600))
                             window.makeKeyAndOrderFront(nil)

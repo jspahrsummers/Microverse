@@ -13,7 +13,7 @@ enum BlankDocumentVMPlatform: String, CaseIterable {
 }
 
 struct BlankDocumentView: View {
-    @State var platform: BlankDocumentVMPlatform = .macOS
+    @State var platform: BlankDocumentVMPlatform = .linux
     var action: (BlankDocumentVMPlatform) -> ()
     
     var body: some View {
@@ -22,11 +22,13 @@ struct BlankDocumentView: View {
             HStack {
                 Spacer()
                 Form {
+                    #if swift(>=5.5)
                     Picker("Platform:", selection: $platform) {
                         ForEach(BlankDocumentVMPlatform.allCases, id: \.self) { platform in
                             Text(platform.rawValue)
                         }
                     }.submitScope()
+                    #endif
                     Button("Create") {
                         action(platform)
                     } .keyboardShortcut(.defaultAction)
