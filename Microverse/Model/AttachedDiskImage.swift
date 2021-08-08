@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AttachedDiskImage: Codable {
+struct AttachedDiskImage: Codable, Equatable, Hashable {
     var path: String = ""
     var isReadOnly: Bool = true
 }

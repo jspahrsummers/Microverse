@@ -11,11 +11,12 @@ import Virtualization
 struct MacOSDocumentView: View {
     @Binding var virtualMachine: MacOSVirtualMachine
     @State var restoreImage: VZMacOSRestoreImage? = nil
-    @State var vzVirtualMachine: VZVirtualMachine? = nil
+    @State var virtualMachineController: VirtualMachineController? = nil
+    @State var running = false
     
     var body: some View {
-        if let vzVirtualMachine = vzVirtualMachine {
-            VirtualMachineView(virtualMachine: vzVirtualMachine)
+        if let virtualMachineController = virtualMachineController, running {
+            VirtualMachineView(virtualMachine: virtualMachineController.virtualMachine)
         } else {
             HStack {
                 Spacer()
@@ -62,38 +63,55 @@ struct MacOSDocumentView: View {
                         MacAuxiliaryStorageView(hardwareModel: hardwareModel, auxiliaryStorageURL: $virtualMachine.auxiliaryStorageURL)
                     }
                     
-                    if let vmConfig = try! VZVirtualMachineConfiguration(forMacOSVM: virtualMachine) {
+                    if let virtualMachineController = virtualMachineController {
                         if !virtualMachine.osInstalled {
-                            MacOSInstallView(vzVirtualMachineConfiguration: vmConfig, restoreImageURL: restoreImage!.url) {
+                            MacOSInstallView(virtualMachineController: virtualMachineController, restoreImageURL: restoreImage!.url) {
                                 virtualMachine.osInstalled = true
                             }
                         } else {
                             Button("Start") {
-                                do {
-                                    try vmConfig.validate()
-                                    vzVirtualMachine = VZVirtualMachine(configuration: vmConfig)
-                                    vzVirtualMachine!.start { result in
-                                        switch result {
-                                        case .success:
-                                            NSLog("Launched VM")
-                                        case let .failure(error):
-                                            NSLog("Failed to start VM: \(error)")
-                                            self.vzVirtualMachine = nil
+                                virtualMachineController.dispatchQueue.async {
+                                    virtualMachineController.virtualMachine.start { result in
+                                        DispatchQueue.main.async {
+                                            switch result {
+                                            case .success:
+                                                NSLog("Launched VM")
+                                                running = true
+                                            case let .failure(error):
+                                                NSLog("Failed to start VM: \(error)")
+                                            }
                                         }
                                     }
-                                } catch {
-                                    NSLog("Failed to validate machine configuration \(vmConfig): \(error)")
                                 }
                             }
                         }
                     }
                     Spacer()
-                }.onChange(of: restoreImage) { _ in
-                    if let hardwareModel = restoreImage?.mostFeaturefulSupportedConfiguration?.hardwareModel, virtualMachine.physicalMachine == nil {
-                        virtualMachine.physicalMachine = MacMachine(hardwareModelRepresentation: hardwareModel.dataRepresentation, machineIdentifierRepresentation: VZMacMachineIdentifier().dataRepresentation)
-                    }
                 }
                 Spacer()
+            }.onChange(of: restoreImage) { _ in
+                guard let hardwareModel = restoreImage?.mostFeaturefulSupportedConfiguration?.hardwareModel else {
+                    return
+                }
+                
+                virtualMachine.physicalMachine = virtualMachine.physicalMachine ?? MacMachine(hardwareModelRepresentation: hardwareModel.dataRepresentation, machineIdentifierRepresentation: VZMacMachineIdentifier().dataRepresentation)
+            }.task(id: virtualMachine) {
+                do {
+                    guard let vmConfig = try VZVirtualMachineConfiguration(forMacOSVM: virtualMachine) else {
+                        DispatchQueue.main.async {
+                            virtualMachineController = nil
+                        }
+                        
+                        return
+                    }
+                    
+                    let controller = try VirtualMachineController(configuration: vmConfig)
+                    DispatchQueue.main.async {
+                        virtualMachineController = controller
+                    }
+                } catch {
+                    NSLog("Error preparing virtual machine controller: \(error)")
+                }
             }
         }
     }

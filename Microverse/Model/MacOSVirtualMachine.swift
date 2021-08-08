@@ -8,7 +8,7 @@
 import Foundation
 import Virtualization
 
-struct MacMachine: Codable {
+struct MacMachine: Codable, Equatable, Hashable {
     var hardwareModelRepresentation: Data
     var hardwareModel: VZMacHardwareModel? {
         VZMacHardwareModel(dataRepresentation: hardwareModelRepresentation)
@@ -20,7 +20,7 @@ struct MacMachine: Codable {
     }
 }
 
-struct MacOSVirtualMachine: Codable, ConfigurableVirtualMachine {
+struct MacOSVirtualMachine: Codable, ConfigurableVirtualMachine, Equatable {
     var configuration: VirtualMachineConfiguration
     
     var startupDiskBookmark: Data? = nil

@@ -9,7 +9,7 @@ import SwiftUI
 import Virtualization
 
 struct MacOSInstallView: View {
-    var vzVirtualMachineConfiguration: VZVirtualMachineConfiguration
+    var virtualMachineController: VirtualMachineController
     var restoreImageURL: URL
     @State var installer: VZMacOSInstaller? = nil
     var action: () -> Void
@@ -22,22 +22,21 @@ struct MacOSInstallView: View {
                         ProgressView(installer.progress)
                     } else {
                         Button("Start") {
-                            do {
-                                try vzVirtualMachineConfiguration.validate()
-                            } catch {
-                                NSLog("Failed to validate machine configuration \(vzVirtualMachineConfiguration): \(error)")
-                            }
+                            let installer = VZMacOSInstaller(virtualMachine: virtualMachineController.virtualMachine, restoringFromImageAt: restoreImageURL)
+                            self.installer = installer
                             
-                            let vzVirtualMachine = VZVirtualMachine(configuration: vzVirtualMachineConfiguration)
-                            installer = VZMacOSInstaller(virtualMachine: vzVirtualMachine, restoringFromImageAt: restoreImageURL)
-                            NSLog("Starting installation into \(vzVirtualMachine) from \(restoreImageURL)")
-                            installer!.install { result in
-                                switch result {
-                                case .success:
-                                    action()
-                                case let .failure(error):
-                                    NSLog("Failed to install macOS into VM: \(error)")
-                                    self.installer = nil
+                            virtualMachineController.dispatchQueue.async {
+                                NSLog("Starting installation into \(virtualMachineController) from \(restoreImageURL)")
+                                installer.install { result in
+                                    DispatchQueue.main.async {
+                                        switch result {
+                                        case .success:
+                                            action()
+                                        case let .failure(error):
+                                            NSLog("Failed to install macOS into VM: \(error)")
+                                            self.installer = nil
+                                        }
+                                    }
                                 }
                             }
                         }

@@ -8,7 +8,7 @@
 import Foundation
 import Virtualization
 
-struct VirtualMachineConfiguration: Codable {
+struct VirtualMachineConfiguration: Codable, Equatable {
     static let minimumCPUCount = VZVirtualMachineConfiguration.minimumAllowedCPUCount
     static let maximumCPUCount = VZVirtualMachineConfiguration.maximumAllowedCPUCount
     static let minimumMemoryMB = max(VZVirtualMachineConfiguration.minimumAllowedMemorySize / 1024 / 1024, 256)
