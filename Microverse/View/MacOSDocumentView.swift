@@ -50,6 +50,7 @@ struct MacOSDocumentView: View {
                     }
                     
                     AttachedDisksView(diskImages: $virtualMachine.attachedDiskImages)
+                    SharedDirectoriesView(sharedDirectories: $virtualMachine.sharedDirectories)
                     
                     if virtualMachine.startupDiskURL != nil {
                         VirtualMachineConfigurationView(configuration: $virtualMachine.configuration)

@@ -88,12 +88,12 @@ struct MacOSVirtualMachine: Codable, ConfigurableVirtualMachine, Equatable {
     var physicalMachine: MacMachine? = nil
     var osInstalled = false
     
-    struct AttachedDiskImageBookmark: Codable, Equatable, Hashable {
+    struct AttachmentBookmark: Codable, Equatable, Hashable {
         var data: Data
         var isReadOnly: Bool
     }
     
-    var attachedDiskImageBookmarks: [AttachedDiskImageBookmark] = []
+    var attachedDiskImageBookmarks: [AttachmentBookmark] = []
     var attachedDiskImages: [AttachedDiskImage] {
         get {
             return attachedDiskImageBookmarks.compactMap { bookmark in
@@ -119,9 +119,44 @@ struct MacOSVirtualMachine: Codable, ConfigurableVirtualMachine, Equatable {
                 do {
                     let url = URL(fileURLWithPath: image.path)
                     let data = try url.bookmarkData(options: image.isReadOnly ? [.withSecurityScope, .securityScopeAllowOnlyReadAccess] : .withSecurityScope, includingResourceValuesForKeys: nil, relativeTo: nil)
-                    return AttachedDiskImageBookmark(data: data, isReadOnly: image.isReadOnly)
+                    return AttachmentBookmark(data: data, isReadOnly: image.isReadOnly)
                 } catch {
                     NSLog("Could not create attached disk image bookmark: \(error)")
+                    return nil
+                }
+            }
+        }
+    }
+    
+    var sharedDirectoryBookmarks: [AttachmentBookmark] = []
+    var sharedDirectories: [SharedDirectory] {
+        get {
+            return sharedDirectoryBookmarks.compactMap { bookmark in
+                do {
+                    var stale = false
+                    let url = try URL(resolvingBookmarkData: bookmark.data, options: .withSecurityScope, relativeTo: nil, bookmarkDataIsStale: &stale)
+                    
+                    // FIXME: This is imbalanced right now!
+                    if !url.startAccessingSecurityScopedResource() {
+                        throw CocoaError(.fileReadNoPermission)
+                    }
+                    
+                    return SharedDirectory(path: url.path, isReadOnly: bookmark.isReadOnly)
+                } catch {
+                    NSLog("Could not resolve shared directory bookmark: \(error)")
+                    return nil
+                }
+            }
+        }
+        
+        set(dirs) {
+            sharedDirectoryBookmarks = dirs.compactMap { dir in
+                do {
+                    let url = URL(fileURLWithPath: dir.path)
+                    let data = try url.bookmarkData(options: dir.isReadOnly ? [.withSecurityScope, .securityScopeAllowOnlyReadAccess] : .withSecurityScope, includingResourceValuesForKeys: nil, relativeTo: nil)
+                    return AttachmentBookmark(data: data, isReadOnly: dir.isReadOnly)
+                } catch {
+                    NSLog("Could not create shared directory bookmark: \(error)")
                     return nil
                 }
             }
@@ -145,6 +180,17 @@ extension VZVirtualMachineConfiguration {
         
         storageDevices.insert(VZVirtioBlockDeviceConfiguration(attachment: try VZDiskImageStorageDeviceAttachment(url: startupDiskURL, readOnly: false)), at: 0)
         self.storageDevices = storageDevices
+        
+        self.directorySharingDevices = try vm.sharedDirectories.map { dir in
+            let url = URL(fileURLWithPath: dir.path)
+            let tag = url.lastPathComponent
+            try VZVirtioFileSystemDeviceConfiguration.validateTag(tag)
+            
+            let share = VZSingleDirectoryShare(directory: VZSharedDirectory(url: url, readOnly: dir.isReadOnly))
+            let config = VZVirtioFileSystemDeviceConfiguration(tag: tag)
+            config.share = share
+            return config
+        }
         
         guard let hardwareModel = vm.physicalMachine?.hardwareModel, let machineIdentifier = vm.physicalMachine?.machineIdentifier, let auxiliaryStorageURL = vm.auxiliaryStorageURL else {
             return nil

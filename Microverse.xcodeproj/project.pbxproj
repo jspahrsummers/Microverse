@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3526598E26BFEFBF001D5029 /* VirtualMachineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3526598D26BFEFBF001D5029 /* VirtualMachineController.swift */; };
 		3526599026BFF2E2001D5029 /* MicroverseErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3526598F26BFF2E2001D5029 /* MicroverseErrors.swift */; };
+		3526599226C001D4001D5029 /* SharedDirectoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3526599126C001D4001D5029 /* SharedDirectoriesView.swift */; };
+		3526599426C00210001D5029 /* SharedDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3526599326C00210001D5029 /* SharedDirectory.swift */; };
 		352AF07626BAFDD700AFD751 /* PathField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352AF07526BAFDD700AFD751 /* PathField.swift */; };
 		352AF07A26BB026900AFD751 /* MacRestoreImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352AF07926BB026900AFD751 /* MacRestoreImageView.swift */; };
 		359B9B0626B8AAC100AA3989 /* MicroverseDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359B9B0526B8AAC100AA3989 /* MicroverseDocument.swift */; };
@@ -40,6 +42,8 @@
 /* Begin PBXFileReference section */
 		3526598D26BFEFBF001D5029 /* VirtualMachineController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualMachineController.swift; sourceTree = "<group>"; };
 		3526598F26BFF2E2001D5029 /* MicroverseErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroverseErrors.swift; sourceTree = "<group>"; };
+		3526599126C001D4001D5029 /* SharedDirectoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedDirectoriesView.swift; sourceTree = "<group>"; };
+		3526599326C00210001D5029 /* SharedDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedDirectory.swift; sourceTree = "<group>"; };
 		352AF07526BAFDD700AFD751 /* PathField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathField.swift; sourceTree = "<group>"; };
 		352AF07926BB026900AFD751 /* MacRestoreImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacRestoreImageView.swift; sourceTree = "<group>"; };
 		359B9B0526B8AAC100AA3989 /* MicroverseDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MicroverseDocument.swift; sourceTree = "<group>"; };
@@ -97,6 +101,7 @@
 				35FE87DF26BECD2E009B9B51 /* MacOSInstallView.swift */,
 				352AF07926BB026900AFD751 /* MacRestoreImageView.swift */,
 				352AF07526BAFDD700AFD751 /* PathField.swift */,
+				3526599126C001D4001D5029 /* SharedDirectoriesView.swift */,
 				35CF8D7B26B8431300E83536 /* VirtualMachineConfigurationView.swift */,
 				35CF8D7926B8421B00E83536 /* VirtualMachineView.swift */,
 			);
@@ -132,6 +137,7 @@
 				35FE87D926BEC041009B9B51 /* LinuxVirtualMachine.swift */,
 				35FE87DB26BEC049009B9B51 /* MacOSVirtualMachine.swift */,
 				3526598F26BFF2E2001D5029 /* MicroverseErrors.swift */,
+				3526599326C00210001D5029 /* SharedDirectory.swift */,
 				35CF8D7526B836A900E83536 /* VirtualMachine.swift */,
 				35CF8D7D26B855E200E83536 /* VirtualMachineConfiguration.swift */,
 				3526598D26BFEFBF001D5029 /* VirtualMachineController.swift */,
@@ -255,11 +261,13 @@
 				359B9B0626B8AAC100AA3989 /* MicroverseDocument.swift in Sources */,
 				35CF8D6126B8300F00E83536 /* MicroverseApp.swift in Sources */,
 				35CF8D8226B87D8600E83536 /* LinuxBootView.swift in Sources */,
+				3526599226C001D4001D5029 /* SharedDirectoriesView.swift in Sources */,
 				35CF8D8E26B89E9B00E83536 /* NSWindowExtensions.swift in Sources */,
 				35FE87D426BEB7C1009B9B51 /* BlankDocumentView.swift in Sources */,
 				35FE87D826BEBD62009B9B51 /* MacOSDocumentView.swift in Sources */,
 				35FE87DE26BEC05C009B9B51 /* ConfigurableVirtualMachine.swift in Sources */,
 				35FE87E226BEE980009B9B51 /* MacAuxiliaryStorageView.swift in Sources */,
+				3526599426C00210001D5029 /* SharedDirectory.swift in Sources */,
 				35CF8D7A26B8421B00E83536 /* VirtualMachineView.swift in Sources */,
 				35FE87E026BECD2E009B9B51 /* MacOSInstallView.swift in Sources */,
 				35CF8D8026B8704200E83536 /* DiskCreationView.swift in Sources */,
