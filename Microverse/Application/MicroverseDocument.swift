@@ -38,7 +38,8 @@ struct MicroverseDocument: FileDocument {
     #endif
     
     enum PackageItem: String {
-        case Metadata = "metadata.json"
+        case MetadataJSON = "metadata.json"
+        case MetadataPlist = "metadata.plist"
     }
 
     var virtualMachine: VirtualMachine?
@@ -48,11 +49,17 @@ struct MicroverseDocument: FileDocument {
     }
 
     init(configuration: ReadConfiguration) throws {
-        guard configuration.contentType.conforms(to: .VM), let metadata = configuration.file.fileWrappers?[PackageItem.Metadata.rawValue]?.regularFileContents else {
+        guard configuration.contentType.conforms(to: .VM) else {
             throw CocoaError(.fileReadCorruptFile)
         }
         
-        virtualMachine = try JSONDecoder().decode(VirtualMachine.self, from: metadata)
+        let wrappers = configuration.file.fileWrappers
+        if let metadata = wrappers?[PackageItem.MetadataPlist.rawValue]?.regularFileContents {
+            virtualMachine = try PropertyListDecoder().decode(VirtualMachine.self, from: metadata)
+        } else if let metadata = wrappers?[PackageItem.MetadataJSON.rawValue]?.regularFileContents {
+            virtualMachine = try JSONDecoder().decode(VirtualMachine.self, from: metadata)
+        }
+        
         if let virtualMachine = virtualMachine, !configuration.contentType.conforms(to: virtualMachine.contentType) {
             NSLog("Loaded virtual machine \(virtualMachine) had incorrect content type in document: \(configuration.contentType)")
         }
@@ -67,12 +74,12 @@ struct MicroverseDocument: FileDocument {
             throw CocoaError(.fileWriteInvalidFileName)
         }
         
-        let metadata = try JSONEncoder().encode(virtualMachine)
+        let metadata = try PropertyListEncoder().encode(virtualMachine)
         let metadataWrapper = FileWrapper(regularFileWithContents: metadata)
-        metadataWrapper.preferredFilename = PackageItem.Metadata.rawValue
+        metadataWrapper.preferredFilename = PackageItem.MetadataPlist.rawValue
         
         return FileWrapper(directoryWithFileWrappers: [
-            PackageItem.Metadata.rawValue: metadataWrapper
+            PackageItem.MetadataPlist.rawValue: metadataWrapper
         ])
     }
 }
