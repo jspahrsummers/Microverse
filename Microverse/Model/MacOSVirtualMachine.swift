@@ -91,6 +91,7 @@ struct MacOSVirtualMachine: Codable, ConfigurableVirtualMachine, Equatable {
     struct AttachedDiskImageBookmark: Codable, Equatable, Hashable {
         var data: Data
         var isReadOnly: Bool
+        var synchronizationMode: AttachedDiskImage.SynchronizationMode
     }
     
     var attachedDiskImageBookmarks: [AttachedDiskImageBookmark] = []
@@ -106,7 +107,7 @@ struct MacOSVirtualMachine: Codable, ConfigurableVirtualMachine, Equatable {
                         throw CocoaError(.fileReadNoPermission)
                     }
                     
-                    return AttachedDiskImage(path: url.path, isReadOnly: bookmark.isReadOnly)
+                    return AttachedDiskImage(path: url.path, isReadOnly: bookmark.isReadOnly, synchronizationMode: bookmark.synchronizationMode)
                 } catch {
                     NSLog("Could not resolve attached disk image bookmark: \(error)")
                     return nil
@@ -119,7 +120,7 @@ struct MacOSVirtualMachine: Codable, ConfigurableVirtualMachine, Equatable {
                 do {
                     let url = URL(fileURLWithPath: image.path)
                     let data = try url.bookmarkData(options: image.isReadOnly ? [.withSecurityScope, .securityScopeAllowOnlyReadAccess] : .withSecurityScope, includingResourceValuesForKeys: nil, relativeTo: nil)
-                    return AttachedDiskImageBookmark(data: data, isReadOnly: image.isReadOnly)
+                    return AttachedDiskImageBookmark(data: data, isReadOnly: image.isReadOnly, synchronizationMode: image.synchronizationMode)
                 } catch {
                     NSLog("Could not create attached disk image bookmark: \(error)")
                     return nil
@@ -140,7 +141,7 @@ extension VZVirtualMachineConfiguration {
         var storageDevices = try vm.attachedDiskImages.filter { image in
             !image.path.isEmpty
         }.map { image in
-            VZVirtioBlockDeviceConfiguration(attachment: try VZDiskImageStorageDeviceAttachment(url: URL(fileURLWithPath: image.path), readOnly: image.isReadOnly))
+            VZVirtioBlockDeviceConfiguration(attachment: try VZDiskImageStorageDeviceAttachment(url: URL(fileURLWithPath: image.path), readOnly: image.isReadOnly, cachingMode: .automatic, synchronizationMode: VZDiskImageSynchronizationMode(image.synchronizationMode)))
         }
         
         storageDevices.insert(VZVirtioBlockDeviceConfiguration(attachment: try VZDiskImageStorageDeviceAttachment(url: startupDiskURL, readOnly: false)), at: 0)

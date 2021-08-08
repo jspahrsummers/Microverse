@@ -14,7 +14,14 @@ struct AttachedDiskView: View {
     
     var body: some View {
         PathField(title: label, path: $diskImage.path, allowedContentTypes: [UTType.diskImage])
-        Toggle("Read only", isOn: $diskImage.isReadOnly)
+        HStack {
+            Picker("Synchronization Mode:", selection: $diskImage.synchronizationMode) {
+                ForEach(AttachedDiskImage.SynchronizationMode.allCases) { mode in
+                    Text(mode.rawValue).tag(mode)
+                }
+            }
+            Toggle("Read Only", isOn: $diskImage.isReadOnly)
+        }
     }
 }
 
@@ -26,12 +33,12 @@ struct AttachedDisksView: View {
             HStack {
                 Form {
                     ForEach(Array($diskImages.enumerated()), id: \.offset) { index, element in
+                        AttachedDiskView(label: "Disk Image \(index + 1):", diskImage: $diskImages[index])
                         HStack {
+                            Spacer()
                             Button("Remove") {
                                 diskImages.remove(at: index)
                             }
-                            Spacer()
-                            AttachedDiskView(label: "Disk Image \(index + 1):", diskImage: $diskImages[index])
                         }
                     }
                     HStack {
@@ -48,7 +55,7 @@ struct AttachedDisksView: View {
 
 struct AttachedDisksView_Previews: PreviewProvider {
     struct Holder: View {
-        @State var disks: [AttachedDiskImage] = []
+        @State var disks: [AttachedDiskImage] = [AttachedDiskImage()]
         var body: some View {
             return AttachedDisksView(diskImages: $disks)
         }
