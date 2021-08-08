@@ -22,13 +22,15 @@ struct MacRestoreImageView: View {
     
     var body: some View {
         let imageLoadCompleted = { (result: Result<VZMacOSRestoreImage, Error>) in
-            loading = false
-            guard case let .success(image) = result else {
-                print("Error loading macOS restore image:", result)
-                return
+            DispatchQueue.main.async {
+                loading = false
+                guard case let .success(image) = result else {
+                    print("Error loading macOS restore image:", result)
+                    return
+                }
+                
+                restoreImage = image
             }
-            
-            restoreImage = image
         }
         
         
