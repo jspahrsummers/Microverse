@@ -54,10 +54,16 @@ struct MicroverseDocument: FileDocument {
         }
         
         let wrappers = configuration.file.fileWrappers
-        if let metadata = wrappers?[PackageItem.MetadataPlist.rawValue]?.regularFileContents {
-            virtualMachine = try PropertyListDecoder().decode(VirtualMachine.self, from: metadata)
-        } else if let metadata = wrappers?[PackageItem.MetadataJSON.rawValue]?.regularFileContents {
-            virtualMachine = try JSONDecoder().decode(VirtualMachine.self, from: metadata)
+        
+        do {
+            if let metadata = wrappers?[PackageItem.MetadataPlist.rawValue]?.regularFileContents {
+                virtualMachine = try PropertyListDecoder().decode(VirtualMachine.self, from: metadata)
+            } else if let metadata = wrappers?[PackageItem.MetadataJSON.rawValue]?.regularFileContents {
+                virtualMachine = try JSONDecoder().decode(VirtualMachine.self, from: metadata)
+            }
+        } catch {
+            NSLog("Could not decode virtual machine metadata: \(error)")
+            throw error
         }
         
         if let virtualMachine = virtualMachine, !configuration.contentType.conforms(to: virtualMachine.contentType) {

@@ -22,113 +22,61 @@ struct MacMachine: Codable, Equatable, Hashable {
     }
 }
 
-struct MacOSVirtualMachine: Codable, ConfigurableVirtualMachine, Equatable {
+struct MacOSVirtualMachine: ConfigurableVirtualMachine, Equatable {
     var configuration: VirtualMachineConfiguration
-    
-    var startupDiskBookmark: Data? = nil
-    var startupDiskURL: URL? {
-        get {
-            guard let startupDiskBookmark = startupDiskBookmark else {
-                return nil
-            }
-
-            do {
-                var stale = false
-                let url = try URL(resolvingBookmarkData: startupDiskBookmark, options: .withSecurityScope, relativeTo: nil, bookmarkDataIsStale: &stale)
-                
-                // FIXME: This is imbalanced right now!
-                if !url.startAccessingSecurityScopedResource() {
-                    throw CocoaError(.fileReadNoPermission)
-                }
-                
-                return url
-            } catch {
-                NSLog("Could not resolve startup disk bookmark: \(error)")
-                return nil
-            }
-        }
-        set(url) {
-            do {
-                startupDiskBookmark = try url?.bookmarkData(options: .withSecurityScope, includingResourceValuesForKeys: nil, relativeTo: nil)
-            } catch {
-                NSLog("Could not create startup disk bookmark: \(error)")
-            }
-        }
-    }
-    
-    var auxiliaryStorageBookmark: Data? = nil
-    var auxiliaryStorageURL: URL? {
-        get {
-            guard let auxiliaryStorageBookmark = auxiliaryStorageBookmark else {
-                return nil
-            }
-            
-            do {
-                var stale = false
-                let url = try URL(resolvingBookmarkData: auxiliaryStorageBookmark, options: .withSecurityScope, relativeTo: nil, bookmarkDataIsStale: &stale)
-                
-                // FIXME: This is imbalanced right now!
-                if !url.startAccessingSecurityScopedResource() {
-                    throw CocoaError(.fileReadNoPermission)
-                }
-                
-                return url
-            } catch {
-                NSLog("Could not resolve auxiliary storage bookmark: \(error)")
-                return nil
-            }
-        }
-        set(url) {
-            do {
-                auxiliaryStorageBookmark = try url?.bookmarkData(options: .withSecurityScope, includingResourceValuesForKeys: nil, relativeTo: nil)
-            } catch {
-                NSLog("Could not create auxiliary storage bookmark: \(error)")
-            }
-        }
-    }
+    var startupDiskURL: URL? = nil
+    var auxiliaryStorageURL: URL? = nil
     
     var physicalMachine: MacMachine? = nil
     var osInstalled = false
-    
-    struct AttachedDiskImageBookmark: Codable, Equatable, Hashable {
-        var data: Data
-        var isReadOnly: Bool
-        var synchronizationMode: AttachedDiskImage.SynchronizationMode
+    var attachedDiskImages: [AttachedDiskImage] = []
+}
+
+extension MacOSVirtualMachine: Codable {
+    enum CodingKeys: CodingKey {
+        case configuration
+        case startupDiskBookmark
+        case auxiliaryStorageBookmark
+        case physicalMachine
+        case osInstalled
+        case attachedDiskImageBookmarks
     }
     
-    var attachedDiskImageBookmarks: [AttachedDiskImageBookmark] = []
-    var attachedDiskImages: [AttachedDiskImage] {
-        get {
-            return attachedDiskImageBookmarks.compactMap { bookmark in
-                do {
-                    var stale = false
-                    let url = try URL(resolvingBookmarkData: bookmark.data, options: .withSecurityScope, relativeTo: nil, bookmarkDataIsStale: &stale)
-                    
-                    // FIXME: This is imbalanced right now!
-                    if !url.startAccessingSecurityScopedResource() {
-                        throw CocoaError(.fileReadNoPermission)
-                    }
-                    
-                    return AttachedDiskImage(path: url.path, isReadOnly: bookmark.isReadOnly, synchronizationMode: bookmark.synchronizationMode)
-                } catch {
-                    NSLog("Could not resolve attached disk image bookmark: \(error)")
-                    return nil
-                }
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(configuration, forKey: .configuration)
+        try container.encodeIfPresent(bookmarkForURL: startupDiskURL, options: .withSecurityScope, forKey: .startupDiskBookmark)
+        try container.encodeIfPresent(bookmarkForURL: auxiliaryStorageURL, options: .withSecurityScope, forKey: .auxiliaryStorageBookmark)
+        try container.encodeIfPresent(physicalMachine, forKey: .physicalMachine)
+        try container.encode(osInstalled, forKey: .osInstalled)
+        try container.encode(attachedDiskImages, forKey: .attachedDiskImageBookmarks)
+    }
+
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        configuration = try values.decode(VirtualMachineConfiguration.self, forKey: .configuration)
+        
+        var stale = false
+        
+        startupDiskURL = try values.decodeURLFromBookmarkIfPresent(options: .withSecurityScope, forKey: .startupDiskBookmark, stale: &stale)
+        if let startupDiskURL = startupDiskURL {
+            // FIXME: This is imbalanced right now!
+            guard startupDiskURL.startAccessingSecurityScopedResource() else {
+                throw CocoaError(.fileReadNoPermission)
             }
         }
         
-        set(images) {
-            attachedDiskImageBookmarks = images.compactMap { image in
-                do {
-                    let url = URL(fileURLWithPath: image.path)
-                    let data = try url.bookmarkData(options: image.isReadOnly ? [.withSecurityScope, .securityScopeAllowOnlyReadAccess] : .withSecurityScope, includingResourceValuesForKeys: nil, relativeTo: nil)
-                    return AttachedDiskImageBookmark(data: data, isReadOnly: image.isReadOnly, synchronizationMode: image.synchronizationMode)
-                } catch {
-                    NSLog("Could not create attached disk image bookmark: \(error)")
-                    return nil
-                }
+        auxiliaryStorageURL = try values.decodeURLFromBookmarkIfPresent(options: .withSecurityScope, forKey: .auxiliaryStorageBookmark, stale: &stale)
+        if let auxiliaryStorageURL = auxiliaryStorageURL {
+            // FIXME: This is imbalanced right now!
+            guard auxiliaryStorageURL.startAccessingSecurityScopedResource() else {
+                throw CocoaError(.fileReadNoPermission)
             }
         }
+        
+        physicalMachine = try values.decodeIfPresent(MacMachine.self, forKey: .physicalMachine)
+        osInstalled = try values.decode(Bool.self, forKey: .osInstalled)
+        attachedDiskImages = try values.decode([AttachedDiskImage].self, forKey: .attachedDiskImageBookmarks)
     }
 }
 
