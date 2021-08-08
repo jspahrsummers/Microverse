@@ -9,6 +9,8 @@ import SwiftUI
 import UniformTypeIdentifiers
 import Virtualization
 
+#if arch(arm64)
+
 struct MacAuxiliaryStorageView: View {
     var hardwareModel: VZMacHardwareModel
     @Binding var auxiliaryStorageURL: URL?
@@ -48,3 +50,5 @@ struct MacAuxiliaryStorageView: View {
         }
     }
 }
+
+#endif

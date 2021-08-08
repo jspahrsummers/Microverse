@@ -19,15 +19,23 @@ extension VirtualMachine {
         switch self {
         case .linux:
             return .linuxVM
+        
+        #if arch(arm64)
         case .macOS:
             return .macVM
+        #endif
         }
     }
 }
 
 struct MicroverseDocument: FileDocument {
-    static var readableContentTypes: [UTType] { [.VM, .linuxVM, .macVM] }
+    #if arch(arm64)
+    static var readableContentTypes: [UTType] { [.VM, .macVM, .linuxVM] }
     static var writableContentTypes: [UTType] { [.macVM, .linuxVM] }
+    #else
+    static var readableContentTypes: [UTType] { [.VM, .linuxVM] }
+    static var writableContentTypes: [UTType] { [.linuxVM] }
+    #endif
     
     enum PackageItem: String {
         case Metadata = "metadata.json"

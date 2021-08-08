@@ -9,6 +9,8 @@ import SwiftUI
 import UniformTypeIdentifiers
 import Virtualization
 
+#if arch(arm64)
+
 enum MacRestoreImageSource {
     case latest
     case fromFile
@@ -87,3 +89,5 @@ struct MacRestoreView_Previews: PreviewProvider {
         Holder()
     }
 }
+
+#endif

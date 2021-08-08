@@ -8,6 +8,8 @@
 import SwiftUI
 import Virtualization
 
+#if arch(arm64)
+
 struct MacOSDocumentView: View {
     @Binding var virtualMachine: MacOSVirtualMachine
     @State var restoreImage: VZMacOSRestoreImage? = nil
@@ -129,3 +131,5 @@ struct MacOSDocumentView_Previews: PreviewProvider {
         Holder()
     }
 }
+
+#endif

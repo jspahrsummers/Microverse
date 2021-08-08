@@ -19,7 +19,14 @@ struct DocumentView: View {
                 
                 switch platform {
                 case .macOS:
+                    #if arch(arm64)
                     document.virtualMachine = .macOS(MacOSVirtualMachine(configuration: config))
+                    #else
+                    let alert = NSAlert()
+                    alert.messageText = "Unsupported platform"
+                    alert.informativeText = "Running macOS as a guest VM requires an arm64 machine."
+                    alert.runModal()
+                    #endif
                     
                 case .linux:
                     document.virtualMachine = .linux(LinuxVirtualMachine(configuration: config))
@@ -30,11 +37,13 @@ struct DocumentView: View {
             LinuxDocumentView(virtualMachine: Binding(get: {
                 return document.virtualMachine!.linuxVM!
             }, set: { vm in document.virtualMachine = .linux(vm) }))
-            
+        
+        #if arch(arm64)
         case .some(.macOS):
             MacOSDocumentView(virtualMachine: Binding(get: {
                 return document.virtualMachine!.macOSVM!
             }, set: { vm in document.virtualMachine = .macOS(vm) }))
+        #endif
         }
     }
 }

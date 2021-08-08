@@ -1,8 +1,10 @@
 # Microverse
 
-[Microverse](https://rickandmorty.fandom.com/wiki/Microverse_Battery) is a thin virtualization app for macOS, which allows running Linux and macOS guest virtual machines, achieved with [macOS' own virtualization framework](https://developer.apple.com/documentation/virtualization).
+[Microverse](https://rickandmorty.fandom.com/wiki/Microverse_Battery) is a thin virtualization app for macOS, which allows running Linux and macOS* guest virtual machines, achieved with [Apple's `Virtualization.framework`](https://developer.apple.com/documentation/virtualization).
 
 Note that this does not do any _emulation_—the virtual machines run on the same hardware as the host machine (and therefore have the same architecture). This is particularly useful to create sandbox environments with minimal performance impact.
+
+_* Note that macOS is only supported as a guest VM on arm64 processors. This is a limitation of the virtualization framework._
 
 ## Requirements
 
@@ -12,7 +14,7 @@ macOS 11 (Big Sur) is unsupported.
 
 ## macOS
 
-macOS is supported as a guest OS, but only [macOS 12 (Monterey) ipsw files](https://mrmacintosh.com/apple-silicon-m1-full-macos-restore-ipsw-firmware-files-database/) are known to work.
+macOS is supported as a guest OS **on arm64 only**. Only [macOS 12 (Monterey) ipsw files](https://mrmacintosh.com/apple-silicon-m1-full-macos-restore-ipsw-firmware-files-database/) are known to work.
 
 There's a known issue where the App Store cannot be contacted from within a VM. Any applications you want to run will need to be downloaded from the web, or imported into the VM using a disk image in UDRW format (see `man hdiutil` for details).
 

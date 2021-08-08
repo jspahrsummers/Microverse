@@ -8,6 +8,8 @@
 import SwiftUI
 import Virtualization
 
+#if arch(arm64)
+
 struct MacOSInstallView: View {
     var virtualMachineController: VirtualMachineController
     var restoreImageURL: URL
@@ -49,3 +51,5 @@ struct MacOSInstallView: View {
         }
     }
 }
+
+#endif

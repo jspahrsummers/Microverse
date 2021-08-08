@@ -9,7 +9,6 @@ import Foundation
 
 enum VirtualMachine: Codable, ConfigurableVirtualMachine {
     case linux(LinuxVirtualMachine)
-    case macOS(MacOSVirtualMachine)
     
     var linuxVM: LinuxVirtualMachine? {
         switch self {
@@ -20,6 +19,9 @@ enum VirtualMachine: Codable, ConfigurableVirtualMachine {
         }
     }
     
+    #if arch(arm64)
+    case macOS(MacOSVirtualMachine)
+    
     var macOSVM: MacOSVirtualMachine? {
         switch self {
         case let .macOS(vm):
@@ -28,22 +30,29 @@ enum VirtualMachine: Codable, ConfigurableVirtualMachine {
             return nil
         }
     }
+    #endif
     
     var configuration: VirtualMachineConfiguration {
         get {
             switch self {
             case let .linux(vm):
                 return vm.configuration
+            
+            #if arch(arm64)
             case let .macOS(vm):
                 return vm.configuration
+            #endif
             }
         }
         set(value) {
             switch self {
             case var .linux(vm):
                 vm.configuration = value
+                
+            #if arch(arm64)
             case var .macOS(vm):
                 vm.configuration = value
+            #endif
             }
         }
     }

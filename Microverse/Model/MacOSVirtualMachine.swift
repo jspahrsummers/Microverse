@@ -8,6 +8,8 @@
 import Foundation
 import Virtualization
 
+#if arch(arm64)
+
 struct MacMachine: Codable, Equatable, Hashable {
     var hardwareModelRepresentation: Data
     var hardwareModel: VZMacHardwareModel? {
@@ -178,3 +180,5 @@ extension VZVirtualMachineConfiguration {
 //        self.directorySharingDevices = [fsDevice]
     }
 }
+
+#endif
