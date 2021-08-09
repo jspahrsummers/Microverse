@@ -68,25 +68,42 @@ final class VirtualMachineController: NSObject, VZVirtualMachineDelegate {
             throw MicroverseError.invalidData
         }
         
-        try withAskPassInTemporaryFile(password: password) { askPassURL in
-            let pipe = Pipe()
-            
-            var environment = ProcessInfo.processInfo.environment
-            environment["SSH_ASKPASS_REQUIRE"] = "force"
-            environment["SSH_ASKPASS"] = askPassURL.path
-            
-            let process = Process()
-            process.launchPath = "/usr/bin/ssh"
-            process.arguments = ["-o", "StrictHostKeyChecking=no", "-o", "UserKnownHostsFile=/dev/null", "-l", username, address, "pbcopy"]
-            process.standardInput = pipe
-            try process.run()
-            
-            try pipe.fileHandleForWriting.write(contentsOf: data)
-            pipe.fileHandleForWriting.closeFile()
-            
-            // TODO: Make this async
-            process.waitUntilExit()
+        guard let expectScriptURL = Bundle(identifier: "com.metacognitive.Microverse")?.url(forResource: "vmpaste", withExtension: "expect") else {
+            throw MicroverseError.couldNotLoadResourceFromBundle
         }
+        
+        let inputPipe = Pipe()
+        let outputPipe = Pipe()
+        
+        var environment = ProcessInfo().environment
+        environment["SSH_ASKPASS_REQUIRE"] = "never"
+        
+        let process = Process()
+        process.launchPath = "/usr/bin/expect"
+        process.environment = environment
+        process.arguments = [expectScriptURL.path, address, username, password]
+        process.standardInput = inputPipe
+        process.standardOutput = outputPipe
+        try process.run()
+        
+        outputPipe.fileHandleForReading.readabilityHandler = { fileHandle in
+            guard let str = String(data: fileHandle.availableData, encoding: .utf8) else {
+                return
+            }
+            print(str)
+            
+            if str.contains("READY") {
+                do {
+                    try inputPipe.fileHandleForWriting.write(contentsOf: data)
+                    try inputPipe.fileHandleForWriting.close()
+                } catch {
+                    NSLog("Could not paste into VM: \(error)")
+                }
+            }
+        }
+        
+        // TODO: Make this async
+        process.waitUntilExit()
     }
     
     func copyFromVM(username: String, password: String) throws -> String {

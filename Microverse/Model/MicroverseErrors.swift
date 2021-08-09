@@ -11,4 +11,5 @@ enum MicroverseError: Error {
     case stringEncodingError
     case vmNotFoundOnNetwork
     case invalidData
+    case couldNotLoadResourceFromBundle
 }

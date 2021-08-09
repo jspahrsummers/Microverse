@@ -1,0 +1,11 @@
+#!/usr/bin/expect
+
+set hostname [lindex $argv 0]
+set username [lindex $argv 1]
+set password [lindex $argv 2]
+
+spawn ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -l "$username" "$hostname"
+expect -nocase Password:
+send "$password\r"
+puts "READY"
+interact

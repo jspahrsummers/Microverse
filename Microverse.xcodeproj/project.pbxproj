@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		350081F826C1E24700E2CA73 /* vmpaste.expect in Resources */ = {isa = PBXBuildFile; fileRef = 350081F726C1E24700E2CA73 /* vmpaste.expect */; };
 		3526598E26BFEFBF001D5029 /* VirtualMachineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3526598D26BFEFBF001D5029 /* VirtualMachineController.swift */; };
 		3526599026BFF2E2001D5029 /* MicroverseErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3526598F26BFF2E2001D5029 /* MicroverseErrors.swift */; };
 		352AF07626BAFDD700AFD751 /* PathField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352AF07526BAFDD700AFD751 /* PathField.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		350081F726C1E24700E2CA73 /* vmpaste.expect */ = {isa = PBXFileReference; lastKnownFileType = text; path = vmpaste.expect; sourceTree = "<group>"; };
 		3526598D26BFEFBF001D5029 /* VirtualMachineController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualMachineController.swift; sourceTree = "<group>"; };
 		3526598F26BFF2E2001D5029 /* MicroverseErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroverseErrors.swift; sourceTree = "<group>"; };
 		352AF07526BAFDD700AFD751 /* PathField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathField.swift; sourceTree = "<group>"; };
@@ -86,6 +88,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		350081F926C1E33600E2CA73 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				350081F726C1E24700E2CA73 /* vmpaste.expect */,
+			);
+			path = Scripts;
+			sourceTree = "<group>";
+		};
 		352AF07026BAFCCE00AFD751 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +177,7 @@
 				352AF07226BAFCEB00AFD751 /* Application */,
 				352AF07126BAFCE500AFD751 /* Extensions */,
 				352AF07426BAFCFE00AFD751 /* Model */,
+				350081F926C1E33600E2CA73 /* Scripts */,
 				352AF07026BAFCCE00AFD751 /* View */,
 			);
 			path = Microverse;
@@ -245,6 +256,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				35CF8D6A26B8301000E83536 /* Preview Assets.xcassets in Resources */,
+				350081F826C1E24700E2CA73 /* vmpaste.expect in Resources */,
 				35CF8D6726B8301000E83536 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
