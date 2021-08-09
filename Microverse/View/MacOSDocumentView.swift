@@ -19,14 +19,7 @@ struct MacOSDocumentView: View {
     var body: some View {
         if let virtualMachineController = virtualMachineController, running {
             VStack {
-                Button("Find IP") {
-                    do {
-                        let addrs = try virtualMachineController.lookUpAddresses()
-                        NSLog("Addresses: \(addrs)")
-                    } catch {
-                        NSLog("Error looking up network address: \(error)")
-                    }
-                }
+                VirtualMachineToolbar(virtualMachineController: virtualMachineController)
                 VirtualMachineView(virtualMachine: virtualMachineController.virtualMachine)
             }
         } else {
