@@ -24,12 +24,10 @@ enum VirtualMachine: Codable, ConfigurableVirtualMachine {
             let linux = try value.decode(LinuxVirtualMachine.self, forKey: .linux)
             self = .linux(linux)
         } else {
-            var unsupportedOS = true
             #if arch(arm64) && swift(>=5.5)
             if #available(macOS 12.0, *) {
                 let macOS = try value.decode(MacOSVirtualMachine.self, forKey: .macOS)
                 self = .macOS(macOS)
-                unsupportedOS = false
                 return // need an early exit because the swift exhaustiveness checker is lazy
             }
             #endif
