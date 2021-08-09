@@ -40,14 +40,14 @@ struct DocumentView: View {
                 return document.virtualMachine!.linuxVM!
             }, set: { vm in document.virtualMachine = .linux(vm) }))
         
-        #if arch(arm64) && swift(>=5.5)
+#if arch(arm64) && swift(>=5.5)
         case .some(.macOS):
             if #available(macOS 12.0, *) {
                 MacOSDocumentView(virtualMachine: Binding(get: {
                     return document.virtualMachine!.macOSVM!
                 }, set: { vm in document.virtualMachine = .macOS(vm) }))
             }
-        #endif
+#endif
         }
     }
 }

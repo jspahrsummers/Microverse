@@ -60,12 +60,14 @@ enum VirtualMachine: Codable, ConfigurableVirtualMachine {
         switch self {
         case let .linux(vm):
             return vm
+#if canImport(GroupActivities)
         default:
             return nil
+#endif
         }
     }
     
-    #if arch(arm64) && swift(>=5.5)
+#if arch(arm64) && swift(>=5.5)
     case macOS(MacOSVirtualMachine)
     
     @available(macOS 12.0, *)
@@ -77,7 +79,7 @@ enum VirtualMachine: Codable, ConfigurableVirtualMachine {
             return nil
         }
     }
-    #endif
+#endif
     
     var configuration: VirtualMachineConfiguration {
         get {
