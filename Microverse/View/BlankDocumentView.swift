@@ -22,13 +22,15 @@ struct BlankDocumentView: View {
             HStack {
                 Spacer()
                 Form {
-                    #if swift(>=5.5)
-                    Picker("Platform:", selection: $platform) {
-                        ForEach(BlankDocumentVMPlatform.allCases, id: \.self) { platform in
-                            Text(platform.rawValue)
-                        }
-                    }.submitScope()
-                    #endif
+                    if #available(macOS 12.0, *) {
+#if swift(>=5.5)
+                        Picker("Platform:", selection: $platform) {
+                            ForEach(BlankDocumentVMPlatform.allCases, id: \.self) { platform in
+                                Text(platform.rawValue)
+                            }
+                        }.submitScope()
+#endif
+                    }
                     Button("Create") {
                         action(platform)
                     } .keyboardShortcut(.defaultAction)

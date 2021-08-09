@@ -11,6 +11,7 @@ import Virtualization
 
 #if arch(arm64) && swift(>=5.5)
 
+@available(macOS 12.0, *)
 struct MacAuxiliaryStorageView: View {
     var hardwareModel: VZMacHardwareModel
     @Binding var auxiliaryStorageURL: URL?

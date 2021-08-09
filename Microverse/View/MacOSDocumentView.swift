@@ -10,6 +10,7 @@ import Virtualization
 
 #if arch(arm64) && swift(>=5.5)
 
+@available(macOS 12.0, *)
 struct MacOSDocumentView: View {
     @Binding var virtualMachine: MacOSVirtualMachine
     @State var restoreImage: VZMacOSRestoreImage? = nil
@@ -119,6 +120,7 @@ struct MacOSDocumentView: View {
     }
 }
 
+@available(macOS 12.0, *)
 struct MacOSDocumentView_Previews: PreviewProvider {
     struct Holder: View {
         @State var virtualMachine = MacOSVirtualMachine(configuration: VirtualMachineConfiguration())

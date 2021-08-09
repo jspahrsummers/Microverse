@@ -10,6 +10,7 @@ import Virtualization
 
 #if swift(>=5.5)
 
+@available(macOS 12.0, *)
 struct VirtualMachineView: NSViewRepresentable {
     var virtualMachine: VZVirtualMachine?
     

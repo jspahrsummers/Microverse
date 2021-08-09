@@ -16,6 +16,7 @@ enum MacRestoreImageSource {
     case fromFile
 }
 
+@available(macOS 12.0, *)
 struct MacRestoreImageView: View {
     @Binding var restoreImage: VZMacOSRestoreImage?
     @State var ipswPath: String = ""
@@ -77,6 +78,7 @@ struct MacRestoreImageView: View {
     }
 }
 
+@available(macOS 12.0, *)
 struct MacRestoreView_Previews: PreviewProvider {
     struct Holder: View {
         @State var restoreImage: VZMacOSRestoreImage? = nil

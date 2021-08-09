@@ -59,6 +59,7 @@ extension AttachedDiskImage: Codable {
 }
 
 #if swift(>=5.5)
+@available(macOS 12.0, *)
 extension VZDiskImageSynchronizationMode {
     init(_ mode: AttachedDiskImage.SynchronizationMode) {
         switch mode {

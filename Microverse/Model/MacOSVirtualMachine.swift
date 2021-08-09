@@ -12,11 +12,13 @@ import Virtualization
 
 struct MacMachine: Codable, Equatable, Hashable {
     var hardwareModelRepresentation: Data
+    @available(macOS 12.0, *)
     var hardwareModel: VZMacHardwareModel? {
         VZMacHardwareModel(dataRepresentation: hardwareModelRepresentation)
     }
     
     var machineIdentifierRepresentation: Data
+    @available(macOS 12.0, *)
     var machineIdentifier: VZMacMachineIdentifier? {
         VZMacMachineIdentifier(dataRepresentation: machineIdentifierRepresentation)
     }
@@ -32,6 +34,7 @@ struct MacOSVirtualMachine: ConfigurableVirtualMachine, Equatable {
     var attachedDiskImages: [AttachedDiskImage] = []
 }
 
+@available(macOS 12.0, *)
 extension MacOSVirtualMachine: Codable {
     enum CodingKeys: CodingKey {
         case configuration
@@ -80,6 +83,7 @@ extension MacOSVirtualMachine: Codable {
     }
 }
 
+@available(macOS 12.0, *)
 extension VZVirtualMachineConfiguration {
     convenience init?(forMacOSVM vm: MacOSVirtualMachine) throws {
         self.init(vm.configuration)

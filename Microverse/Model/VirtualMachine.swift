@@ -11,6 +11,7 @@ enum VirtualMachine: Codable, ConfigurableVirtualMachine {
     
     private enum CodingKeys: String, CodingKey {
         case linux
+        case macOS
     }
     
     enum CodingError: Error {
@@ -23,6 +24,15 @@ enum VirtualMachine: Codable, ConfigurableVirtualMachine {
             let linux = try value.decode(LinuxVirtualMachine.self, forKey: .linux)
             self = .linux(linux)
         } else {
+            var unsupportedOS = true
+            #if arch(arm64) && swift(>=5.5)
+            if #available(macOS 12.0, *) {
+                let macOS = try value.decode(MacOSVirtualMachine.self, forKey: .macOS)
+                self = .macOS(macOS)
+                unsupportedOS = false
+                return // need an early exit because the swift exhaustiveness checker is lazy
+            }
+            #endif
             throw CodingError.unsupported("unsupported vm for platform")
         }
     }
@@ -32,6 +42,17 @@ enum VirtualMachine: Codable, ConfigurableVirtualMachine {
         switch self {
         case .linux(let vm):
             try key.encode(vm, forKey: .linux)
+        default:
+            #if arch(arm64) && swift(>=5.5)
+            if #available(macOS 12.0, *) {
+                switch self {
+                case .macOS(let vm):
+                    try key.encode(vm, forKey: .macOS)
+                default:
+                    fatalError("bad programmer can't pattern match correctly")
+                }
+            }
+            #endif
         }
     }
     
@@ -49,6 +70,7 @@ enum VirtualMachine: Codable, ConfigurableVirtualMachine {
     #if arch(arm64) && swift(>=5.5)
     case macOS(MacOSVirtualMachine)
     
+    @available(macOS 12.0, *)
     var macOSVM: MacOSVirtualMachine? {
         switch self {
         case let .macOS(vm):

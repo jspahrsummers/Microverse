@@ -27,27 +27,31 @@ extension VZVirtualMachineConfiguration {
         self.memoryBalloonDevices = [VZVirtioTraditionalMemoryBalloonDeviceConfiguration()]
         self.entropyDevices = [VZVirtioEntropyDeviceConfiguration()]
         
-        #if swift(>=5.5)
-        self.pointingDevices = [VZUSBScreenCoordinatePointingDeviceConfiguration()]
-        self.keyboards = [VZUSBKeyboardConfiguration()]
-        #endif
+        if #available(macOS 12.0, *) {
+#if swift(>=5.5)
+            self.pointingDevices = [VZUSBScreenCoordinatePointingDeviceConfiguration()]
+            self.keyboards = [VZUSBKeyboardConfiguration()]
+#endif
+        }
         
         let network = VZVirtioNetworkDeviceConfiguration()
         network.attachment = VZNATNetworkDeviceAttachment()
         self.networkDevices = [network]
         
-        #if swift(>=5.5)
-        let audioOut = VZVirtioSoundDeviceOutputStreamConfiguration()
-        audioOut.sink = VZHostAudioOutputStreamSink()
-        
-        AVCaptureDevice.requestAccess(for: .audio) { _ in }
-        
-        let audioIn = VZVirtioSoundDeviceInputStreamConfiguration()
-        audioIn.source = VZHostAudioInputStreamSource()
-        
-        let audioDevice = VZVirtioSoundDeviceConfiguration()
-        audioDevice.streams = [audioIn, audioOut]
-        self.audioDevices = [audioDevice]
-        #endif
+        if #available(macOS 12.0, *) {
+#if swift(>=5.5)
+            let audioOut = VZVirtioSoundDeviceOutputStreamConfiguration()
+            audioOut.sink = VZHostAudioOutputStreamSink()
+            
+            AVCaptureDevice.requestAccess(for: .audio) { _ in }
+            
+            let audioIn = VZVirtioSoundDeviceInputStreamConfiguration()
+            audioIn.source = VZHostAudioInputStreamSource()
+            
+            let audioDevice = VZVirtioSoundDeviceConfiguration()
+            audioDevice.streams = [audioIn, audioOut]
+            self.audioDevices = [audioDevice]
+#endif
+        }
     }
 }

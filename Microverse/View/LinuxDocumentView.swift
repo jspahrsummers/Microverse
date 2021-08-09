@@ -17,9 +17,11 @@ struct LinuxDocumentView: View {
     
     var body: some View {
         if let virtualMachineController = virtualMachineController, running {
-            #if swift(>=5.5)
-            VirtualMachineView(virtualMachine: virtualMachineController.virtualMachine)
-            #endif
+            if #available(macOS 12.0, *) {
+#if swift(>=5.5)
+                VirtualMachineView(virtualMachine: virtualMachineController.virtualMachine)
+#endif
+            }
         } else {
             HStack {
                 Spacer()

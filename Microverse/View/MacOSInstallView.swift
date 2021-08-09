@@ -10,14 +10,16 @@ import Virtualization
 
 #if arch(arm64) && swift(>=5.5)
 
+@available(macOS 12.0, *)
 struct MacOSInstallView: View {
     var virtualMachineController: VirtualMachineController
     var restoreImageURL: URL
+    @available(macOS 12.0, *)
     @State var installer: VZMacOSInstaller? = nil
     var action: () -> Void
     
     var body: some View {
-        GroupBox("macOS Installation") {
+        GroupBox(label: Text("macOS Installation")) {
             HStack {
                 Form {
                     if let installer = installer {
@@ -26,11 +28,11 @@ struct MacOSInstallView: View {
                         Button("Start") {
                             virtualMachineController.dispatchQueue.async {
                                 let installer = VZMacOSInstaller(virtualMachine: virtualMachineController.virtualMachine, restoringFromImageAt: restoreImageURL)
-
+                                
                                 DispatchQueue.main.async {
                                     self.installer = installer
                                 }
-
+                                
                                 NSLog("Starting installation into \(virtualMachineController) from \(restoreImageURL)")
                                 installer.install { result in
                                     DispatchQueue.main.async {
