@@ -118,14 +118,6 @@ extension VZVirtualMachineConfiguration {
         self.graphicsDevices = [graphics]
         
         self.bootLoader = VZMacOSBootLoader()
-        
-//        let sharedDirectory = VZSharedDirectory(url: URL(fileURLWithPath: "/Applications"), readOnly: true)
-//        let tag = "HostApplications"
-//        try VZVirtioFileSystemDeviceConfiguration.validateTag(tag)
-//
-//        let fsDevice = VZVirtioFileSystemDeviceConfiguration(tag: tag)
-//        fsDevice.share = VZSingleDirectoryShare(directory: sharedDirectory)
-//        self.directorySharingDevices = [fsDevice]
     }
 }
 
