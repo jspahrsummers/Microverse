@@ -14,6 +14,7 @@
 		357457C426C044E700BFA2D7 /* KeyedCodingExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357457C326C044E700BFA2D7 /* KeyedCodingExtensions.swift */; };
 		357B42C126C2F9D2007E0036 /* CGRPCZlib in Frameworks */ = {isa = PBXBuildFile; productRef = 357B42C026C2F9D2007E0036 /* CGRPCZlib */; };
 		357B42C326C2F9D2007E0036 /* GRPC in Frameworks */ = {isa = PBXBuildFile; productRef = 357B42C226C2F9D2007E0036 /* GRPC */; };
+		357B42CB26C2FA3D007E0036 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357B42CA26C2FA3D007E0036 /* main.swift */; };
 		359B9B0626B8AAC100AA3989 /* MicroverseDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359B9B0526B8AAC100AA3989 /* MicroverseDocument.swift */; };
 		35C1E9EE26BF11E1005F47D0 /* AttachedDiskImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C1E9ED26BF11E1005F47D0 /* AttachedDiskImage.swift */; };
 		35CF8D6126B8300F00E83536 /* MicroverseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF8D6026B8300F00E83536 /* MicroverseApp.swift */; };
@@ -34,12 +35,26 @@
 		35FE87E226BEE980009B9B51 /* MacAuxiliaryStorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE87E126BEE980009B9B51 /* MacAuxiliaryStorageView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		357B42C626C2FA3C007E0036 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		3526598D26BFEFBF001D5029 /* VirtualMachineController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualMachineController.swift; sourceTree = "<group>"; };
 		3526598F26BFF2E2001D5029 /* MicroverseErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroverseErrors.swift; sourceTree = "<group>"; };
 		352AF07526BAFDD700AFD751 /* PathField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathField.swift; sourceTree = "<group>"; };
 		352AF07926BB026900AFD751 /* MacRestoreImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacRestoreImageView.swift; sourceTree = "<group>"; };
 		357457C326C044E700BFA2D7 /* KeyedCodingExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyedCodingExtensions.swift; sourceTree = "<group>"; };
+		357B42C826C2FA3C007E0036 /* MicroverseGuestOSService */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MicroverseGuestOSService; sourceTree = BUILT_PRODUCTS_DIR; };
+		357B42CA26C2FA3D007E0036 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		359B9B0526B8AAC100AA3989 /* MicroverseDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MicroverseDocument.swift; sourceTree = "<group>"; };
 		35C1E9ED26BF11E1005F47D0 /* AttachedDiskImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachedDiskImage.swift; sourceTree = "<group>"; };
 		35CF8D5D26B8300F00E83536 /* Microverse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Microverse.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +79,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		357B42C526C2FA3C007E0036 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		35CF8D5A26B8300F00E83536 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -129,10 +151,19 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		357B42C926C2FA3D007E0036 /* MicroverseGuestOSService */ = {
+			isa = PBXGroup;
+			children = (
+				357B42CA26C2FA3D007E0036 /* main.swift */,
+			);
+			path = MicroverseGuestOSService;
+			sourceTree = "<group>";
+		};
 		35CF8D5426B8300F00E83536 = {
 			isa = PBXGroup;
 			children = (
 				35CF8D5F26B8300F00E83536 /* Microverse */,
+				357B42C926C2FA3D007E0036 /* MicroverseGuestOSService */,
 				35CF8D5E26B8300F00E83536 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -141,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				35CF8D5D26B8300F00E83536 /* Microverse.app */,
+				357B42C826C2FA3C007E0036 /* MicroverseGuestOSService */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -167,6 +199,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		357B42C726C2FA3C007E0036 /* MicroverseGuestOSService */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 357B42CC26C2FA3D007E0036 /* Build configuration list for PBXNativeTarget "MicroverseGuestOSService" */;
+			buildPhases = (
+				357B42C426C2FA3C007E0036 /* Sources */,
+				357B42C526C2FA3C007E0036 /* Frameworks */,
+				357B42C626C2FA3C007E0036 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MicroverseGuestOSService;
+			productName = MicroverseGuestOSService;
+			productReference = 357B42C826C2FA3C007E0036 /* MicroverseGuestOSService */;
+			productType = "com.apple.product-type.tool";
+		};
 		35CF8D5C26B8300F00E83536 /* Microverse */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 35CF8D6E26B8301000E83536 /* Build configuration list for PBXNativeTarget "Microverse" */;
@@ -198,6 +247,9 @@
 				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
+					357B42C726C2FA3C007E0036 = {
+						CreatedOnToolsVersion = 13.0;
+					};
 					35CF8D5C26B8300F00E83536 = {
 						CreatedOnToolsVersion = 13.0;
 					};
@@ -220,6 +272,7 @@
 			projectRoot = "";
 			targets = (
 				35CF8D5C26B8300F00E83536 /* Microverse */,
+				357B42C726C2FA3C007E0036 /* MicroverseGuestOSService */,
 			);
 		};
 /* End PBXProject section */
@@ -237,6 +290,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		357B42C426C2FA3C007E0036 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				357B42CB26C2FA3D007E0036 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		35CF8D5926B8300F00E83536 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -268,6 +329,24 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		357B42CD26C2FA3D007E0036 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		357B42CE26C2FA3D007E0036 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		35CF8D6C26B8301000E83536 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -448,6 +527,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		357B42CC26C2FA3D007E0036 /* Build configuration list for PBXNativeTarget "MicroverseGuestOSService" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				357B42CD26C2FA3D007E0036 /* Debug */,
+				357B42CE26C2FA3D007E0036 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		35CF8D5826B8300F00E83536 /* Build configuration list for PBXProject "Microverse" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
