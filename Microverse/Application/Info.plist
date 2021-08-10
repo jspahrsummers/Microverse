@@ -8,20 +8,6 @@
 			<key>CFBundleTypeIconSystemGenerated</key>
 			<integer>1</integer>
 			<key>CFBundleTypeName</key>
-			<string>Linux virtual machine</string>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>LSHandlerRank</key>
-			<string>Owner</string>
-			<key>LSItemContentTypes</key>
-			<array>
-				<string>com.metacognitive.vm.linux</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeIconSystemGenerated</key>
-			<integer>1</integer>
-			<key>CFBundleTypeName</key>
 			<string>macOS virtual machine</string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
@@ -59,28 +45,6 @@
 			<dict>
 				<key>public.filename-extension</key>
 				<array/>
-			</dict>
-		</dict>
-		<dict>
-			<key>UTTypeConformsTo</key>
-			<array>
-				<string>com.metacognitive.vm</string>
-			</array>
-			<key>UTTypeDescription</key>
-			<string>Linux virtual machine</string>
-			<key>UTTypeIcons</key>
-			<dict>
-				<key>UTTypeIconText</key>
-				<string>Linux VM</string>
-			</dict>
-			<key>UTTypeIdentifier</key>
-			<string>com.metacognitive.vm.linux</string>
-			<key>UTTypeTagSpecification</key>
-			<dict>
-				<key>public.filename-extension</key>
-				<array>
-					<string>linuxvm</string>
-				</array>
 			</dict>
 		</dict>
 		<dict>
