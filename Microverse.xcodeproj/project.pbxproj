@@ -12,6 +12,8 @@
 		352AF07626BAFDD700AFD751 /* PathField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352AF07526BAFDD700AFD751 /* PathField.swift */; };
 		352AF07A26BB026900AFD751 /* MacRestoreImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352AF07926BB026900AFD751 /* MacRestoreImageView.swift */; };
 		357457C426C044E700BFA2D7 /* KeyedCodingExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357457C326C044E700BFA2D7 /* KeyedCodingExtensions.swift */; };
+		357B42C126C2F9D2007E0036 /* CGRPCZlib in Frameworks */ = {isa = PBXBuildFile; productRef = 357B42C026C2F9D2007E0036 /* CGRPCZlib */; };
+		357B42C326C2F9D2007E0036 /* GRPC in Frameworks */ = {isa = PBXBuildFile; productRef = 357B42C226C2F9D2007E0036 /* GRPC */; };
 		359B9B0626B8AAC100AA3989 /* MicroverseDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359B9B0526B8AAC100AA3989 /* MicroverseDocument.swift */; };
 		35C1E9EE26BF11E1005F47D0 /* AttachedDiskImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C1E9ED26BF11E1005F47D0 /* AttachedDiskImage.swift */; };
 		35CF8D6126B8300F00E83536 /* MicroverseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF8D6026B8300F00E83536 /* MicroverseApp.swift */; };
@@ -66,6 +68,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				357B42C326C2F9D2007E0036 /* GRPC in Frameworks */,
+				357B42C126C2F9D2007E0036 /* CGRPCZlib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +181,8 @@
 			);
 			name = Microverse;
 			packageProductDependencies = (
+				357B42C026C2F9D2007E0036 /* CGRPCZlib */,
+				357B42C226C2F9D2007E0036 /* GRPC */,
 			);
 			productName = Microverse;
 			productReference = 35CF8D5D26B8300F00E83536 /* Microverse.app */;
@@ -207,6 +213,7 @@
 			);
 			mainGroup = 35CF8D5426B8300F00E83536;
 			packageReferences = (
+				357B42BF26C2F9D2007E0036 /* XCRemoteSwiftPackageReference "grpc-swift" */,
 			);
 			productRefGroup = 35CF8D5E26B8300F00E83536 /* Products */;
 			projectDirPath = "";
@@ -460,6 +467,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		357B42BF26C2F9D2007E0036 /* XCRemoteSwiftPackageReference "grpc-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/grpc/grpc-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		357B42C026C2F9D2007E0036 /* CGRPCZlib */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 357B42BF26C2F9D2007E0036 /* XCRemoteSwiftPackageReference "grpc-swift" */;
+			productName = CGRPCZlib;
+		};
+		357B42C226C2F9D2007E0036 /* GRPC */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 357B42BF26C2F9D2007E0036 /* XCRemoteSwiftPackageReference "grpc-swift" */;
+			productName = GRPC;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 35CF8D5526B8300F00E83536 /* Project object */;
 }
