@@ -10,7 +10,7 @@ This project makes use of APIs from the macOS 12 (Monterey) [beta](https://beta.
 
 macOS 11 (Big Sur) is unsupported.
 
-## Known issues
+## Known limitations
 
 For installing into the VM, only [macOS 12 (Monterey) ipsw files](https://mrmacintosh.com/apple-silicon-m1-full-macos-restore-ipsw-firmware-files-database/) are known to work.
 
