@@ -25,8 +25,6 @@
 		35CF8D8026B8704200E83536 /* DiskCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF8D7F26B8704200E83536 /* DiskCreationView.swift */; };
 		35CF8D8226B87D8600E83536 /* LinuxBootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF8D8126B87D8600E83536 /* LinuxBootView.swift */; };
 		35CF8D8726B8837500E83536 /* AttachedDisksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF8D8626B8837500E83536 /* AttachedDisksView.swift */; };
-		35CF8D8A26B8986700E83536 /* SwiftTerm in Frameworks */ = {isa = PBXBuildFile; productRef = 35CF8D8926B8986700E83536 /* SwiftTerm */; };
-		35CF8D8C26B8992800E83536 /* ConsoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF8D8B26B8992800E83536 /* ConsoleView.swift */; };
 		35CF8D8E26B89E9B00E83536 /* NSWindowExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF8D8D26B89E9B00E83536 /* NSWindowExtensions.swift */; };
 		35FE87D426BEB7C1009B9B51 /* BlankDocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE87D326BEB7C1009B9B51 /* BlankDocumentView.swift */; };
 		35FE87D626BEBD57009B9B51 /* LinuxDocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE87D526BEBD57009B9B51 /* LinuxDocumentView.swift */; };
@@ -60,7 +58,6 @@
 		35CF8D8126B87D8600E83536 /* LinuxBootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinuxBootView.swift; sourceTree = "<group>"; };
 		35CF8D8326B8829500E83536 /* Microverse.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Microverse.entitlements; sourceTree = "<group>"; };
 		35CF8D8626B8837500E83536 /* AttachedDisksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachedDisksView.swift; sourceTree = "<group>"; };
-		35CF8D8B26B8992800E83536 /* ConsoleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleView.swift; sourceTree = "<group>"; };
 		35CF8D8D26B89E9B00E83536 /* NSWindowExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSWindowExtensions.swift; sourceTree = "<group>"; };
 		35FE87D326BEB7C1009B9B51 /* BlankDocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankDocumentView.swift; sourceTree = "<group>"; };
 		35FE87D526BEBD57009B9B51 /* LinuxDocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinuxDocumentView.swift; sourceTree = "<group>"; };
@@ -77,7 +74,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35CF8D8A26B8986700E83536 /* SwiftTerm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,7 +85,6 @@
 			children = (
 				35CF8D8626B8837500E83536 /* AttachedDisksView.swift */,
 				35FE87D326BEB7C1009B9B51 /* BlankDocumentView.swift */,
-				35CF8D8B26B8992800E83536 /* ConsoleView.swift */,
 				35CF8D7F26B8704200E83536 /* DiskCreationView.swift */,
 				35CF8D6426B8300F00E83536 /* DocumentView.swift */,
 				35CF8D8126B87D8600E83536 /* LinuxBootView.swift */,
@@ -194,7 +189,6 @@
 			);
 			name = Microverse;
 			packageProductDependencies = (
-				35CF8D8926B8986700E83536 /* SwiftTerm */,
 			);
 			productName = Microverse;
 			productReference = 35CF8D5D26B8300F00E83536 /* Microverse.app */;
@@ -225,7 +219,6 @@
 			);
 			mainGroup = 35CF8D5426B8300F00E83536;
 			packageReferences = (
-				35CF8D8826B8986700E83536 /* XCRemoteSwiftPackageReference "SwiftTerm" */,
 			);
 			productRefGroup = 35CF8D5E26B8300F00E83536 /* Products */;
 			projectDirPath = "";
@@ -269,7 +262,6 @@
 				35CF8D8026B8704200E83536 /* DiskCreationView.swift in Sources */,
 				35CF8D8726B8837500E83536 /* AttachedDisksView.swift in Sources */,
 				35C1E9EE26BF11E1005F47D0 /* AttachedDiskImage.swift in Sources */,
-				35CF8D8C26B8992800E83536 /* ConsoleView.swift in Sources */,
 				3526599026BFF2E2001D5029 /* MicroverseErrors.swift in Sources */,
 				35CF8D7E26B855E200E83536 /* VirtualMachineConfiguration.swift in Sources */,
 				3526598E26BFEFBF001D5029 /* VirtualMachineController.swift in Sources */,
@@ -482,25 +474,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		35CF8D8826B8986700E83536 /* XCRemoteSwiftPackageReference "SwiftTerm" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/migueldeicaza/SwiftTerm";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		35CF8D8926B8986700E83536 /* SwiftTerm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 35CF8D8826B8986700E83536 /* XCRemoteSwiftPackageReference "SwiftTerm" */;
-			productName = SwiftTerm;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 35CF8D5526B8300F00E83536 /* Project object */;
 }

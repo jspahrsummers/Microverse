@@ -40,6 +40,6 @@ The startup disk image can be used as-is: https://cloud-images.ubuntu.com/releas
 
 ## License and credit
 
-Released under the [MIT license](LICENSE). [SwiftTerm](https://github.com/migueldeicaza/SwiftTerm) is used as a dependency.
+Released under the [MIT license](LICENSE).
 
 I'm indebted to @KhaosT' [MacVM](https://github.com/KhaosT/MacVM) and [SimpleVM](https://github.com/KhaosT/SimpleVM) projects for demonstrating [`Virtualization.framework`](https://developer.apple.com/documentation/virtualization) usage.
