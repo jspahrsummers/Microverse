@@ -16,6 +16,8 @@ For installing into the VM, only [macOS 12 (Monterey) ipsw files](https://mrmaci
 
 There's a known issue where the App Store cannot be contacted from within a VM. Any applications you want to run will need to be downloaded from the web, or imported into the VM using a disk image in UDRW format (see `man hdiutil` for details).
 
+For other known issues, please see the [GitHub issues list](https://github.com/jspahrsummers/Microverse/issues).
+
 ## License and credit
 
 Released under the [MIT license](LICENSE). [SwiftTerm](https://github.com/migueldeicaza/SwiftTerm) is used as a dependency.
