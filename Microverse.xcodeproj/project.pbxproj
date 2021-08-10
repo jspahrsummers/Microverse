@@ -61,6 +61,7 @@
 		357457C326C044E700BFA2D7 /* KeyedCodingExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyedCodingExtensions.swift; sourceTree = "<group>"; };
 		357B42C826C2FA3C007E0036 /* MicroverseGuestOSService */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MicroverseGuestOSService; sourceTree = BUILT_PRODUCTS_DIR; };
 		357B42CA26C2FA3D007E0036 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		3589944626C304B500EE0E66 /* com.metacognitive.Microverse.GuestOSService.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = com.metacognitive.Microverse.GuestOSService.plist; sourceTree = "<group>"; };
 		359B9B0526B8AAC100AA3989 /* MicroverseDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MicroverseDocument.swift; sourceTree = "<group>"; };
 		35C1E9ED26BF11E1005F47D0 /* AttachedDiskImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachedDiskImage.swift; sourceTree = "<group>"; };
 		35CF8D5D26B8300F00E83536 /* Microverse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Microverse.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,6 +168,7 @@
 			children = (
 				5222D10C26C3006600E6BB28 /* GuestOSServiceProvider.swift */,
 				357B42CA26C2FA3D007E0036 /* main.swift */,
+				3589944626C304B500EE0E66 /* com.metacognitive.Microverse.GuestOSService.plist */,
 			);
 			path = MicroverseGuestOSService;
 			sourceTree = "<group>";
@@ -372,6 +374,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_BUNDLE_IDENTIFIER = com.metacognitive.Microverse.GuestOSService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -381,6 +384,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_BUNDLE_IDENTIFIER = com.metacognitive.Microverse.GuestOSService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};

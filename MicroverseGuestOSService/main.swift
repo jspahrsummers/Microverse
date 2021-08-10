@@ -9,6 +9,8 @@ import Foundation
 import GRPC
 import NIO
 
+let listenPort = 6628
+
 let group = MultiThreadedEventLoopGroup(numberOfThreads: 1)
 defer {
     try! group.syncShutdownGracefully()
@@ -17,7 +19,7 @@ defer {
 let provider = GuestOSServiceProvider()
 let server = Server.insecure(group: group)
     .withServiceProviders([provider])
-    .bind(host: "localhost", port: 6622)
+    .bind(host: "localhost", port: listenPort)
 
 server.map {
     $0.channel.localAddress
