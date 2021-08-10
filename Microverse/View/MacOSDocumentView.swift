@@ -72,17 +72,13 @@ struct MacOSDocumentView: View {
                             }
                         } else {
                             Button("Start") {
-                                virtualMachineController.dispatchQueue.async {
-                                    virtualMachineController.virtualMachine.start { result in
-                                        DispatchQueue.main.async {
-                                            switch result {
-                                            case .success:
-                                                NSLog("Launched VM")
-                                                running = true
-                                            case let .failure(error):
-                                                NSLog("Failed to start VM: \(error)")
-                                            }
-                                        }
+                                Task {
+                                    do {
+                                        try await virtualMachineController.start()
+                                        NSLog("Launched VM")
+                                        running = true
+                                    } catch {
+                                        NSLog("Failed to start VM: \(error)")
                                     }
                                 }
                             }

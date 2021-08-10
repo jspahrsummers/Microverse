@@ -17,6 +17,14 @@ final class VirtualMachineController: NSObject, VZVirtualMachineDelegate {
         virtualMachine = VZVirtualMachine(configuration: configuration, queue: dispatchQueue)
     }
     
+    func start() async throws {
+        try await withCheckedThrowingContinuation { cont in
+            dispatchQueue.async {
+                self.virtualMachine.start { result in cont.resume(with: result) }
+            }
+        }
+    }
+    
     func guestDidStop(_ virtualMachine: VZVirtualMachine) {
         
     }

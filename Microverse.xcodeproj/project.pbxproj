@@ -11,6 +11,7 @@
 		3526599026BFF2E2001D5029 /* MicroverseErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3526598F26BFF2E2001D5029 /* MicroverseErrors.swift */; };
 		352AF07626BAFDD700AFD751 /* PathField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352AF07526BAFDD700AFD751 /* PathField.swift */; };
 		352AF07A26BB026900AFD751 /* MacRestoreImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352AF07926BB026900AFD751 /* MacRestoreImageView.swift */; };
+		35304B0B26C292E1001199EB /* VirtualizationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35304B0A26C292E1001199EB /* VirtualizationExtensions.swift */; };
 		357457C426C044E700BFA2D7 /* KeyedCodingExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357457C326C044E700BFA2D7 /* KeyedCodingExtensions.swift */; };
 		359B9B0626B8AAC100AA3989 /* MicroverseDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359B9B0526B8AAC100AA3989 /* MicroverseDocument.swift */; };
 		35C1E9EE26BF11E1005F47D0 /* AttachedDiskImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C1E9ED26BF11E1005F47D0 /* AttachedDiskImage.swift */; };
@@ -37,6 +38,7 @@
 		3526598F26BFF2E2001D5029 /* MicroverseErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroverseErrors.swift; sourceTree = "<group>"; };
 		352AF07526BAFDD700AFD751 /* PathField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathField.swift; sourceTree = "<group>"; };
 		352AF07926BB026900AFD751 /* MacRestoreImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacRestoreImageView.swift; sourceTree = "<group>"; };
+		35304B0A26C292E1001199EB /* VirtualizationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualizationExtensions.swift; sourceTree = "<group>"; };
 		357457C326C044E700BFA2D7 /* KeyedCodingExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyedCodingExtensions.swift; sourceTree = "<group>"; };
 		359B9B0526B8AAC100AA3989 /* MicroverseDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MicroverseDocument.swift; sourceTree = "<group>"; };
 		35C1E9ED26BF11E1005F47D0 /* AttachedDiskImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachedDiskImage.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 			children = (
 				357457C326C044E700BFA2D7 /* KeyedCodingExtensions.swift */,
 				35CF8D8D26B89E9B00E83536 /* NSWindowExtensions.swift */,
+				35304B0A26C292E1001199EB /* VirtualizationExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 				35CF8D7C26B8431300E83536 /* VirtualMachineConfigurationView.swift in Sources */,
 				357457C426C044E700BFA2D7 /* KeyedCodingExtensions.swift in Sources */,
 				359B9B0626B8AAC100AA3989 /* MicroverseDocument.swift in Sources */,
+				35304B0B26C292E1001199EB /* VirtualizationExtensions.swift in Sources */,
 				35CF8D6126B8300F00E83536 /* MicroverseApp.swift in Sources */,
 				35CF8D8E26B89E9B00E83536 /* NSWindowExtensions.swift in Sources */,
 				35FE87D826BEBD62009B9B51 /* MacOSDocumentView.swift in Sources */,
