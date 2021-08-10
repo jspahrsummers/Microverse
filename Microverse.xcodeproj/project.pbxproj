@@ -37,6 +37,7 @@
 		5222D10826C2FE5700E6BB28 /* guest_os_service.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5222D10626C2FE5700E6BB28 /* guest_os_service.pb.swift */; };
 		5222D10A26C2FF3000E6BB28 /* guest_os_service.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5222D10926C2FF3000E6BB28 /* guest_os_service.grpc.swift */; };
 		5222D10B26C2FF3000E6BB28 /* guest_os_service.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5222D10926C2FF3000E6BB28 /* guest_os_service.grpc.swift */; };
+		5222D10D26C3006600E6BB28 /* GuestOSServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5222D10C26C3006600E6BB28 /* GuestOSServiceProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -83,6 +84,7 @@
 		5222D10526C2FC7300E6BB28 /* guest_os_service.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = guest_os_service.proto; sourceTree = "<group>"; };
 		5222D10626C2FE5700E6BB28 /* guest_os_service.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = guest_os_service.pb.swift; sourceTree = "<group>"; };
 		5222D10926C2FF3000E6BB28 /* guest_os_service.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = guest_os_service.grpc.swift; sourceTree = "<group>"; };
+		5222D10C26C3006600E6BB28 /* GuestOSServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestOSServiceProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 		357B42C926C2FA3D007E0036 /* MicroverseGuestOSService */ = {
 			isa = PBXGroup;
 			children = (
+				5222D10C26C3006600E6BB28 /* GuestOSServiceProvider.swift */,
 				357B42CA26C2FA3D007E0036 /* main.swift */,
 			);
 			path = MicroverseGuestOSService;
@@ -313,6 +316,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				357B42CB26C2FA3D007E0036 /* main.swift in Sources */,
+				5222D10D26C3006600E6BB28 /* GuestOSServiceProvider.swift in Sources */,
 				5222D10B26C2FF3000E6BB28 /* guest_os_service.grpc.swift in Sources */,
 				5222D10826C2FE5700E6BB28 /* guest_os_service.pb.swift in Sources */,
 			);

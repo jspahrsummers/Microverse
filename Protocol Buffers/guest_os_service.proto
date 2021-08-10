@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+package microverse;
+
 service GuestOSService {
     rpc Paste (PasteRequest) returns (PasteResponse) {}
 }

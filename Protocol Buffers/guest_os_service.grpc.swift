@@ -25,20 +25,20 @@ import NIO
 import SwiftProtobuf
 
 
-/// Usage: instantiate `GuestOSServiceClient`, then call methods of this protocol to make API calls.
-internal protocol GuestOSServiceClientProtocol: GRPCClient {
+/// Usage: instantiate `Microverse_GuestOSServiceClient`, then call methods of this protocol to make API calls.
+internal protocol Microverse_GuestOSServiceClientProtocol: GRPCClient {
   var serviceName: String { get }
-  var interceptors: GuestOSServiceClientInterceptorFactoryProtocol? { get }
+  var interceptors: Microverse_GuestOSServiceClientInterceptorFactoryProtocol? { get }
 
   func paste(
-    _ request: PasteRequest,
+    _ request: Microverse_PasteRequest,
     callOptions: CallOptions?
-  ) -> UnaryCall<PasteRequest, PasteResponse>
+  ) -> UnaryCall<Microverse_PasteRequest, Microverse_PasteResponse>
 }
 
-extension GuestOSServiceClientProtocol {
+extension Microverse_GuestOSServiceClientProtocol {
   internal var serviceName: String {
-    return "GuestOSService"
+    return "microverse.GuestOSService"
   }
 
   /// Unary call to Paste
@@ -48,11 +48,11 @@ extension GuestOSServiceClientProtocol {
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
   internal func paste(
-    _ request: PasteRequest,
+    _ request: Microverse_PasteRequest,
     callOptions: CallOptions? = nil
-  ) -> UnaryCall<PasteRequest, PasteResponse> {
+  ) -> UnaryCall<Microverse_PasteRequest, Microverse_PasteResponse> {
     return self.makeUnaryCall(
-      path: "/GuestOSService/Paste",
+      path: "/microverse.GuestOSService/Paste",
       request: request,
       callOptions: callOptions ?? self.defaultCallOptions,
       interceptors: self.interceptors?.makePasteInterceptors() ?? []
@@ -60,18 +60,18 @@ extension GuestOSServiceClientProtocol {
   }
 }
 
-internal protocol GuestOSServiceClientInterceptorFactoryProtocol {
+internal protocol Microverse_GuestOSServiceClientInterceptorFactoryProtocol {
 
   /// - Returns: Interceptors to use when invoking 'paste'.
-  func makePasteInterceptors() -> [ClientInterceptor<PasteRequest, PasteResponse>]
+  func makePasteInterceptors() -> [ClientInterceptor<Microverse_PasteRequest, Microverse_PasteResponse>]
 }
 
-internal final class GuestOSServiceClient: GuestOSServiceClientProtocol {
+internal final class Microverse_GuestOSServiceClient: Microverse_GuestOSServiceClientProtocol {
   internal let channel: GRPCChannel
   internal var defaultCallOptions: CallOptions
-  internal var interceptors: GuestOSServiceClientInterceptorFactoryProtocol?
+  internal var interceptors: Microverse_GuestOSServiceClientInterceptorFactoryProtocol?
 
-  /// Creates a client for the GuestOSService service.
+  /// Creates a client for the microverse.GuestOSService service.
   ///
   /// - Parameters:
   ///   - channel: `GRPCChannel` to the service host.
@@ -80,7 +80,7 @@ internal final class GuestOSServiceClient: GuestOSServiceClientProtocol {
   internal init(
     channel: GRPCChannel,
     defaultCallOptions: CallOptions = CallOptions(),
-    interceptors: GuestOSServiceClientInterceptorFactoryProtocol? = nil
+    interceptors: Microverse_GuestOSServiceClientInterceptorFactoryProtocol? = nil
   ) {
     self.channel = channel
     self.defaultCallOptions = defaultCallOptions
@@ -89,14 +89,14 @@ internal final class GuestOSServiceClient: GuestOSServiceClientProtocol {
 }
 
 /// To build a server, implement a class that conforms to this protocol.
-internal protocol GuestOSServiceProvider: CallHandlerProvider {
-  var interceptors: GuestOSServiceServerInterceptorFactoryProtocol? { get }
+internal protocol Microverse_GuestOSServiceProvider: CallHandlerProvider {
+  var interceptors: Microverse_GuestOSServiceServerInterceptorFactoryProtocol? { get }
 
-  func paste(request: PasteRequest, context: StatusOnlyCallContext) -> EventLoopFuture<PasteResponse>
+  func paste(request: Microverse_PasteRequest, context: StatusOnlyCallContext) -> EventLoopFuture<Microverse_PasteResponse>
 }
 
-extension GuestOSServiceProvider {
-  internal var serviceName: Substring { return "GuestOSService" }
+extension Microverse_GuestOSServiceProvider {
+  internal var serviceName: Substring { return "microverse.GuestOSService" }
 
   /// Determines, calls and returns the appropriate request handler, depending on the request's method.
   /// Returns nil for methods not handled by this service.
@@ -108,8 +108,8 @@ extension GuestOSServiceProvider {
     case "Paste":
       return UnaryServerHandler(
         context: context,
-        requestDeserializer: ProtobufDeserializer<PasteRequest>(),
-        responseSerializer: ProtobufSerializer<PasteResponse>(),
+        requestDeserializer: ProtobufDeserializer<Microverse_PasteRequest>(),
+        responseSerializer: ProtobufSerializer<Microverse_PasteResponse>(),
         interceptors: self.interceptors?.makePasteInterceptors() ?? [],
         userFunction: self.paste(request:context:)
       )
@@ -120,9 +120,9 @@ extension GuestOSServiceProvider {
   }
 }
 
-internal protocol GuestOSServiceServerInterceptorFactoryProtocol {
+internal protocol Microverse_GuestOSServiceServerInterceptorFactoryProtocol {
 
   /// - Returns: Interceptors to use when handling 'paste'.
   ///   Defaults to calling `self.makeInterceptors()`.
-  func makePasteInterceptors() -> [ServerInterceptor<PasteRequest, PasteResponse>]
+  func makePasteInterceptors() -> [ServerInterceptor<Microverse_PasteRequest, Microverse_PasteResponse>]
 }
