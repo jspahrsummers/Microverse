@@ -33,6 +33,10 @@
 		35FE87DE26BEC05C009B9B51 /* ConfigurableVirtualMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE87DD26BEC05C009B9B51 /* ConfigurableVirtualMachine.swift */; };
 		35FE87E026BECD2E009B9B51 /* MacOSInstallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE87DF26BECD2E009B9B51 /* MacOSInstallView.swift */; };
 		35FE87E226BEE980009B9B51 /* MacAuxiliaryStorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE87E126BEE980009B9B51 /* MacAuxiliaryStorageView.swift */; };
+		5222D10726C2FE5700E6BB28 /* guest_os_service.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5222D10626C2FE5700E6BB28 /* guest_os_service.pb.swift */; };
+		5222D10826C2FE5700E6BB28 /* guest_os_service.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5222D10626C2FE5700E6BB28 /* guest_os_service.pb.swift */; };
+		5222D10A26C2FF3000E6BB28 /* guest_os_service.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5222D10926C2FF3000E6BB28 /* guest_os_service.grpc.swift */; };
+		5222D10B26C2FF3000E6BB28 /* guest_os_service.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5222D10926C2FF3000E6BB28 /* guest_os_service.grpc.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -76,6 +80,9 @@
 		35FE87DD26BEC05C009B9B51 /* ConfigurableVirtualMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableVirtualMachine.swift; sourceTree = "<group>"; };
 		35FE87DF26BECD2E009B9B51 /* MacOSInstallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSInstallView.swift; sourceTree = "<group>"; };
 		35FE87E126BEE980009B9B51 /* MacAuxiliaryStorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacAuxiliaryStorageView.swift; sourceTree = "<group>"; };
+		5222D10526C2FC7300E6BB28 /* guest_os_service.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = guest_os_service.proto; sourceTree = "<group>"; };
+		5222D10626C2FE5700E6BB28 /* guest_os_service.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = guest_os_service.pb.swift; sourceTree = "<group>"; };
+		5222D10926C2FF3000E6BB28 /* guest_os_service.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = guest_os_service.grpc.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +171,7 @@
 			children = (
 				35CF8D5F26B8300F00E83536 /* Microverse */,
 				357B42C926C2FA3D007E0036 /* MicroverseGuestOSService */,
+				5222D10426C2FC3C00E6BB28 /* Protocol Buffers */,
 				35CF8D5E26B8300F00E83536 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -194,6 +202,16 @@
 				35CF8D6926B8301000E83536 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5222D10426C2FC3C00E6BB28 /* Protocol Buffers */ = {
+			isa = PBXGroup;
+			children = (
+				5222D10926C2FF3000E6BB28 /* guest_os_service.grpc.swift */,
+				5222D10626C2FE5700E6BB28 /* guest_os_service.pb.swift */,
+				5222D10526C2FC7300E6BB28 /* guest_os_service.proto */,
+			);
+			path = "Protocol Buffers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,6 +313,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				357B42CB26C2FA3D007E0036 /* main.swift in Sources */,
+				5222D10B26C2FF3000E6BB28 /* guest_os_service.grpc.swift in Sources */,
+				5222D10826C2FE5700E6BB28 /* guest_os_service.pb.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,10 +337,12 @@
 				35CF8D8726B8837500E83536 /* AttachedDisksView.swift in Sources */,
 				35C1E9EE26BF11E1005F47D0 /* AttachedDiskImage.swift in Sources */,
 				3526599026BFF2E2001D5029 /* MicroverseErrors.swift in Sources */,
+				5222D10726C2FE5700E6BB28 /* guest_os_service.pb.swift in Sources */,
 				35CF8D7E26B855E200E83536 /* VirtualMachineConfiguration.swift in Sources */,
 				3526598E26BFEFBF001D5029 /* VirtualMachineController.swift in Sources */,
 				35FE87DC26BEC049009B9B51 /* MacOSVirtualMachine.swift in Sources */,
 				352AF07A26BB026900AFD751 /* MacRestoreImageView.swift in Sources */,
+				5222D10A26C2FF3000E6BB28 /* guest_os_service.grpc.swift in Sources */,
 				352AF07626BAFDD700AFD751 /* PathField.swift in Sources */,
 				35CF8D6526B8300F00E83536 /* DocumentView.swift in Sources */,
 			);

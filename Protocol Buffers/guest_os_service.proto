@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+service GuestOSService {
+    rpc Paste (PasteRequest) returns (PasteResponse) {}
+}
+
+message PasteRequest {
+    // TODO: Extend with full NSPasteboard capabilities
+    string content = 1;
+}
+               
+message PasteResponse {
+    bool success = 1;
+}
