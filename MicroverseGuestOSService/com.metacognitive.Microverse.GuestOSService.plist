@@ -19,6 +19,8 @@
 	<key>Label</key>
 	<string>com.metacognitive.Microverse.GuestOSService</string>
 	<key>ProgramArguments</key>
-	<array/>
+	<array>
+		<string>/usr/local/bin/MicroverseGuestOSService</string>
+	</array>
 </dict>
 </plist>
