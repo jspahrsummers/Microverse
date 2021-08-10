@@ -23,13 +23,10 @@
 		35CF8D7C26B8431300E83536 /* VirtualMachineConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF8D7B26B8431300E83536 /* VirtualMachineConfigurationView.swift */; };
 		35CF8D7E26B855E200E83536 /* VirtualMachineConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF8D7D26B855E200E83536 /* VirtualMachineConfiguration.swift */; };
 		35CF8D8026B8704200E83536 /* DiskCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF8D7F26B8704200E83536 /* DiskCreationView.swift */; };
-		35CF8D8226B87D8600E83536 /* LinuxBootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF8D8126B87D8600E83536 /* LinuxBootView.swift */; };
 		35CF8D8726B8837500E83536 /* AttachedDisksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF8D8626B8837500E83536 /* AttachedDisksView.swift */; };
 		35CF8D8E26B89E9B00E83536 /* NSWindowExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF8D8D26B89E9B00E83536 /* NSWindowExtensions.swift */; };
 		35FE87D426BEB7C1009B9B51 /* BlankDocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE87D326BEB7C1009B9B51 /* BlankDocumentView.swift */; };
-		35FE87D626BEBD57009B9B51 /* LinuxDocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE87D526BEBD57009B9B51 /* LinuxDocumentView.swift */; };
 		35FE87D826BEBD62009B9B51 /* MacOSDocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE87D726BEBD62009B9B51 /* MacOSDocumentView.swift */; };
-		35FE87DA26BEC041009B9B51 /* LinuxVirtualMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE87D926BEC041009B9B51 /* LinuxVirtualMachine.swift */; };
 		35FE87DC26BEC049009B9B51 /* MacOSVirtualMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE87DB26BEC049009B9B51 /* MacOSVirtualMachine.swift */; };
 		35FE87DE26BEC05C009B9B51 /* ConfigurableVirtualMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE87DD26BEC05C009B9B51 /* ConfigurableVirtualMachine.swift */; };
 		35FE87E026BECD2E009B9B51 /* MacOSInstallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE87DF26BECD2E009B9B51 /* MacOSInstallView.swift */; };
@@ -55,14 +52,11 @@
 		35CF8D7B26B8431300E83536 /* VirtualMachineConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualMachineConfigurationView.swift; sourceTree = "<group>"; };
 		35CF8D7D26B855E200E83536 /* VirtualMachineConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualMachineConfiguration.swift; sourceTree = "<group>"; };
 		35CF8D7F26B8704200E83536 /* DiskCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCreationView.swift; sourceTree = "<group>"; };
-		35CF8D8126B87D8600E83536 /* LinuxBootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinuxBootView.swift; sourceTree = "<group>"; };
 		35CF8D8326B8829500E83536 /* Microverse.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Microverse.entitlements; sourceTree = "<group>"; };
 		35CF8D8626B8837500E83536 /* AttachedDisksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachedDisksView.swift; sourceTree = "<group>"; };
 		35CF8D8D26B89E9B00E83536 /* NSWindowExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSWindowExtensions.swift; sourceTree = "<group>"; };
 		35FE87D326BEB7C1009B9B51 /* BlankDocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankDocumentView.swift; sourceTree = "<group>"; };
-		35FE87D526BEBD57009B9B51 /* LinuxDocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinuxDocumentView.swift; sourceTree = "<group>"; };
 		35FE87D726BEBD62009B9B51 /* MacOSDocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSDocumentView.swift; sourceTree = "<group>"; };
-		35FE87D926BEC041009B9B51 /* LinuxVirtualMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinuxVirtualMachine.swift; sourceTree = "<group>"; };
 		35FE87DB26BEC049009B9B51 /* MacOSVirtualMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSVirtualMachine.swift; sourceTree = "<group>"; };
 		35FE87DD26BEC05C009B9B51 /* ConfigurableVirtualMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableVirtualMachine.swift; sourceTree = "<group>"; };
 		35FE87DF26BECD2E009B9B51 /* MacOSInstallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSInstallView.swift; sourceTree = "<group>"; };
@@ -87,8 +81,6 @@
 				35FE87D326BEB7C1009B9B51 /* BlankDocumentView.swift */,
 				35CF8D7F26B8704200E83536 /* DiskCreationView.swift */,
 				35CF8D6426B8300F00E83536 /* DocumentView.swift */,
-				35CF8D8126B87D8600E83536 /* LinuxBootView.swift */,
-				35FE87D526BEBD57009B9B51 /* LinuxDocumentView.swift */,
 				35FE87E126BEE980009B9B51 /* MacAuxiliaryStorageView.swift */,
 				35FE87D726BEBD62009B9B51 /* MacOSDocumentView.swift */,
 				35FE87DF26BECD2E009B9B51 /* MacOSInstallView.swift */,
@@ -127,7 +119,6 @@
 			children = (
 				35C1E9ED26BF11E1005F47D0 /* AttachedDiskImage.swift */,
 				35FE87DD26BEC05C009B9B51 /* ConfigurableVirtualMachine.swift */,
-				35FE87D926BEC041009B9B51 /* LinuxVirtualMachine.swift */,
 				35FE87DB26BEC049009B9B51 /* MacOSVirtualMachine.swift */,
 				3526598F26BFF2E2001D5029 /* MicroverseErrors.swift */,
 				35CF8D7526B836A900E83536 /* VirtualMachine.swift */,
@@ -251,7 +242,6 @@
 				357457C426C044E700BFA2D7 /* KeyedCodingExtensions.swift in Sources */,
 				359B9B0626B8AAC100AA3989 /* MicroverseDocument.swift in Sources */,
 				35CF8D6126B8300F00E83536 /* MicroverseApp.swift in Sources */,
-				35CF8D8226B87D8600E83536 /* LinuxBootView.swift in Sources */,
 				35CF8D8E26B89E9B00E83536 /* NSWindowExtensions.swift in Sources */,
 				35FE87D426BEB7C1009B9B51 /* BlankDocumentView.swift in Sources */,
 				35FE87D826BEBD62009B9B51 /* MacOSDocumentView.swift in Sources */,
@@ -265,11 +255,9 @@
 				3526599026BFF2E2001D5029 /* MicroverseErrors.swift in Sources */,
 				35CF8D7E26B855E200E83536 /* VirtualMachineConfiguration.swift in Sources */,
 				3526598E26BFEFBF001D5029 /* VirtualMachineController.swift in Sources */,
-				35FE87D626BEBD57009B9B51 /* LinuxDocumentView.swift in Sources */,
 				35FE87DC26BEC049009B9B51 /* MacOSVirtualMachine.swift in Sources */,
 				352AF07A26BB026900AFD751 /* MacRestoreImageView.swift in Sources */,
 				352AF07626BAFDD700AFD751 /* PathField.swift in Sources */,
-				35FE87DA26BEC041009B9B51 /* LinuxVirtualMachine.swift in Sources */,
 				35CF8D6526B8300F00E83536 /* DocumentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -281,6 +269,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -342,6 +331,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
