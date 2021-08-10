@@ -8,17 +8,6 @@
 import Foundation
 
 enum VirtualMachine: Codable, ConfigurableVirtualMachine {
-    case linux(LinuxVirtualMachine)
-    
-    var linuxVM: LinuxVirtualMachine? {
-        switch self {
-        case let .linux(vm):
-            return vm
-        default:
-            return nil
-        }
-    }
-    
     #if arch(arm64)
     case macOS(MacOSVirtualMachine)
     
@@ -26,8 +15,6 @@ enum VirtualMachine: Codable, ConfigurableVirtualMachine {
         switch self {
         case let .macOS(vm):
             return vm
-        default:
-            return nil
         }
     }
     #endif
@@ -35,9 +22,6 @@ enum VirtualMachine: Codable, ConfigurableVirtualMachine {
     var configuration: VirtualMachineConfiguration {
         get {
             switch self {
-            case let .linux(vm):
-                return vm.configuration
-            
             #if arch(arm64)
             case let .macOS(vm):
                 return vm.configuration
@@ -46,9 +30,6 @@ enum VirtualMachine: Codable, ConfigurableVirtualMachine {
         }
         set(value) {
             switch self {
-            case var .linux(vm):
-                vm.configuration = value
-                
             #if arch(arm64)
             case var .macOS(vm):
                 vm.configuration = value

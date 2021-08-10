@@ -10,16 +10,12 @@ import UniformTypeIdentifiers
 
 extension UTType {
     static let VM = UTType(exportedAs: "com.metacognitive.vm", conformingTo: UTType.package)
-    static let linuxVM = UTType(exportedAs: "com.metacognitive.vm.linux", conformingTo: UTType.VM)
     static let macVM = UTType(exportedAs: "com.metacognitive.vm.macos", conformingTo: UTType.VM)
 }
 
 extension VirtualMachine {
     var contentType: UTType {
         switch self {
-        case .linux:
-            return .linuxVM
-        
         #if arch(arm64)
         case .macOS:
             return .macVM
@@ -30,11 +26,11 @@ extension VirtualMachine {
 
 struct MicroverseDocument: FileDocument {
     #if arch(arm64)
-    static var readableContentTypes: [UTType] { [.VM, .macVM, .linuxVM] }
-    static var writableContentTypes: [UTType] { [.macVM, .linuxVM] }
+    static var readableContentTypes: [UTType] { [.VM, .macVM] }
+    static var writableContentTypes: [UTType] { [.macVM] }
     #else
-    static var readableContentTypes: [UTType] { [.VM, .linuxVM] }
-    static var writableContentTypes: [UTType] { [.linuxVM] }
+    static var readableContentTypes: [UTType] { [.VM] }
+    static var writableContentTypes: [UTType] { [] }
     #endif
     
     enum PackageItem: String {
@@ -42,9 +38,9 @@ struct MicroverseDocument: FileDocument {
         case MetadataPlist = "metadata.plist"
     }
 
-    var virtualMachine: VirtualMachine?
+    var virtualMachine: VirtualMachine
     
-    init(virtualMachine: VirtualMachine? = nil) {
+    init(virtualMachine: VirtualMachine = .macOS(MacOSVirtualMachine(configuration: VirtualMachineConfiguration()))) {
         self.virtualMachine = virtualMachine
     }
 
@@ -60,22 +56,20 @@ struct MicroverseDocument: FileDocument {
                 virtualMachine = try PropertyListDecoder().decode(VirtualMachine.self, from: metadata)
             } else if let metadata = wrappers?[PackageItem.MetadataJSON.rawValue]?.regularFileContents {
                 virtualMachine = try JSONDecoder().decode(VirtualMachine.self, from: metadata)
+            } else {
+                throw CocoaError(.fileReadCorruptFile)
             }
         } catch {
             NSLog("Could not decode virtual machine metadata: \(error)")
             throw error
         }
         
-        if let virtualMachine = virtualMachine, !configuration.contentType.conforms(to: virtualMachine.contentType) {
+        if !configuration.contentType.conforms(to: virtualMachine.contentType) {
             NSLog("Loaded virtual machine \(virtualMachine) had incorrect content type in document: \(configuration.contentType)")
         }
     }
     
     func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
-        guard let virtualMachine = virtualMachine else {
-            return FileWrapper(directoryWithFileWrappers: [:])
-        }
-
         guard virtualMachine.contentType.conforms(to: configuration.contentType) else {
             throw CocoaError(.fileWriteInvalidFileName)
         }
