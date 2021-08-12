@@ -103,6 +103,8 @@ extension VZVirtualMachineConfiguration {
         storageDevices.append(VZVirtioBlockDeviceConfiguration(attachment: try VZDiskImageStorageDeviceAttachment(url: guestOSServicesImage, readOnly: true)))
         self.storageDevices = storageDevices
         
+        self.socketDevices = [VZVirtioSocketDeviceConfiguration()]
+        
         guard let hardwareModel = vm.physicalMachine?.hardwareModel, let machineIdentifier = vm.physicalMachine?.machineIdentifier, let auxiliaryStorageURL = vm.auxiliaryStorageURL else {
             return nil
         }
