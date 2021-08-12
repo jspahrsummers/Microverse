@@ -18,7 +18,10 @@ struct MacOSDocumentView: View {
     
     var body: some View {
         if let virtualMachineController = virtualMachineController, running {
-            VirtualMachineView(virtualMachine: virtualMachineController.virtualMachine)
+            VStack {
+                VirtualMachineToolbar(virtualMachineController: virtualMachineController)
+                VirtualMachineView(virtualMachine: virtualMachineController.virtualMachine)
+            }
         } else {
             HStack {
                 Spacer()

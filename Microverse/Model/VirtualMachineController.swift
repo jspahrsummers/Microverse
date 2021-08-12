@@ -79,12 +79,24 @@ final class VirtualMachineController: NSObject, VZVirtualMachineDelegate {
         }
         
         return macAddresses.compactMap { macAddress in
-            guard let range = output.range(of: #"(?<=\()[^\)]+(?=\) at "# + macAddress.string + #")"#, options: [.regularExpression, .caseInsensitive]) else {
+            guard let range = output.range(of: #"(?<=\()[^\)]+(?=\) at "# + rewriteMACAddress(macAddress.string) + #")"#, options: [.regularExpression, .caseInsensitive]) else {
                 return nil
             }
             
             return String(output[range])
         }
+    }
+    
+    private func rewriteMACAddress(_ macAddress: String) -> String {
+        // Make the address format of VZMACAddress match `arp`
+        return macAddress.split(separator: ":").map { component -> Substring in
+            var c = component
+            if c.starts(with: "0") {
+                c.removeFirst()
+            }
+            
+            return c
+        }.joined(separator: ":")
     }
     
     func guestDidStop(_ virtualMachine: VZVirtualMachine) {

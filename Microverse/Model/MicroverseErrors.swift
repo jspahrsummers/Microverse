@@ -12,4 +12,6 @@ enum MicroverseError: Error {
     case noSocketDevice
     case guestOSServicesConnectionFailed
     case stringEncodingError
+    case vmNotFoundOnNetwork
+    case invalidData
 }
