@@ -11,7 +11,9 @@
 		3526599026BFF2E2001D5029 /* MicroverseErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3526598F26BFF2E2001D5029 /* MicroverseErrors.swift */; };
 		352AF07626BAFDD700AFD751 /* PathField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352AF07526BAFDD700AFD751 /* PathField.swift */; };
 		352AF07A26BB026900AFD751 /* MacRestoreImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352AF07926BB026900AFD751 /* MacRestoreImageView.swift */; };
-		3537950426C50D1E00711BCE /* MicroverseGuestOSServices.dmg in Resources */ = {isa = PBXBuildFile; fileRef = 3537950326C50CF800711BCE /* MicroverseGuestOSServices.dmg */; };
+		3537950626C5101B00711BCE /* MicroserviceServiceSharedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3537950526C5101B00711BCE /* MicroserviceServiceSharedConstants.swift */; };
+		3537950726C5101B00711BCE /* MicroserviceServiceSharedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3537950526C5101B00711BCE /* MicroserviceServiceSharedConstants.swift */; };
+		3537950926C5107900711BCE /* MicroverseGuestOSServices.dmg in Resources */ = {isa = PBXBuildFile; fileRef = 3537950826C5107900711BCE /* MicroverseGuestOSServices.dmg */; };
 		357457C426C044E700BFA2D7 /* KeyedCodingExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357457C326C044E700BFA2D7 /* KeyedCodingExtensions.swift */; };
 		357B42C126C2F9D2007E0036 /* CGRPCZlib in Frameworks */ = {isa = PBXBuildFile; productRef = 357B42C026C2F9D2007E0036 /* CGRPCZlib */; };
 		357B42C326C2F9D2007E0036 /* GRPC in Frameworks */ = {isa = PBXBuildFile; productRef = 357B42C226C2F9D2007E0036 /* GRPC */; };
@@ -58,7 +60,8 @@
 		352AF07526BAFDD700AFD751 /* PathField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathField.swift; sourceTree = "<group>"; };
 		352AF07926BB026900AFD751 /* MacRestoreImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacRestoreImageView.swift; sourceTree = "<group>"; };
 		353794FF26C5087E00711BCE /* package_installer.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = package_installer.sh; sourceTree = "<group>"; };
-		3537950326C50CF800711BCE /* MicroverseGuestOSServices.dmg */ = {isa = PBXFileReference; lastKnownFileType = file; name = MicroverseGuestOSServices.dmg; path = ../../Intermediates.noindex/Microverse.build/Debug/MicroverseGuestOSService.build/DerivedSources/MicroverseGuestOSServices.dmg; sourceTree = BUILT_PRODUCTS_DIR; };
+		3537950526C5101B00711BCE /* MicroserviceServiceSharedConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroserviceServiceSharedConstants.swift; sourceTree = "<group>"; };
+		3537950826C5107900711BCE /* MicroverseGuestOSServices.dmg */ = {isa = PBXFileReference; lastKnownFileType = file; name = MicroverseGuestOSServices.dmg; path = ../../Intermediates.noindex/Microverse.build/Debug/MicroverseGuestOSService.build/DerivedSources/MicroverseGuestOSServices.dmg; sourceTree = BUILT_PRODUCTS_DIR; };
 		357457C326C044E700BFA2D7 /* KeyedCodingExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyedCodingExtensions.swift; sourceTree = "<group>"; };
 		357B42C826C2FA3C007E0036 /* MicroverseGuestOSService */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MicroverseGuestOSService; sourceTree = BUILT_PRODUCTS_DIR; };
 		357B42CA26C2FA3D007E0036 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -170,7 +173,7 @@
 				3589944626C304B500EE0E66 /* com.metacognitive.Microverse.GuestOSService.plist */,
 				5222D10C26C3006600E6BB28 /* GuestOSServiceProvider.swift */,
 				357B42CA26C2FA3D007E0036 /* main.swift */,
-				3537950326C50CF800711BCE /* MicroverseGuestOSServices.dmg */,
+				3537950826C5107900711BCE /* MicroverseGuestOSServices.dmg */,
 				353794FF26C5087E00711BCE /* package_installer.sh */,
 			);
 			path = MicroverseGuestOSService;
@@ -181,6 +184,7 @@
 			children = (
 				35CF8D5F26B8300F00E83536 /* Microverse */,
 				357B42C926C2FA3D007E0036 /* MicroverseGuestOSService */,
+				3537950526C5101B00711BCE /* MicroserviceServiceSharedConstants.swift */,
 				5222D10426C2FC3C00E6BB28 /* Protocol Buffers */,
 				5222D11126C301A700E6BB28 /* Frameworks */,
 				35CF8D5E26B8300F00E83536 /* Products */,
@@ -324,7 +328,7 @@
 			files = (
 				35CF8D6A26B8301000E83536 /* Preview Assets.xcassets in Resources */,
 				35CF8D6726B8301000E83536 /* Assets.xcassets in Resources */,
-				3537950426C50D1E00711BCE /* MicroverseGuestOSServices.dmg in Resources */,
+				3537950926C5107900711BCE /* MicroverseGuestOSServices.dmg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +366,7 @@
 				5222D10D26C3006600E6BB28 /* GuestOSServiceProvider.swift in Sources */,
 				5222D10B26C2FF3000E6BB28 /* guest_os_service.grpc.swift in Sources */,
 				5222D10826C2FE5700E6BB28 /* guest_os_service.pb.swift in Sources */,
+				3537950726C5101B00711BCE /* MicroserviceServiceSharedConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,6 +385,7 @@
 				35FE87E226BEE980009B9B51 /* MacAuxiliaryStorageView.swift in Sources */,
 				35CF8D7A26B8421B00E83536 /* VirtualMachineView.swift in Sources */,
 				35FE87E026BECD2E009B9B51 /* MacOSInstallView.swift in Sources */,
+				3537950626C5101B00711BCE /* MicroserviceServiceSharedConstants.swift in Sources */,
 				35CF8D8026B8704200E83536 /* DiskCreationView.swift in Sources */,
 				35CF8D8726B8837500E83536 /* AttachedDisksView.swift in Sources */,
 				35C1E9EE26BF11E1005F47D0 /* AttachedDiskImage.swift in Sources */,
