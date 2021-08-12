@@ -13,5 +13,5 @@ enum MicroverseError: Error {
     case guestOSServicesConnectionFailed
     case stringEncodingError
     case vmNotFoundOnNetwork
-    case invalidData
+    case guestOSServiceOperationFailed
 }
