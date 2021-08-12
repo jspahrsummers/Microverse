@@ -95,6 +95,12 @@ extension VZVirtualMachineConfiguration {
         }
         
         storageDevices.insert(VZVirtioBlockDeviceConfiguration(attachment: try VZDiskImageStorageDeviceAttachment(url: startupDiskURL, readOnly: false)), at: 0)
+
+        guard let guestOSServicesImage = Bundle(identifier: "com.metacognitive.Microverse")?.url(forResource: "MicroverseGuestOSServices", withExtension: "dmg") else {
+            throw MicroverseError.guestOSServicesNotFound
+        }
+        
+        storageDevices.append(VZVirtioBlockDeviceConfiguration(attachment: try VZDiskImageStorageDeviceAttachment(url: guestOSServicesImage, readOnly: true)))
         self.storageDevices = storageDevices
         
         guard let hardwareModel = vm.physicalMachine?.hardwareModel, let machineIdentifier = vm.physicalMachine?.machineIdentifier, let auxiliaryStorageURL = vm.auxiliaryStorageURL else {

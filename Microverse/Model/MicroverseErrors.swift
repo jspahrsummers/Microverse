@@ -8,9 +8,5 @@
 import Foundation
 
 enum MicroverseError: Error {
-    
-    var localizedDescription: String {
-        switch self {
-        }
-    }
+    case guestOSServicesNotFound
 }
