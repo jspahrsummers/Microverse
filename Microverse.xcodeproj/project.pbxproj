@@ -14,6 +14,7 @@
 		3537950626C5101B00711BCE /* MicroserviceServiceSharedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3537950526C5101B00711BCE /* MicroserviceServiceSharedConstants.swift */; };
 		3537950726C5101B00711BCE /* MicroserviceServiceSharedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3537950526C5101B00711BCE /* MicroserviceServiceSharedConstants.swift */; };
 		3537950926C5107900711BCE /* MicroverseGuestOSServices.dmg in Resources */ = {isa = PBXBuildFile; fileRef = 3537950826C5107900711BCE /* MicroverseGuestOSServices.dmg */; };
+		3537950B26C5115A00711BCE /* VirtualMachineToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3537950A26C5115A00711BCE /* VirtualMachineToolbar.swift */; };
 		357457C426C044E700BFA2D7 /* KeyedCodingExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357457C326C044E700BFA2D7 /* KeyedCodingExtensions.swift */; };
 		357B42C126C2F9D2007E0036 /* CGRPCZlib in Frameworks */ = {isa = PBXBuildFile; productRef = 357B42C026C2F9D2007E0036 /* CGRPCZlib */; };
 		357B42C326C2F9D2007E0036 /* GRPC in Frameworks */ = {isa = PBXBuildFile; productRef = 357B42C226C2F9D2007E0036 /* GRPC */; };
@@ -62,6 +63,7 @@
 		353794FF26C5087E00711BCE /* package_installer.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = package_installer.sh; sourceTree = "<group>"; };
 		3537950526C5101B00711BCE /* MicroserviceServiceSharedConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroserviceServiceSharedConstants.swift; sourceTree = "<group>"; };
 		3537950826C5107900711BCE /* MicroverseGuestOSServices.dmg */ = {isa = PBXFileReference; lastKnownFileType = file; name = MicroverseGuestOSServices.dmg; path = ../../Intermediates.noindex/Microverse.build/Debug/MicroverseGuestOSService.build/DerivedSources/MicroverseGuestOSServices.dmg; sourceTree = BUILT_PRODUCTS_DIR; };
+		3537950A26C5115A00711BCE /* VirtualMachineToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualMachineToolbar.swift; sourceTree = "<group>"; };
 		357457C326C044E700BFA2D7 /* KeyedCodingExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyedCodingExtensions.swift; sourceTree = "<group>"; };
 		357B42C826C2FA3C007E0036 /* MicroverseGuestOSService */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MicroverseGuestOSService; sourceTree = BUILT_PRODUCTS_DIR; };
 		357B42CA26C2FA3D007E0036 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				352AF07926BB026900AFD751 /* MacRestoreImageView.swift */,
 				352AF07526BAFDD700AFD751 /* PathField.swift */,
 				35CF8D7B26B8431300E83536 /* VirtualMachineConfigurationView.swift */,
+				3537950A26C5115A00711BCE /* VirtualMachineToolbar.swift */,
 				35CF8D7926B8421B00E83536 /* VirtualMachineView.swift */,
 			);
 			path = View;
@@ -395,6 +398,7 @@
 				3526598E26BFEFBF001D5029 /* VirtualMachineController.swift in Sources */,
 				35FE87DC26BEC049009B9B51 /* MacOSVirtualMachine.swift in Sources */,
 				352AF07A26BB026900AFD751 /* MacRestoreImageView.swift in Sources */,
+				3537950B26C5115A00711BCE /* VirtualMachineToolbar.swift in Sources */,
 				5222D10A26C2FF3000E6BB28 /* guest_os_service.grpc.swift in Sources */,
 				352AF07626BAFDD700AFD751 /* PathField.swift in Sources */,
 				35CF8D6526B8300F00E83536 /* DocumentView.swift in Sources */,

@@ -17,7 +17,7 @@ defer {
 let provider = GuestOSServiceProvider()
 let server = Server.insecure(group: group)
     .withServiceProviders([provider])
-    .bind(host: "localhost", port: guestOSServicePortNumber)
+    .bind(host: "localhost", port: Int(guestOSServicePortNumber))
 
 server.map {
     $0.channel.localAddress
