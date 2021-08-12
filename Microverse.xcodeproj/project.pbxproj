@@ -52,18 +52,6 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		357B42C626C2FA3C007E0036 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		3526598D26BFEFBF001D5029 /* VirtualMachineController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualMachineController.swift; sourceTree = "<group>"; };
 		3526598F26BFF2E2001D5029 /* MicroverseErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroverseErrors.swift; sourceTree = "<group>"; };
@@ -253,7 +241,6 @@
 			buildPhases = (
 				357B42C426C2FA3C007E0036 /* Sources */,
 				357B42C526C2FA3C007E0036 /* Frameworks */,
-				357B42C626C2FA3C007E0036 /* CopyFiles */,
 				3537950026C5089800711BCE /* ShellScript */,
 			);
 			buildRules = (
@@ -353,6 +340,7 @@
 			);
 			inputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FULL_PRODUCT_NAME)",
+				"$(SRCROOT)/MicroverseGuestOSService/com.metacognitive.Microverse.GuestOSService.plist",
 			);
 			outputFileListPaths = (
 			);
