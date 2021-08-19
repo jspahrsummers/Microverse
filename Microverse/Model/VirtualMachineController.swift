@@ -15,57 +15,94 @@ final class VirtualMachineController: NSObject, VZVirtualMachineDelegate {
     let virtualMachine: VZVirtualMachine
     let macAddresses: [VZMACAddress]
     
+    let eventLoopGroup = MultiThreadedEventLoopGroup(numberOfThreads: 1)
+    var guestOSServiceConnection: ClientConnection? = nil
+    var guestOSServiceClient: Microverse_GuestOSServiceClient? = nil
+    
     init(configuration: VZVirtualMachineConfiguration) throws {
         try configuration.validate()
         macAddresses = configuration.networkDevices.map { device in device.macAddress }
         virtualMachine = VZVirtualMachine(configuration: configuration, queue: dispatchQueue)
     }
     
-    func pasteIntoVM(_ content: String) async throws {
+    deinit {
+        eventLoopGroup.shutdownGracefully { error in
+            if let error = error {
+                NSLog("Could not shut down MultiThreadedEventLoopGroup: \(error)")
+            }
+        }
+        
+        if let channel = guestOSServiceConnection {
+            channel.close().whenComplete { result in
+                if case let .failure(error) = result {
+                    NSLog("Could not close GRPC channel: \(error)")
+                }
+            }
+        }
+    }
+    
+    private func connect() throws -> Microverse_GuestOSServiceClient {
+        if let client = guestOSServiceClient {
+            return client
+        }
+        
         guard let address = try lookUpAddresses().first else {
             throw MicroverseError.vmNotFoundOnNetwork
         }
         
+        let channel = ClientConnection.insecure(group: eventLoopGroup)
+            .connect(host: address, port: guestOSServicePortNumber)
+        let client = Microverse_GuestOSServiceClient(channel: channel)
+        guestOSServiceConnection = channel
+        guestOSServiceClient = client
+        return client
+    }
+    
+    func pasteIntoVM(_ content: String) async throws {
         try await withCheckedThrowingContinuation { (cont: CheckedContinuation<Void, Error>) in
-            // TODO: Use virtio socket to connect to VM, and wrap GRPC around the file descriptor
-            //            guard let socketDevice = virtualMachine.socketDevices.first as? VZVirtioSocketDevice else {
-            //                cont.resume(with: .failure(MicroverseError.noSocketDevice))
-            //                return
-            //            }
-            //
-            //            socketDevice.connect(toPort: UInt32(guestOSServicePortNumber)) { result in
-            //                guard case let .success(connection) = result else {
-            //                    cont.resume(with: .failure(MicroverseError.guestOSServicesConnectionFailed))
-            //                    return
-            //                }
-            //
-            //                cont.resume(with: .success(()))
-            //            }
-            
-            let group = MultiThreadedEventLoopGroup(numberOfThreads: 1)
-            let channel = ClientConnection.insecure(group: group)
-                .connect(host: address, port: guestOSServicePortNumber)
-            
-            let client = Microverse_GuestOSServiceClient(channel: channel)
-            let request = Microverse_PasteRequest.with {
-                $0.content = content
-            }
-            
-            client.paste(request).response.whenComplete { result in
-                cont.resume(with: result.flatMap { response in
-                    response.success ? .success(()) : .failure(MicroverseError.guestOSServiceOperationFailed)
-                })
+            dispatchQueue.async {
+                // TODO: Use virtio socket to connect to VM, and wrap GRPC around the file descriptor
+                //            guard let socketDevice = virtualMachine.socketDevices.first as? VZVirtioSocketDevice else {
+                //                cont.resume(with: .failure(MicroverseError.noSocketDevice))
+                //                return
+                //            }
+                //
+                //            socketDevice.connect(toPort: UInt32(guestOSServicePortNumber)) { result in
+                //                guard case let .success(connection) = result else {
+                //                    cont.resume(with: .failure(MicroverseError.guestOSServicesConnectionFailed))
+                //                    return
+                //                }
+                //
+                //                cont.resume(with: .success(()))
+                //            }
                 
-                channel.close().whenComplete { result in
-                    if case let .failure(error) = result {
-                        NSLog("Could not close GRPC channel: \(error)")
+                do {
+                    let client = try self.connect()
+                    let request = Microverse_PasteRequest.with {
+                        $0.content = content
                     }
                     
-                    group.shutdownGracefully { error in
-                        if let error = error {
-                            NSLog("Could not shut down MultiThreadedEventLoopGroup: \(error)")
-                        }
+                    let call = client.paste(request)
+                    
+                    call.response.whenSuccess { value in
+                        NSLog("Paste succeeded: \(value)")
                     }
+                    
+                    call.response.whenFailure { error in
+                        NSLog("Paste failed: \(error)")
+                    }
+                    
+                    call.response.whenComplete { result in
+                        NSLog("Paste result \(result): \(content)")
+                        cont.resume(with: result.map { _ in () })
+                    }
+                    
+                    NSLog("Started paste")
+                    let value = try call.response.wait()
+                    NSLog("Pasted: \(value)")
+                } catch {
+                    NSLog("Caught error when pasting: \(error)")
+                    cont.resume(throwing: error)
                 }
             }
         }
