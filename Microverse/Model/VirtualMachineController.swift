@@ -40,7 +40,7 @@ final class VirtualMachineController: NSObject, VZVirtualMachineDelegate {
                 socketDevice.connect(toPort: UInt32(guestOSServicePortNumber)) { result in
                     NSLog("Connection result (to VM over socket device): \(result)")
                     cont.resume(with: result.flatMap { connection in
-                        guard let sendPort = SocketPort(protocolFamily: PF_INET, socketType: SOCK_STREAM, protocol: IPPROTO_TCP, socket: connection.fileDescriptor) else {
+                        guard let sendPort = SocketPort(protocolFamily: AF_VSOCK, socketType: SOCK_STREAM, protocol: 0, socket: connection.fileDescriptor) else {
                             return .failure(MicroverseError.guestOSServicesConnectionFailed)
                         }
                         

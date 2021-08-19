@@ -60,6 +60,7 @@
 		3537950826C5107900711BCE /* MicroverseGuestOSServices.dmg */ = {isa = PBXFileReference; lastKnownFileType = file; name = MicroverseGuestOSServices.dmg; path = ../../Intermediates.noindex/Microverse.build/Debug/MicroverseGuestOSService.build/DerivedSources/MicroverseGuestOSServices.dmg; sourceTree = BUILT_PRODUCTS_DIR; };
 		3537950A26C5115A00711BCE /* VirtualMachineToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualMachineToolbar.swift; sourceTree = "<group>"; };
 		3548D7A026CE849800F94B18 /* PortMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortMessages.swift; sourceTree = "<group>"; };
+		3548D7A326CE9F5F00F94B18 /* Microverse-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Microverse-Bridging-Header.h"; sourceTree = "<group>"; };
 		357457C326C044E700BFA2D7 /* KeyedCodingExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyedCodingExtensions.swift; sourceTree = "<group>"; };
 		357B42C826C2FA3C007E0036 /* MicroverseGuestOSService */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MicroverseGuestOSService; sourceTree = BUILT_PRODUCTS_DIR; };
 		357B42CA26C2FA3D007E0036 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -164,6 +165,7 @@
 				3537950526C5101B00711BCE /* MicroserviceServiceSharedConstants.swift */,
 				3526598F26BFF2E2001D5029 /* MicroverseErrors.swift */,
 				3548D7A026CE849800F94B18 /* PortMessages.swift */,
+				3548D7A326CE9F5F00F94B18 /* Microverse-Bridging-Header.h */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -474,6 +476,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "Shared/Microverse-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -529,6 +532,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_BRIDGING_HEADER = "Shared/Microverse-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;
