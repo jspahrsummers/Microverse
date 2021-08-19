@@ -5,26 +5,55 @@
 //  Created by Justin Spahr-Summers on 10/08/2021.
 //
 
+import AppKit
 import Foundation
-import GRPC
-import NIO
 
-let group = MultiThreadedEventLoopGroup(numberOfThreads: 1)
-defer {
-    try! group.syncShutdownGracefully()
+final class Server: NSObject, PortDelegate {
+    let port: SocketPort
+    
+    required init(portNumber: Int) throws {
+        guard let port = SocketPort(tcpPort: UInt16(portNumber)) else {
+            throw MicroverseError.guestOSServiceFailedToStart
+        }
+        
+        self.port = port
+        super.init()
+        
+        port.setDelegate(self)
+        port.schedule(in: RunLoop.current, forMode: .common)
+    }
+    
+    deinit {
+        port.invalidate()
+    }
+    
+    func run() {
+        RunLoop.current.run()
+    }
+    
+    func handle(_ message: PortMessage) {
+        guard let messageData = message.components?.first as? Data else {
+            NSLog("Port message did not contain data as first component: \(message)")
+            return
+        }
+        
+        do {
+            let decoded = try PropertyListDecoder().decode(MicroverseMessage.self, from: messageData)
+            
+            switch decoded {
+            case let .paste(content):
+                NSLog("Paste: \(content)")
+                NSPasteboard.general.setString(content, forType: .string)
+            }
+        } catch {
+            NSLog("Error decoding port message: \(error)")
+        }
+    }
 }
 
-let provider = GuestOSServiceProvider()
-let server = Server.insecure(group: group)
-    .withServiceProviders([provider])
-    .bind(host: "localhost", port: Int(guestOSServicePortNumber))
-
-server.map {
-    $0.channel.localAddress
-}.whenSuccess { address in
-    print("Server started: \(address!)")
+do {
+    let server = try Server(portNumber: guestOSServicePortNumber)
+    server.run()
+} catch {
+    NSLog("Failed to start server: \(error)")
 }
-
-_ = try server.flatMap {
-    $0.onClose
-}.wait()
