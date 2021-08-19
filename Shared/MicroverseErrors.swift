@@ -15,4 +15,6 @@ enum MicroverseError: Error {
     case vmNotFoundOnNetwork
     case guestOSServiceOperationFailed
     case guestOSServiceFailedToStart
+    case guestOSServiceMessageDecodingFailed(message: PortMessage)
+    case failedToSendPortMessage(message: PortMessage)
 }

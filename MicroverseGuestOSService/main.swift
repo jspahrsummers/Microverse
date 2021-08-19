@@ -32,13 +32,8 @@ final class Server: NSObject, PortDelegate {
     }
     
     func handle(_ message: PortMessage) {
-        guard let messageData = message.components?.first as? Data else {
-            NSLog("Port message did not contain data as first component: \(message)")
-            return
-        }
-        
         do {
-            let decoded = try PropertyListDecoder().decode(MicroverseMessage.self, from: messageData)
+            let decoded = try MicroverseMessage.init(fromPortMessage: message)
             
             switch decoded {
             case let .paste(content):
