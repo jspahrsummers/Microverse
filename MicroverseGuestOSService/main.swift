@@ -43,7 +43,26 @@ final class Server: NSObject, PortDelegate {
     }
     
     func run() {
-        RunLoop.current.run()
+        Task {
+            var addr = sockaddr()
+            var len: socklen_t = 0
+            while true {
+                let acceptedFd = accept(self.fd, &addr, &len)
+                guard acceptedFd >= 0 else {
+                    throw Errno(rawValue: errno)
+                }
+                
+                guard let port = SocketPort(protocolFamily: AF_VSOCK, socketType: SOCK_STREAM, protocol: 0, socket: acceptedFd) else {
+                    // TODO: Better error message
+                    throw MicroverseError.guestOSServicesConnectionFailed
+                }
+                
+                port.setDelegate(self)
+                port.schedule(in: RunLoop.current, forMode: .common)
+                
+                // TODO: Invalidate ports
+            }
+        }
     }
     
     func handle(_ message: PortMessage) {
