@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "35CF8D5C26B8300F00E83536"
-               BuildableName = "Microverse.app"
-               BlueprintName = "Microverse"
+               BlueprintIdentifier = "357B42C726C2FA3C007E0036"
+               BuildableName = "MicroverseGuestOSService"
+               BlueprintName = "MicroverseGuestOSService"
                ReferencedContainer = "container:Microverse.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -49,25 +49,17 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      enableGPUValidationMode = "1"
       allowLocationSimulation = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "35CF8D5C26B8300F00E83536"
-            BuildableName = "Microverse.app"
-            BlueprintName = "Microverse"
+            BlueprintIdentifier = "357B42C726C2FA3C007E0036"
+            BuildableName = "MicroverseGuestOSService"
+            BlueprintName = "MicroverseGuestOSService"
             ReferencedContainer = "container:Microverse.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "OS_ACTIVITY_MODE"
-            value = "disable"
-            isEnabled = "NO">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -79,9 +71,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "35CF8D5C26B8300F00E83536"
-            BuildableName = "Microverse.app"
-            BlueprintName = "Microverse"
+            BlueprintIdentifier = "357B42C726C2FA3C007E0036"
+            BuildableName = "MicroverseGuestOSService"
+            BlueprintName = "MicroverseGuestOSService"
             ReferencedContainer = "container:Microverse.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

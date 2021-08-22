@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "35CF8D5C26B8300F00E83536"
-               BuildableName = "Microverse.app"
-               BlueprintName = "Microverse"
+               BlueprintIdentifier = "35AA765126D2D32600CC9896"
+               BuildableName = "libMicroverseNetworking.a"
+               BlueprintName = "MicroverseNetworking"
                ReferencedContainer = "container:Microverse.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -49,25 +49,7 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      enableGPUValidationMode = "1"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "35CF8D5C26B8300F00E83536"
-            BuildableName = "Microverse.app"
-            BlueprintName = "Microverse"
-            ReferencedContainer = "container:Microverse.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "OS_ACTIVITY_MODE"
-            value = "disable"
-            isEnabled = "NO">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -75,16 +57,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "35CF8D5C26B8300F00E83536"
-            BuildableName = "Microverse.app"
-            BlueprintName = "Microverse"
+            BlueprintIdentifier = "35AA765126D2D32600CC9896"
+            BuildableName = "libMicroverseNetworking.a"
+            BlueprintName = "MicroverseNetworking"
             ReferencedContainer = "container:Microverse.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
