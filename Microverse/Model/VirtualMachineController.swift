@@ -14,7 +14,7 @@ final class VirtualMachineController: NSObject, VZVirtualMachineDelegate {
     let virtualMachine: VZVirtualMachine
     let macAddresses: [VZMACAddress]
     
-    var sendPort: SocketPort? = nil
+    var socketClient: Client? = nil
     
     init(configuration: VZVirtualMachineConfiguration) throws {
         try configuration.validate()
@@ -22,13 +22,9 @@ final class VirtualMachineController: NSObject, VZVirtualMachineDelegate {
         virtualMachine = VZVirtualMachine(configuration: configuration, queue: dispatchQueue)
     }
     
-    deinit {
-        sendPort?.invalidate()
-    }
-    
-    private func connect() async throws -> SocketPort {
-        if let sendPort = sendPort {
-            return sendPort
+    private func connect() async throws -> Client {
+        if let socketClient = socketClient {
+            return socketClient
         }
         
         return try await withCheckedThrowingContinuation { cont in
@@ -37,16 +33,17 @@ final class VirtualMachineController: NSObject, VZVirtualMachineDelegate {
                     cont.resume(with: .failure(MicroverseError.noSocketDevice))
                     return
                 }
-
+                
                 socketDevice.connect(toPort: UInt32(guestOSServicePortNumber)) { result in
                     NSLog("Connection result (to VM over socket device): \(result)")
                     cont.resume(with: result.flatMap { connection in
-                        guard let sendPort = SocketPort(protocolFamily: AF_VSOCK, socketType: SOCK_STREAM, protocol: 0, socket: connection.fileDescriptor) else {
-                            return .failure(NetworkingError.couldNotCreatePort)
+                        do {
+                            let client = try Client(fileDescriptor: connection.fileDescriptor)
+                            self.socketClient = client
+                            return .success(client)
+                        } catch {
+                            return .failure(error)
                         }
-                        
-                        self.sendPort = sendPort
-                        return .success(sendPort)
                     })
                 }
             }
@@ -54,11 +51,10 @@ final class VirtualMachineController: NSObject, VZVirtualMachineDelegate {
     }
     
     func pasteIntoVM(_ content: String) async throws {
-        let sendPort = try await connect()
-        let message = try PortMessage(send: sendPort, receive: nil, microverseMessage: .paste(content: content))
-        try await message.send(before: Date.init(timeIntervalSinceNow: 1), qos: .userInitiated)
+        let client = try await connect()
+        try await client.send(.paste(content: content))
     }
-//
+    
     func guestDidStop(_ virtualMachine: VZVirtualMachine) {
         
     }
