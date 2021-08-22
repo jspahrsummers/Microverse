@@ -21,6 +21,7 @@
 		35AA765D26D2D34800CC9896 /* libMicroverseNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35AA765226D2D32600CC9896 /* libMicroverseNetworking.a */; };
 		35AA765F26D2D38D00CC9896 /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AA765E26D2D38D00CC9896 /* NetworkingError.swift */; };
 		35AA766426D2D4B200CC9896 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3537950526C5101B00711BCE /* Constants.swift */; };
+		35AA766626D2E1FE00CC9896 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AA766526D2E1FE00CC9896 /* Server.swift */; };
 		35C1E9EE26BF11E1005F47D0 /* AttachedDiskImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C1E9ED26BF11E1005F47D0 /* AttachedDiskImage.swift */; };
 		35CF8D6126B8300F00E83536 /* MicroverseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF8D6026B8300F00E83536 /* MicroverseApp.swift */; };
 		35CF8D6526B8300F00E83536 /* DocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF8D6426B8300F00E83536 /* DocumentView.swift */; };
@@ -68,6 +69,7 @@
 		359B9B0526B8AAC100AA3989 /* MicroverseDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MicroverseDocument.swift; sourceTree = "<group>"; };
 		35AA765226D2D32600CC9896 /* libMicroverseNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMicroverseNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		35AA765E26D2D38D00CC9896 /* NetworkingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
+		35AA766526D2E1FE00CC9896 /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		35C1E9ED26BF11E1005F47D0 /* AttachedDiskImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachedDiskImage.swift; sourceTree = "<group>"; };
 		35CF8D5D26B8300F00E83536 /* Microverse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Microverse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35CF8D6026B8300F00E83536 /* MicroverseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroverseApp.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				3537950526C5101B00711BCE /* Constants.swift */,
 				35AA765E26D2D38D00CC9896 /* NetworkingError.swift */,
 				3548D7A026CE849800F94B18 /* PortMessages.swift */,
+				35AA766526D2E1FE00CC9896 /* Server.swift */,
 			);
 			path = MicroverseNetworking;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 			files = (
 				35AA765F26D2D38D00CC9896 /* NetworkingError.swift in Sources */,
 				35AA765B26D2D33000CC9896 /* PortMessages.swift in Sources */,
+				35AA766626D2E1FE00CC9896 /* Server.swift in Sources */,
 				35AA766426D2D4B200CC9896 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
