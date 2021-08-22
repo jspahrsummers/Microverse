@@ -10,7 +10,6 @@ import Foundation
 enum MicroverseError: Error {
     case guestOSServicesNotFound
     case noSocketDevice
-    case guestOSServicesConnectionFailed
     case stringEncodingError
     case vmNotFoundOnNetwork
     case guestOSServiceOperationFailed

@@ -55,7 +55,7 @@ final class Server: NSObject, PortDelegate {
                 
                 guard let port = SocketPort(protocolFamily: AF_VSOCK, socketType: SOCK_STREAM, protocol: 0, socket: acceptedFd) else {
                     // TODO: Better error message
-                    throw MicroverseError.guestOSServicesConnectionFailed
+                    throw NetworkingError.couldNotCreatePort
                 }
                 
                 port.setDelegate(self)

@@ -10,4 +10,5 @@ import Foundation
 public enum NetworkingError: Error {
     case messageDecodingFailed(message: PortMessage)
     case failedToSendPortMessage(message: PortMessage)
+    case couldNotCreatePort
 }
