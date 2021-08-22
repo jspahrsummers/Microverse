@@ -10,10 +10,14 @@ import Foundation
 import System
 
 public final class Server: NSObject, PortDelegate {
-    let fd: Int32
+    let fd: SocketNativeHandle
     
-    public required init(portNumber: Int) throws {
+    public required init(portNumber: UInt32) throws {
         self.fd = socket(AF_VSOCK, SOCK_STREAM, 0)
+        
+        guard self.fd >= 0 else {
+            throw Errno(rawValue: errno)
+        }
         
         super.init()
         

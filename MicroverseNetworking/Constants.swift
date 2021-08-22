@@ -7,4 +7,4 @@
 
 import Foundation
 
-public let guestOSServicePortNumber = 6628
+public let guestOSServicePortNumber: UInt32 = 6628

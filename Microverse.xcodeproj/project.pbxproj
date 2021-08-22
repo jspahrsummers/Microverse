@@ -23,7 +23,7 @@
 		35AA766426D2D4B200CC9896 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3537950526C5101B00711BCE /* Constants.swift */; };
 		35AA766626D2E1FE00CC9896 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AA766526D2E1FE00CC9896 /* Server.swift */; };
 		35AA766826D2E27E00CC9896 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AA766726D2E27E00CC9896 /* Client.swift */; };
-		35AA767126D2E45A00CC9896 /* MicroverseNetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AA767026D2E45A00CC9896 /* MicroverseNetworkingTests.swift */; };
+		35AA767126D2E45A00CC9896 /* ClientServerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AA767026D2E45A00CC9896 /* ClientServerTests.swift */; };
 		35AA767226D2E45A00CC9896 /* libMicroverseNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35AA765226D2D32600CC9896 /* libMicroverseNetworking.a */; };
 		35C1E9EE26BF11E1005F47D0 /* AttachedDiskImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C1E9ED26BF11E1005F47D0 /* AttachedDiskImage.swift */; };
 		35CF8D6126B8300F00E83536 /* MicroverseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF8D6026B8300F00E83536 /* MicroverseApp.swift */; };
@@ -82,7 +82,7 @@
 		35AA766526D2E1FE00CC9896 /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		35AA766726D2E27E00CC9896 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		35AA766E26D2E45A00CC9896 /* MicroverseNetworkingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MicroverseNetworkingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		35AA767026D2E45A00CC9896 /* MicroverseNetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroverseNetworkingTests.swift; sourceTree = "<group>"; };
+		35AA767026D2E45A00CC9896 /* ClientServerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientServerTests.swift; sourceTree = "<group>"; };
 		35C1E9ED26BF11E1005F47D0 /* AttachedDiskImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachedDiskImage.swift; sourceTree = "<group>"; };
 		35CF8D5D26B8300F00E83536 /* Microverse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Microverse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35CF8D6026B8300F00E83536 /* MicroverseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroverseApp.swift; sourceTree = "<group>"; };
@@ -221,7 +221,7 @@
 		35AA766F26D2E45A00CC9896 /* MicroverseNetworkingTests */ = {
 			isa = PBXGroup;
 			children = (
-				35AA767026D2E45A00CC9896 /* MicroverseNetworkingTests.swift */,
+				35AA767026D2E45A00CC9896 /* ClientServerTests.swift */,
 			);
 			path = MicroverseNetworkingTests;
 			sourceTree = "<group>";
@@ -477,7 +477,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35AA767126D2E45A00CC9896 /* MicroverseNetworkingTests.swift in Sources */,
+				35AA767126D2E45A00CC9896 /* ClientServerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
