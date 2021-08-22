@@ -16,11 +16,13 @@
 		3537950926C5107900711BCE /* MicroverseGuestOSServices.dmg in Resources */ = {isa = PBXBuildFile; fileRef = 3537950826C5107900711BCE /* MicroverseGuestOSServices.dmg */; };
 		3537950B26C5115A00711BCE /* VirtualMachineToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3537950A26C5115A00711BCE /* VirtualMachineToolbar.swift */; };
 		3548D79E26CE835E00F94B18 /* MicroverseErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3526598F26BFF2E2001D5029 /* MicroverseErrors.swift */; };
-		3548D7A126CE849800F94B18 /* PortMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3548D7A026CE849800F94B18 /* PortMessages.swift */; };
-		3548D7A226CE849800F94B18 /* PortMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3548D7A026CE849800F94B18 /* PortMessages.swift */; };
 		357457C426C044E700BFA2D7 /* KeyedCodingExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357457C326C044E700BFA2D7 /* KeyedCodingExtensions.swift */; };
 		357B42CB26C2FA3D007E0036 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357B42CA26C2FA3D007E0036 /* main.swift */; };
 		359B9B0626B8AAC100AA3989 /* MicroverseDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359B9B0526B8AAC100AA3989 /* MicroverseDocument.swift */; };
+		35AA765B26D2D33000CC9896 /* PortMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3548D7A026CE849800F94B18 /* PortMessages.swift */; };
+		35AA765C26D2D34500CC9896 /* libMicroverseNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35AA765226D2D32600CC9896 /* libMicroverseNetworking.a */; };
+		35AA765D26D2D34800CC9896 /* libMicroverseNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35AA765226D2D32600CC9896 /* libMicroverseNetworking.a */; };
+		35AA765F26D2D38D00CC9896 /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AA765E26D2D38D00CC9896 /* NetworkingError.swift */; };
 		35C1E9EE26BF11E1005F47D0 /* AttachedDiskImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C1E9ED26BF11E1005F47D0 /* AttachedDiskImage.swift */; };
 		35CF8D6126B8300F00E83536 /* MicroverseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF8D6026B8300F00E83536 /* MicroverseApp.swift */; };
 		35CF8D6526B8300F00E83536 /* DocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF8D6426B8300F00E83536 /* DocumentView.swift */; };
@@ -66,6 +68,8 @@
 		357B42CA26C2FA3D007E0036 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		3589944626C304B500EE0E66 /* com.metacognitive.Microverse.GuestOSService.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = com.metacognitive.Microverse.GuestOSService.plist; sourceTree = "<group>"; };
 		359B9B0526B8AAC100AA3989 /* MicroverseDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MicroverseDocument.swift; sourceTree = "<group>"; };
+		35AA765226D2D32600CC9896 /* libMicroverseNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMicroverseNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		35AA765E26D2D38D00CC9896 /* NetworkingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
 		35C1E9ED26BF11E1005F47D0 /* AttachedDiskImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachedDiskImage.swift; sourceTree = "<group>"; };
 		35CF8D5D26B8300F00E83536 /* Microverse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Microverse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35CF8D6026B8300F00E83536 /* MicroverseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroverseApp.swift; sourceTree = "<group>"; };
@@ -93,6 +97,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35AA765C26D2D34500CC9896 /* libMicroverseNetworking.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		35AA765026D2D32600CC9896 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35AA765D26D2D34800CC9896 /* libMicroverseNetworking.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,7 +177,6 @@
 			children = (
 				3537950526C5101B00711BCE /* MicroserviceServiceSharedConstants.swift */,
 				3526598F26BFF2E2001D5029 /* MicroverseErrors.swift */,
-				3548D7A026CE849800F94B18 /* PortMessages.swift */,
 				3548D7A326CE9F5F00F94B18 /* Microverse-Bridging-Header.h */,
 			);
 			path = Shared;
@@ -181,12 +193,22 @@
 			path = MicroverseGuestOSService;
 			sourceTree = "<group>";
 		};
+		35AA765326D2D32600CC9896 /* MicroverseNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				35AA765E26D2D38D00CC9896 /* NetworkingError.swift */,
+				3548D7A026CE849800F94B18 /* PortMessages.swift */,
+			);
+			path = MicroverseNetworking;
+			sourceTree = "<group>";
+		};
 		35CF8D5426B8300F00E83536 = {
 			isa = PBXGroup;
 			children = (
 				35CF8D5F26B8300F00E83536 /* Microverse */,
 				357B42C926C2FA3D007E0036 /* MicroverseGuestOSService */,
 				3548D79F26CE840100F94B18 /* Shared */,
+				35AA765326D2D32600CC9896 /* MicroverseNetworking */,
 				5222D11126C301A700E6BB28 /* Frameworks */,
 				35CF8D5E26B8300F00E83536 /* Products */,
 			);
@@ -197,6 +219,7 @@
 			children = (
 				35CF8D5D26B8300F00E83536 /* Microverse.app */,
 				357B42C826C2FA3C007E0036 /* MicroverseGuestOSService */,
+				35AA765226D2D32600CC9896 /* libMicroverseNetworking.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -229,6 +252,16 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		35AA764E26D2D32600CC9896 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		357B42C726C2FA3C007E0036 /* MicroverseGuestOSService */ = {
 			isa = PBXNativeTarget;
@@ -248,6 +281,23 @@
 			productName = MicroverseGuestOSService;
 			productReference = 357B42C826C2FA3C007E0036 /* MicroverseGuestOSService */;
 			productType = "com.apple.product-type.tool";
+		};
+		35AA765126D2D32600CC9896 /* MicroverseNetworking */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 35AA765A26D2D32600CC9896 /* Build configuration list for PBXNativeTarget "MicroverseNetworking" */;
+			buildPhases = (
+				35AA764E26D2D32600CC9896 /* Headers */,
+				35AA764F26D2D32600CC9896 /* Sources */,
+				35AA765026D2D32600CC9896 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MicroverseNetworking;
+			productName = MicroverseNetworking;
+			productReference = 35AA765226D2D32600CC9896 /* libMicroverseNetworking.a */;
+			productType = "com.apple.product-type.library.static";
 		};
 		35CF8D5C26B8300F00E83536 /* Microverse */ = {
 			isa = PBXNativeTarget;
@@ -282,6 +332,9 @@
 					357B42C726C2FA3C007E0036 = {
 						CreatedOnToolsVersion = 13.0;
 					};
+					35AA765126D2D32600CC9896 = {
+						CreatedOnToolsVersion = 13.0;
+					};
 					35CF8D5C26B8300F00E83536 = {
 						CreatedOnToolsVersion = 13.0;
 					};
@@ -304,6 +357,7 @@
 			targets = (
 				35CF8D5C26B8300F00E83536 /* Microverse */,
 				357B42C726C2FA3C007E0036 /* MicroverseGuestOSService */,
+				35AA765126D2D32600CC9896 /* MicroverseNetworking */,
 			);
 		};
 /* End PBXProject section */
@@ -351,8 +405,16 @@
 			files = (
 				357B42CB26C2FA3D007E0036 /* main.swift in Sources */,
 				3548D79E26CE835E00F94B18 /* MicroverseErrors.swift in Sources */,
-				3548D7A226CE849800F94B18 /* PortMessages.swift in Sources */,
 				3537950726C5101B00711BCE /* MicroserviceServiceSharedConstants.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		35AA764F26D2D32600CC9896 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35AA765F26D2D38D00CC9896 /* NetworkingError.swift in Sources */,
+				35AA765B26D2D33000CC9896 /* PortMessages.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,7 +424,6 @@
 			files = (
 				35CF8D7626B836A900E83536 /* VirtualMachine.swift in Sources */,
 				35CF8D7C26B8431300E83536 /* VirtualMachineConfigurationView.swift in Sources */,
-				3548D7A126CE849800F94B18 /* PortMessages.swift in Sources */,
 				357457C426C044E700BFA2D7 /* KeyedCodingExtensions.swift in Sources */,
 				359B9B0626B8AAC100AA3989 /* MicroverseDocument.swift in Sources */,
 				35CF8D6126B8300F00E83536 /* MicroverseApp.swift in Sources */,
@@ -404,7 +465,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_BUNDLE_IDENTIFIER = com.metacognitive.Microverse.GuestOSService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -414,7 +474,26 @@
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_BUNDLE_IDENTIFIER = com.metacognitive.Microverse.GuestOSService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		35AA765826D2D32600CC9896 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		35AA765926D2D32600CC9896 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -478,6 +557,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OBJC_BRIDGING_HEADER = "Shared/Microverse-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -534,6 +614,7 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OBJC_BRIDGING_HEADER = "Shared/Microverse-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -563,7 +644,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.metacognitive.Microverse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -593,7 +673,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.metacognitive.Microverse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -605,6 +684,15 @@
 			buildConfigurations = (
 				357B42CD26C2FA3D007E0036 /* Debug */,
 				357B42CE26C2FA3D007E0036 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		35AA765A26D2D32600CC9896 /* Build configuration list for PBXNativeTarget "MicroverseNetworking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				35AA765826D2D32600CC9896 /* Debug */,
+				35AA765926D2D32600CC9896 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

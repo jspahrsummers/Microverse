@@ -7,6 +7,7 @@
 
 import AppKit
 import Foundation
+import MicroverseNetworking
 import System
 
 final class Server: NSObject, PortDelegate {

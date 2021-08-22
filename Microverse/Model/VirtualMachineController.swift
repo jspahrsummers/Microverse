@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MicroverseNetworking
 import Virtualization
 
 final class VirtualMachineController: NSObject, VZVirtualMachineDelegate {
